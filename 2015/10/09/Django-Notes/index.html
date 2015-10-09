@@ -1,0 +1,983 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="===== Django Basics ========= django多线程开发服务器django-devserver ====
+
+devserver:http://pypi.python.org/pypi/django-devserver
+django-scale-sample:http://www.slideshare.net/zeeg/djangocon-2010-scaling-disq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Notes">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/09/Django-Notes/index.html">
+<meta property="og:site_name" content="Yann's Blog">
+<meta property="og:description" content="===== Django Basics ========= django多线程开发服务器django-devserver ====
+
+devserver:http://pypi.python.org/pypi/django-devserver
+django-scale-sample:http://www.slideshare.net/zeeg/djangocon-2010-scaling-disq">
+<meta property="og:updated_time" content="2015-10-09T05:40:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Notes">
+<meta name="twitter:description" content="===== Django Basics ========= django多线程开发服务器django-devserver ====
+
+devserver:http://pypi.python.org/pypi/django-devserver
+django-scale-sample:http://www.slideshare.net/zeeg/djangocon-2010-scaling-disq">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title> Django Notes | Yann's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Yann's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Django Notes
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-09T13:39:28+08:00" content="2015-10-09">
+            2015-10-09
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/09/Django-Notes/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/09/Django-Notes/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>===== Django Basics =====<br>==== django多线程开发服务器django-devserver ====</p>
+<ul>
+<li>devserver:<a href="http://pypi.python.org/pypi/django-devserver" target="_blank" rel="external">http://pypi.python.org/pypi/django-devserver</a></li>
+<li>django-scale-sample:<a href="http://www.slideshare.net/zeeg/djangocon-2010-scaling-disqus" target="_blank" rel="external">http://www.slideshare.net/zeeg/djangocon-2010-scaling-disqus</a></li>
+<li>django-tornado:<a href="http://jxq.me/2013/05/03/djangotornado/" target="_blank" rel="external">http://jxq.me/2013/05/03/djangotornado/</a></li>
+<li>django-tornado-meet:<a href="http://ultimatenerdiness.com/2012/10/14/django-and-tornado/" target="_blank" rel="external">http://ultimatenerdiness.com/2012/10/14/django-and-tornado/</a><br>==== 在Django中MySQL的Composite Primary Key的实现====</li>
+<li><p>Django不直接支持Composite Primary Key，但是可以如下实现。</p>
+<ul>
+<li>定义model，选择composite key中的一个作为主键。</li>
+<li><p>在model内部的Meta内，使用<strong>unique_together</strong>把composite key组织在一起。例如：<code python=""><br>class Test(models.Model):</code></p>
+<pre><code>user_id = models.CharField(max_length=<span class="number">16</span>, primary_key=True) <span class="preprocessor"># 选取user_id作为django层面的primary key</span>
+item_id = models.CharField(max_length=<span class="number">16</span>)
+
+<span class="keyword">class</span> Meta:
+    unique_together = (<span class="string">"user_id"</span>, <span class="string">"item_id"</span>) <span class="preprocessor"># (user_id, item_id)就是我们需要的composite primary key</span>
+</code></pre><p></p>
+</li>
+<li>在MySQL层面（只针对MySQL数据库），对Test这个model所对应的表重新创建： <code><br>mysql&gt; DROP TABLE service_test; #丢弃Django syncdb创建的表<br>mysql&gt; CREATE TABLE service_test (<pre><code>  user_id VARCHAR(<span class="number">16</span>) <span class="literal">NOT</span> <span class="literal">NULL</span>,
+  item_id VARCHAR(<span class="number">16</span>) <span class="literal">NOT</span> <span class="literal">NULL</span>,
+  primary key (user_id, item_id)
+) ENGINE=InnoDB<span class="comment">; &lt;/code&gt;</span>
+</code></pre></code></li>
+</ul>
+</li>
+</ul>
+<p>==== 得到Current User ====</p>
+<ul>
+<li><a href="https://code.djangoproject.com/wiki/CookBookNewformsAdminAndUser" target="_blank" rel="external">https://code.djangoproject.com/wiki/CookBookNewformsAdminAndUser</a></li>
+</ul>
+<p>==== Model字段缺省值(default=) ====</p>
+<ul>
+<li>用例: \ <code python=""><br>created_at = models.DatetimeField(default=datetime.datetime.now)<br>dummy_int  = models.IntegerField(default=0) </code></li>
+<li>原理:<ul>
+<li>default值并没有写入数据库的表中：如果写入数据库表中，字段//dummy_int//的定义应包含“DEFAULT 0”；但数据库表中未有体现。</li>
+<li>django model在构造函数//%%<strong>init</strong>%%()//中设置各字段的default值:根据default=0,构造函数内就把dummy_int的值设为0.</li>
+<li>代码体现在///django/db/models/base.py//, 308-354行。</li>
+</ul>
+</li>
+<li>如果要让default值的设置体现在数据库表上，则要做以下改动：<ul>
+<li>改动文件//django/db/backends/creation.py//: <code python=""><br>def sql_create_model(self, model, style, known_models=set()):<pre><code>...
+## add the following code：
+<span class="keyword">if</span>(f.default != models.fields.<span class="type">NOT_PROVIDED</span>):
+    <span class="keyword">if</span> hasattr(f.default, <span class="symbol">'__call__'</span>):
+        pass ## we have a little bit trouble here -- default is a python <span class="keyword">method!</span>!!
+    <span class="keyword">else</span>:
+        field_output.append(style.<span class="type">SQL_KEYWORD</span>(<span class="symbol">'DEFAULT</span> <span class="char">' + f.default.__str__())) &lt;/code&gt;</span>
+</code></pre></code></li>
+<li>什么时候需要把default值体现在数据库表中？<ul>
+<li>一个简单的用列：更新数据库中记录，如果记录被修改，时间戳也会自动更新为修改记录的新时间；如果记录其他字段未被修改，时间戳不会变化。<ul>
+<li>在django层面，无法达到该效果。因为每次update操作，django必须设置时间戳字段的值，这样即使数据库表中其他字段没有修改，该时间戳字段也被修改了。</li>
+<li>而在数据库表里面，只要把timestamp字段设为//default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP//则可以达到理想效果：如果其他字段没有修改，时间戳也不会变化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>问题（注意！！）<ul>
+<li>正如上面代码中注释那样，如果在model中定义的字段的default值为python函数，比如//datetime.datetime.now//，就难以通过代码解析来设置数据库表中的default定义。</li>
+<li>如果数据库表中对相应字段已有default配置，那么model的构造函数内就不必对该字段进行default值的设置。<strong>所以这不是一项简单的工作，请不要轻易去尝试改动</strong>。</li>
+</ul>
+</li>
+<li>Reference: <a href="http://www.supermind.org/blog/671/django-not-setting-default-column-value-in-mysql" target="_blank" rel="external">http://www.supermind.org/blog/671/django-not-setting-default-column-value-in-mysql</a></li>
+</ul>
+</li>
+</ul>
+<p>==== Model主键自增 ====</p>
+<ul>
+<li>用例: \ <code><br>d = models.AutoField(primary_key=True)<br>这是一个自增主键(auto-incrementing primary key)如果你要指定一个自定义主键，将该字段设置为primary_key=True。如果<br>Django看到你显式的设置了Field primary key，<br>它将不会增加自增id字段。每个model必须有exactly one字段设置为primary_key=True.<br>如显示添加自己的主键：uid = models.BigIntegerField(primary_key=True)<br>则uid需要自己在程序里去赋值或去数据库将主键更改为自增，并保证满足主键要求 </code></li>
+</ul>
+<p>==== update() 方法 ====</p>
+<ul>
+<li>用例: <code python=""><h1 id="change_User_record:_set_status=1_for_all_records_that_have_id=1;">change User record: set status=1 for all records that have id=1;</h1><h1 id="return_value_x_is_the_number_of_records_that_have_id=1-">return value x is the number of records that have id=1.</h1>x = User.objects.filter(id=1).update(status=1) </code></li>
+<li>如果希望update()返回被更新的记录数(而不是满足filter条件的记录数),需要改变文件///django/db/backends/mysql/base.py//:<ul>
+<li>源代码如下: \ <code python=""><h1 id="We_need_the_number_of_potentially_affected_rows_after_an">We need the number of potentially affected rows after an</h1><h1 id="“UPDATE”,_not_the_number_of_changed_rows-">“UPDATE”, not the number of changed rows.</h1>kwargs[‘client_flag’] = CLIENT.FOUND_ROWS </code></li>
+<li>改为: \ <code python=""><br>kwargs[‘client_flag’] = CLIENT.MULTI_RESULTS </code></li>
+</ul>
+</li>
+</ul>
+<p>==== save() 方法 ====</p>
+<ul>
+<li><p>内部处理流程:<code><br>1) 发出一个预存信号。 它发出一个将要存储一个对象的通知。你可以注册一个监听程序，<br>在信号发出的时候就会被调用。</code></p>
+<p>2) 预处理数据. 对于对象的每个字段，将根据需要进行自动的数据修改。大部分字段并不预处理<br>，它们会保持它们原来的样子。预处理仅仅用在那些有特殊性质的字段，比如文件字段。</p>
+<p>3) 为数据库准备数据。 每一个字段先要把当前值转化成数据库中可以保存的数据的类型。<br>大多数字段的数据不需要预先准备。简单的数据类型，比如整型和字符串等python对象可以直接写进数据库。<br>然而，更复杂的数据类型需要做一些修改。比如， DateFields 使用python的 datetime 对象来存储数据。<br>数据库并不能存储 datetime 对象，所以该字段要存入数据库先要把值转化为符合ISO标准的日期字符串。</p>
+<p>4) 向数据库中插入数据。 经过预处理准备好的数据然后会组合成一条SQL语句来插入数据库。</p>
+<p>5) 发出存毕信号。 与预存信号类似，存毕信号在对象成功保存之后发出。同样，这些信号也还没有文档化。</p>
+</li>
+<li><p>处理原则：<code><br>1) 如果对象的主键属性被设置成相当于 True 的值（比如 None 或者空字符串之外的值），Django会执行一个 SELECT 查询来检测是否已存在一个相同主键的记录。</code></p>
+<p>2) 如果已经存在一个主键相同的记录，Django就执行 UPDATE 查询。</p>
+<p>3) 如果对象的主键属性 没有 被设置，或者被设置但数据库中没有与之同主键的记录，那么Django就会执行 INSERT 插入。</p>
+</li>
+</ul>
+<p>==== 类实例序列化与反序列化 ====</p>
+<ul>
+<li>对于django中Model对象:<code python=""><br>from django.core import serializers<br>serializers.serialize(‘json’, queryset, indent=2,<br>use_natural_keys=True)//序列化<br>serializers.deserialize(“json”, sstring)//反序列化<br>这种方式的反序列化后是一个DeserializeObject包装类</code></li>
+<li>使用对于一般的复杂对象：<code python=""><br>import jsonpickle<br>pickled = jsonpickle.encode(obj)//序列化<br>unpickled = jsonpickle.decode(pickled)//反序列化<br>反序列化后是一个新的类对象</code></li>
+<li>jsonpickle的安装：<code><br>先要安装pip工具:sudo apt-get install python-pip。<br>然后执行命令：pip install -U jsonpickle。</code></li>
+<li>参考：[[<a href="http://zhdoc.bitsrv.net/django/html/topics/serialization.html]]and[[http://jsonpickle.github.com/" target="_blank" rel="external">http://zhdoc.bitsrv.net/django/html/topics/serialization.html]]and[[http://jsonpickle.github.com/</a>]]</li>
+</ul>
+<p>==== django中静态文件路径配置 ====</p>
+<ul>
+<li>首先，在settings.py中加入一条静态路径的常量：<code python=""><br>STATIC_FILE_ROOT=’/home/meixqhi/workspace/django/src/fbproject’<br></code></li>
+<li>其次，在urls.py文件中加入以下内容:<code python=""><br>from settings import STATIC_FILE_ROOT<br>(r’^static/(?P<path></path>.*)’,’django.views.static.serve’,{‘document_root’: ‘%s/static/‘ % STATIC_FILE_ROOT}),<br></code></li>
+<li>然后就可以通过以下路径来访问STATIC_FILE_ROOT路径下static目录中的静态文件了:<code><br><a href="http://domain/apppath/static/home.html" target="_blank" rel="external">http://domain/apppath/static/home.html</a><br></code></li>
+</ul>
+<p>==== paginator ====<br>  *分页 <code><br>   from django.core.paginator import Paginator<br>   from models import Weibo</code></p>
+<p>   queryset = Weibo.objects.all()<br>   paginator = Paginator(queryset, 5)<br>   page = paginator.page(1)<br>   page.object_list</p>
+<p>==== Import module,model ====</p>
+<ul>
+<li><p>动态加载module,model：<code><br>from django.utils.importlib import import_module<br>import_module(module)</code></p>
+<p>from django.db import model<br>model = models.get_model(‘weibo’, ‘weibo’) #(app_label,model_name)</p>
+</li>
+</ul>
+<p>==== Signal ====</p>
+<ul>
+<li>Signal机制 <code><pre><code><span class="function"><span class="keyword">function</span>:</span>
+</code></pre>connect(self, receiver, sender=None, weak=True, dispatch_uid=None)<br>send(self, sender, <strong>named):<br>decoretor:<br>receiver(signal, </strong>kwargs):</code></li>
+<li>使用方法：<ul>
+<li>声明：<code><br>from django.dispatch import Signal<br>user_logged_in = Signal(providing_args=[‘request’, ‘user’])</code></li>
+<li>注册你要触发的方法：<code><br>def logged_status(user,access_token):<br>user.is_active = True<br>user_logged_in.connect(logged_status,sender=user.<strong>class</strong>) #sender不传参,则sender默认为None,表示响应所有的send信号 </code></li>
+<li>在某个你要触发某个方法的地方发送消息，让这些注册的方法执行：<code><br>user_logged_in.send(sender=user.<strong>class</strong>, user=user, access_token=request.session.get(‘access_token’, None))</code></li>
+<li>如果要防止某个方法在module重复加载时也被重复监听，可以在connect方法中添加唯一的标识：dispatch_uid=’my_update_blogs’</li>
+<li>由于监听方法默认状态weak=True是不保证一定会执行的，由于方法的弱引用会在资源不够的时候被垃圾回收器回收，如果一定要执行，则需显示在connect中设置weak=False。</li>
+</ul>
+</li>
+</ul>
+<p>==== 其他 ====</p>
+<ul>
+<li>Django templates \ <code><br>/usr/local/lib/python2.7/dist-packages/Django-1.3-py2.7.egg/django/contrib/admin/templates/admin/base_site.html </code></li>
+</ul>
+<p>===== Django Tools =====</p>
+<ul>
+<li>python-django-lint (Static analysis tool for Django projects and applications)<ul>
+<li>installation \ <code bash=""><br>sudo apt-get install python-django-lint </code></li>
+<li>run \ <code bash=""><br>django-lint example.py </code></li>
+<li>Reference: <a href="http://chris-lamb.co.uk/projects/django-lint/" target="_blank" rel="external">http://chris-lamb.co.uk/projects/django-lint/</a></li>
+</ul>
+</li>
+<li>Debug django memory leak<ul>
+<li><a href="http://blog.mfabrik.com/2008/03/07/debugging-django-memory-leak-with-trackrefs-and-guppy/" target="_blank" rel="external">http://blog.mfabrik.com/2008/03/07/debugging-django-memory-leak-with-trackrefs-and-guppy/</a></li>
+</ul>
+</li>
+</ul>
+<p>===== Django Deployment =====</p>
+<ul>
+<li>Install //libapache2-mod-wsgi//: \ <code><br>sudo apt-get install libapache2-mod-wsgi </code></li>
+<li>Suppose you have django project //system// under directory ///srv/internals//: <code><br>cd /srv/internals/system<br>mkdir apache </code></li>
+<li><p>Create file //django.wsgi// under directory //apache//, the file contains: <code python=""><br>import os<br>import sys</code></p>
+<p>path = ‘/srv/internals’<br>if path not in sys.path:</p>
+<pre><code>sys<span class="class">.path</span><span class="class">.append</span>(path)
+sys<span class="class">.path</span><span class="class">.append</span>(path+<span class="string">"/system"</span>)
+</code></pre><p>os.environ[‘DJANGO_SETTINGS_MODULE’] = ‘system.settings’</p>
+<p>import django.core.handlers.wsgi<br>application = django.core.handlers.wsgi.WSGIHandler() </p>
+</li>
+<li><p>Edit // /etc/apache2/httpd.conf//, adding the following: \ <code bash=""><br>Alias /system/media /srv/internals/system/media/   # make sure directory ‘media’ exists<br>Alias /system/static /srv/internals/system/static/ # make sure directory ‘static’ exists</code></p>
+<directory srv="" internals="" system="" media=""><br>    AllowOverride All<br>    Order deny,allow<br>    Allow from all<br></directory>
+
+<directory srv="" internals="" system="" static=""><br>    Order deny,allow<br>    Allow from all<br></directory>
+
+<p>WSGIScriptAlias /internal /srv/internals/system/apache/django.wsgi</p>
+<p><directory srv="" internals="" system="" apache=""></directory></p>
+<pre><code><span class="keyword"><span class="common">Order</span></span> deny,allow
+<span class="keyword"><span class="common">Allow</span></span> from <span class="literal">all</span>
+</code></pre><p> </p>
+</li>
+<li>Edit ///srv/internals/system/settings.py//: <code bash=""><br>MEDIA_ROOT = ‘/srv/internals/system/media/‘<br>MEDIA_URL = ‘/system/media/‘ # http://<your_domain>/system/media points to /srv/internals/system/media<br>STATIC_ROOT = ‘/srv/internals/system/static/‘<br>STATIC_URL = ‘/system/static/‘<br>ADMIN_MEDIA_PREFIX = ‘/system/static/admin/‘<br>ROOT_URLCONF = ‘system.urls’ </your_domain></code></li>
+<li>Visit the django project via http: <code><br>http://<your_domain>/internal/admin/<br>http://<your_domain>/internal/<app_name> # visit application with name “app_name”</app_name></your_domain></your_domain></code></li>
+<li><strong>Keep Admin Style</strong>: \ <code><br>cd /srv/internals/system/static/admin/<br>cp -rf /usr/local/lib/python2.7/dist-packages/Django-1.3-py2.7.egg/django/contrib/admin/media/<em> .<br>or<br>cp -rf /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/</em> . </code></li>
+<li><strong>Unicode Decoding Error</strong>: (uploading file and filename has //non-ascii// characters) add the following to ///etc/apache2/envvars//: <code bash=""><br>export LANG=’en_US.UTF-8’<br>export LC_ALL=’en_US.UTF-8’ </code></li>
+<li>Debug with apache: <code><br>apache2ctl -k restart # with root<br>tail -f /var/log/apache/error.log </code></li>
+</ul>
+<p>===== Django DB Schema Migration with South =====<br>====  For Django &lt; 1.7   ====</p>
+<ul>
+<li>往Django App //tagtex.qpoints// 的表内增加一个字段：<ul>
+<li>初始化: <code><br>python manage.py schemamigration tagtex.qpoints –initial<br>(如果APP执行过syncdb操作，需要执行以下操作： python manage.py migrate tagtex.qpoints –fake )</code></li>
+<li>修改表，增加字段</li>
+<li>进行migration: <code><br>python manage.py schemamigration tagtex.qpoints –auto<br>python manage.py migrate tagtex.qpoints </code></li>
+</ul>
+</li>
+</ul>
+<p>====  For Django &gt; 1.7   ====</p>
+<ul>
+<li>south 操作命令:<code><br>$ python manage.py makemigrations [appname]<br>$ python manage.py migrate [appname]<br></code><br>===== Django Developement Tips =====<br><a href="http://ericholscher.com/blog/2008/oct/5/django-tips/" target="_blank" rel="external">http://ericholscher.com/blog/2008/oct/5/django-tips/</a></li>
+</ul>
+<p>===== django-middleware =====</p>
+<ul>
+<li>django 中间件</li>
+<li>编写自己的中间件需要实现下面一个或几个方法：<ul>
+<li>process_request(self, request)：返回None或HttpResponse。</li>
+<li>process_view(self, request, view_func, view_args, view_kwargs)：djangoview处理中间件返回None或HttpResponse。</li>
+<li>process_exception(request, e):该中间件对业务处理方法执行未捕获的异常进行处理。</li>
+<li>process_template_response(request, response):如果返回的TemplateResponse含有可执行的render方法，则该中间件生效。</li>
+<li>process_response(self, request, response):返回HttpResponse。</li>
+</ul>
+</li>
+<li>参考：<a href="https://docs.djangoproject.com/en/1.3/topics/http/middleware/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.3/topics/http/middleware/</a></li>
+<li>code参考django源代码：django/core/handlers/base.py中get_response</li>
+</ul>
+<p>===== django-profile-middleware =====</p>
+<ul>
+<li>profile是一款能够记录程序方法或请求在运行过程调用了多少其他方法，以及每个方法消耗了多少时间及系统资源的python工具</li>
+<li>使用步骤：<ul>
+<li>先安装 python-profiler <code><br>sudo apt-get install python-profiler</code></li>
+<li>创建ProfileMiddleware类,参考：<a href="http://djangosnippets.org/snippets/605/" target="_blank" rel="external">http://djangosnippets.org/snippets/605/</a></li>
+<li>将类路径名加入settings.py里的MIDDLEWARE_CLASSES中 <code><br>MIDDLEWARE_CLASSES = (<br>  ‘tagtex.base.middleware.ProfileMiddleware’,<br>  )</code></li>
+<li>运行server，发送请求 <code><br> 如http://<yourserver>/yoururl/?prof&amp;params </yourserver></code></li>
+</ul>
+</li>
+</ul>
+<p>===== mockserver =====</p>
+<ul>
+<li>mockserver的主要功能是通过代理记录上次请求的状态并保存，并为下次请求返回相同的结果。</li>
+<li><p>使用步骤：</p>
+<ul>
+<li>先安装mock_server <code><br>git+ssh://git@s2/django-mock-server.git#egg=django-mock-server (也可以直接下载)</code></li>
+<li>然后将recorder app添加到settings.py的INSTALLED_APPS中 <code><br>INSTALLED_APPS = (<pre><code><span class="symbol">'mock_server</span>.recorder'
+</code></pre>  )</code></li>
+<li><p>设置代理url <code><br>   from django.conf.urls.defaults import patterns, include, url<br>   from mock_server.recorder.views import RecordView,PlaybackView<br>   from mock_server.recorder.recorder import Recorder<br>   SITE_API_ENDPOINT = ‘你要访问的站点域名或<a href="http://ip:port" target="_blank" rel="external">http://ip:port</a>‘</code></p>
+<p>   recorder = Recorder(format=’<a href="http://localhost:8000%s" target="_blank" rel="external">http://localhost:8000%s</a>‘)</p>
+<p>   urlpatterns = patterns(‘’,</p>
+<pre><code>url<span class="comment">(r'^(?P&lt;url&gt;.*)</span>$<span class="string">', RecordView.as_view(recorder=recorder,proxy_format='</span><span class="preprocessor">%</span>s/<span class="preprocessor">%</span><span class="preprocessor">%</span>s<span class="string">'%SITE_API_ENDPOINT),name='</span>site_api<span class="string">'),
+#url(r'</span>^<span class="comment">(?P&lt;url&gt;.*)</span>$<span class="string">', PlaybackView.as_view(recorder=recorder,proxy_format='</span><span class="preprocessor">%</span>s/<span class="preprocessor">%</span><span class="preprocessor">%</span>s<span class="string">'%SITE_API_ENDPOINT),name='</span>site_api<span class="string">'),</span>
+</code></pre><p>   )</p>
+</li>
+<li>使用前先使用第一条url，RecordView，注释掉第二条，启动服务器，将你要mock的所有请求都先都由mockserver来代理，mockserver会将所有请求都记录保存到数据库。</li>
+<li>然后再打开第二条url，Playback回放，注释掉第一条，所有请求都会返回之前一样的结果。</li>
+</ul>
+</li>
+</ul>
+<p>===== User Profile =====</p>
+<ul>
+<li>If you’d like to store additional information related to your users, Django provides a method to specify a site-specific related model – termed a “user profile” – for this purpose<ul>
+<li>Reference: <a href="https://docs.djangoproject.com/en/dev/topics/auth/#auth-profiles" target="_blank" rel="external">https://docs.djangoproject.com/en/dev/topics/auth/#auth-profiles</a></li>
+</ul>
+</li>
+</ul>
+<p>===== Override Runserver Command ====</p>
+<ul>
+<li><p>To override <strong>runserver</strong> Command, add the following to into //management/commands/runnserver.py//: <code python=""><br>class Command(BaseRunserverCommand):<br>option_list = BaseRunserverCommand.option_list + (</code></p>
+<pre><code>make_option(<span class="string">'--adminmedia'</span>, dest=<span class="string">'admin_media_path'</span>, <span class="keyword">default</span>=<span class="string">''</span>,
+    <span class="keyword">help</span>=<span class="string">'Specifies the directory from which to serve admin media.'</span>),
+</code></pre><p>)</p>
+<p>“””<br>Change the runserver default port to 9000. The method can be generically applied if<br>the default port needs to be changed.<br>“””<br>def handle(self, addrport=”9000”, <em>args, *</em>options):</p>
+<pre><code><span class="function"><span class="title">super</span><span class="params">(Command, self)</span></span>.<span class="function"><span class="title">handle</span><span class="params">(addrport, *args, **options)</span></span>
+</code></pre><p>def get_handler(self, <em>args, *</em>options):</p>
+<pre><code><span class="string">"""
+Serves admin media like old-school (deprecation pending).
+"""</span>
+
+handler = <span class="keyword">super</span>(Command, self).get<span class="number">_</span>handler(*args, **options)
+<span class="keyword">return</span> AdminMediaHandler(handler, options.get(<span class="string">'admin_media_path'</span>, <span class="string">''</span>))
+</code></pre><p></p>
+</li>
+<li>Writing custom django-admin commands: <a href="https://docs.djangoproject.com/en/dev/howto/custom-management-commands/" target="_blank" rel="external">https://docs.djangoproject.com/en/dev/howto/custom-management-commands/</a></li>
+<li>Problem: after override runserver command, static files wont be automatically handled with “STATICFILES_DIR” setting variable. To handle static files, add the following code into the top level //urls.py//: <code python=""><br>(r’^site_media/(?P<path></path>.*)$’, ‘django.views.static.serve’,<pre><code>{<span class="string">'document_root'</span>: settings.STATIC_DOC_ROOT}) &lt;/code&gt;
+</code></pre></code></li>
+<li>How to server static files: <a href="https://docs.djangoproject.com/en/1.2/howto/static-files/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.2/howto/static-files/</a><br>==== django replication master/slave ====</li>
+<li><p>django_replicated toollib:</p>
+<ul>
+<li>Install django_replicated distribution using “python setup.py install”.</li>
+<li>In settings.py configure your master and slave databases in a standard way:<code></code></li>
+</ul>
+<p>DATABASES {</p>
+<pre><code><span class="string">'default'</span>: {
+<span class="preprocessor"># ENGINE, HOST, etc.</span>
+},
+<span class="string">'slave1'</span>: {
+<span class="preprocessor"># ENGINE, HOST, etc.</span>
+},
+<span class="string">'slave2'</span>: {
+<span class="preprocessor"># ENGINE, HOST, etc.</span>
+},
+</code></pre><p>}</p>
+<ul>
+<li>Teach django_replicated which databases are slaves:<code></code></li>
+</ul>
+<p>DATABASE_SLAVES = [‘slave1’, ‘slave2’]<br>The ‘default’ database is always treated as master.</p>
+<ul>
+<li>Configure a replication router:<code></code></li>
+</ul>
+<p>DATABASE_ROUTERS = [‘django_replicated.ReplicationRouter’]</p>
+<ul>
+<li>Configure timeout to exclude a database from the available list after an unsuccessful ping:<code></code></li>
+</ul>
+<p>DATABASE_DOWNTIME = 20<br>The default downtime value is 60 seconds.</p>
+</li>
+<li>参考：<a href="https://github.com/isagalaev/django_replicated" target="_blank" rel="external">https://github.com/isagalaev/django_replicated</a></li>
+</ul>
+<p>==== 数据导入导出 ====</p>
+<ul>
+<li>数据导出:<code><br>python manage.py dumpdata logistics.LogisticsCompany –indent=2 –format=json –natural &gt;fixtures/initial_logistics_company.json<br></code></li>
+<li>数据导入:<code><br>python manage.py loaddata fixtures/initial_logistics_company.json<br></code><br>==== 多个queryset 合并成一个 ====</li>
+<li><code python=""><br>from itertools import islice, chain</code></li>
+</ul>
+<p>class QuerySetChain(object):<br>    “””<br>    Chains multiple subquerysets (possibly of different models) and behaves as<br>    one queryset.  Supports minimal methods needed for use with<br>    django.core.paginator.<br>    “””</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *subquerysets)</span>:</span>
+    self.querysets = subquerysets
+
+<span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(self)</span>:</span>
+    <span class="string">"""
+    Performs a .count() for all subquerysets and returns the number of
+    records as an integer.
+    """</span>
+    <span class="keyword">return</span> sum(qs.count() <span class="keyword">for</span> qs <span class="keyword">in</span> self.querysets)
+
+<span class="function"><span class="keyword">def</span> <span class="title">_clone</span><span class="params">(self)</span>:</span>
+    <span class="string">"Returns a clone of this queryset chain"</span>
+    <span class="keyword">return</span> self.__class__(*self.querysets)
+
+<span class="function"><span class="keyword">def</span> <span class="title">_all</span><span class="params">(self)</span>:</span>
+    <span class="string">"Iterates records in all subquerysets"</span>
+    <span class="keyword">return</span> chain(*self.querysets)
+
+<span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, ndx)</span>:</span>
+    <span class="string">"""
+    Retrieves an item or slice from the chained set of results from all
+    subquerysets.
+    """</span>
+    <span class="keyword">if</span> type(ndx) <span class="keyword">is</span> slice:
+        <span class="keyword">return</span> list(islice(self._all(), ndx.start, ndx.stop, ndx.step <span class="keyword">or</span> <span class="number">1</span>))
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> islice(self._all(), ndx, ndx+<span class="number">1</span>).next()
+</code></pre><p>  <br>==== django批量添加和更新 ====</p>
+<ul>
+<li><p>django insert&amp;update:<code python=""><br>def insert_many(objects, using=”default”):<br>“””Insert list of Django objects in one SQL query. Objects must be<br>of the same Django model. Note that save is not called and signals<br>on the model are not raised.”””<br>if not objects:</code></p>
+<pre><code><span class="keyword">return</span>
+</code></pre><p>import django.db.models<br>from django.db import connections<br>con = connections[using]</p>
+<p>model = objects[0].<strong>class</strong><br>fields = [f for f in model._meta.fields if not isinstance(f, django.db.models.AutoField)]<br>parameters = []<br>for o in objects:</p>
+<pre><code>parameters.<span class="function"><span class="title">append</span><span class="params">(tuple(f.get_db_prep_save(f.pre_save(o, True)</span></span>, connection=con) <span class="keyword">for</span> f <span class="keyword">in</span> fields))
+</code></pre><p>table = model._meta.db_table<br>column_names = “,”.join(con.ops.quote_name(f.column) for f in fields)<br>placeholders = “,”.join((“%s”,) * len(fields))<br>con.cursor().executemany(</p>
+<pre><code><span class="string">"insert into <span class="variable">%s</span> (<span class="variable">%s</span>) values (<span class="variable">%s</span>)"</span> % (table, column_names, placeholders),
+parameters)
+</code></pre></li>
+</ul>
+<p>def update_many(objects, fields=[], using=”default”):<br>    “””Update list of Django objects in one SQL query, optionally only<br>    overwrite the given fields (as names, e.g. fields=[“foo”]).<br>    Objects must be of the same Django model. Note that save is not<br>    called and signals on the model are not raised.”””<br>    if not objects:<br>        return</p>
+<pre><code>import django.db.models
+from django.db import connections
+<span class="stream">con</span> = connections[using]
+
+names = fields
+meta = objects[<span class="number">0</span>]._meta
+fields = [f <span class="flow">for</span> f <span class="flow">in</span> meta.fields <span class="flow">if</span> <span class="flow">not</span> isinstance(f, django.db.models.AutoField) and (<span class="flow">not</span> names or f.name <span class="flow">in</span> names)]
+
+<span class="flow">if</span> <span class="flow">not</span> fields:
+    raise ValueError("No fields to update, field names are %s." % names)
+
+fields_with_pk = fields + [meta.pk]
+parameters = []
+<span class="flow">for</span> o <span class="flow">in</span> objects:
+    parameters.<span class="built_in">append</span>(tuple(f.get_db_prep_save(f.pre_save(o, True), connection=<span class="stream">con</span>) <span class="flow">for</span> f <span class="flow">in</span> fields_with_pk))
+
+table = meta.db_table
+assignments = ",".join(("<span class="envvar">%s=%</span><span class="envvar">%s"%</span> <span class="stream">con</span>.ops.quote_name(f.column)) <span class="flow">for</span> f <span class="flow">in</span> fields)
+<span class="stream">con</span>.cursor().executemany(
+    "update %s <span class="keyword">set</span> %s where <span class="envvar">%s=%</span>%s" % (table, assignments, <span class="stream">con</span>.ops.quote_name(meta.pk.column)),
+    parameters)
+&lt;/code&gt;
+</code></pre><p>===== Troubles =====</p>
+<ul>
+<li>mysql_config not found: <code><br>sudo apt-get install libmysqlclient-dev python-dev </code></li>
+<li>安装 lxml时候提示：bin/sh: 1: xslt-config: not found<code><br><strong> make sure the development packages of libxml2 and libxslt are installed </strong><br>apt source.list使用官方源：sudo apt-get install libxslt-dev<br></code></li>
+<li>使用django.db.connection.cursor时注意事项:<code><br>如果有多个操作，比如update，delete，insert，则操作后需要提交,代码如下:<br>from django.db import connection,transaction<br>cursor = connection.cursor()<br>cursor.execute(delete_sql or update_sql or insert_sql)<br>transaction.commit_unless_managed()<br></code></li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag">#Django</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/09/Git-Use/" rel="next">Git Use</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/10/09/Django-Notes/"
+                   data-title="Django Notes" data-url="http://cyan-blue.github.io/2015/10/09/Django-Notes/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Yann" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Yann</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#change_User_record:_set_status=1_for_all_records_that_have_id=1;"><span class="nav-number">1.</span> <span class="nav-text">change User record: set status=1 for all records that have id=1;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return_value_x_is_the_number_of_records_that_have_id=1-"><span class="nav-number">2.</span> <span class="nav-text">return value x is the number of records that have id=1.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#We_need_the_number_of_potentially_affected_rows_after_an"><span class="nav-number">3.</span> <span class="nav-text">We need the number of potentially affected rows after an</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#“UPDATE”,_not_the_number_of_changed_rows-"><span class="nav-number">4.</span> <span class="nav-text">“UPDATE”, not the number of changed rows.</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yun-yan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
