@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="技术点滴," />
+  <meta name="keywords" content="Yann" />
 
 
 
@@ -38,25 +38,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="URIs, URLs, and URNs
-首先，URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。
-而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。
-而URN，uniform resource name，统一资源命名，是通过名">
+<meta name="description" content="Help for HTTP error 400: “Bad Request”
+HTTP Error 400: Bad Requestxxx  is not JSON serializable在使用json的时候经常会遇到xxx  is not JSON serializable，也就是无法序列化某些对象。经常使用django的同学知道django里面有个自带的Encoder(from django">
 <meta property="og:type" content="article">
-<meta property="og:title" content="URI和URL的区别">
-<meta property="og:url" content="http://cyan-blue.github.io/2015/10/12/technology/index.html">
+<meta property="og:title" content="technology">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/13/technology/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="URIs, URLs, and URNs
-首先，URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。
-而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。
-而URN，uniform resource name，统一资源命名，是通过名">
-<meta property="og:updated_time" content="2015-10-12T13:55:24.000Z">
+<meta property="og:description" content="Help for HTTP error 400: “Bad Request”
+HTTP Error 400: Bad Requestxxx  is not JSON serializable在使用json的时候经常会遇到xxx  is not JSON serializable，也就是无法序列化某些对象。经常使用django的同学知道django里面有个自带的Encoder(from django">
+<meta property="og:updated_time" content="2015-10-13T08:00:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="URI和URL的区别">
-<meta name="twitter:description" content="URIs, URLs, and URNs
-首先，URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。
-而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。
-而URN，uniform resource name，统一资源命名，是通过名">
+<meta name="twitter:title" content="technology">
+<meta name="twitter:description" content="Help for HTTP error 400: “Bad Request”
+HTTP Error 400: Bad Requestxxx  is not JSON serializable在使用json的时候经常会遇到xxx  is not JSON serializable，也就是无法序列化某些对象。经常使用django的同学知道django里面有个自带的Encoder(from django">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +60,7 @@
   };
 </script>
 
-  <title> URI和URL的区别 | Yann's Blog </title>
+  <title> technology | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -333,7 +327,7 @@
           
           
             
-              URI和URL的区别
+              technology
             
           
         </h1>
@@ -342,8 +336,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T20:36:45+08:00" content="2015-10-12">
-            2015-10-12
+          <time itemprop="dateCreated" datetime="2015-10-13T14:19:59+08:00" content="2015-10-13">
+            2015-10-13
           </time>
         </span>
 
@@ -353,8 +347,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/12/technology/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/12/technology/" itemprop="commentsCount"></span>
+              <a href="/2015/10/13/technology/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/technology/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -368,35 +362,25 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="URIs,_URLs,_and_URNs">URIs, URLs, and URNs</h1><ul>
-<li>首先，URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。</li>
-<li>而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。</li>
-<li>而URN，uniform resource name，统一资源命名，是通过名字来标识资源，比如mailto:java-net@java.sun.com。<br>也就是说，URI是以一种抽象的，高层次概念定义统一资源标识，而URL和URN则是具体的资源标识的方式。URL和URN都是一种URI。</li>
-</ul>
-</span>
+        <span itemprop="articleBody"><p>Help for HTTP error 400: “Bad Request”</p>
+<h1 id="HTTP_Error_400:_Bad_Request">HTTP Error 400: Bad Request</h1><h1 id="xxx_is_not_JSON_serializable">xxx  is not JSON serializable</h1><p>在使用json的时候经常会遇到xxx  is not JSON serializable，也就是无法序列化某些对象。经常使用django的同学知道django里面有个自带的Encoder(<code>from django.core.serializers.json import DjangoJSONEncoder</code>)来序列化时间等常用的对象。其实我们可以自己定定义对特定类型的对象的序列化，下面看下怎么定义和使用的。<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -<span class="strong">*- coding: utf-8 -*</span>-</span><br><span class="line">#json<span class="emphasis">_extention</span><br><span class="line">#2014-03-16</span><br><span class="line">#copyright: orangleliu</span><br><span class="line">#license: BSD</span><br><span class="line"></span><br><span class="line"></span><span class="horizontal_rule">'''</span></span><br><span class="line">python中dumps方法很好用，可以直接把我们的dict直接序列化为json对象</span><br><span class="line">但是有的时候我们加了一些自定义的类就没法序列化了，这个时候需要</span><br><span class="line">自定义一些序列化方法</span><br><span class="line"></span><br><span class="line">参考：</span><br><span class="line">http://docs.python.org/2.7/library/json.html</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">In [3]: from datetime import  datetime</span><br><span class="line"></span><br><span class="line">In [4]: json<span class="emphasis">_1 = &#123;'num':1112, 'date':datetime.now()&#125;</span><br><span class="line"></span><br><span class="line"></span>In [5]: import json</span><br><span class="line"></span><br><span class="line">In [6]: json.dumps(json<span class="emphasis">_1)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError								 Traceback (most recent call last)</span><br><span class="line">D:\devsofts\python2.7\lib\site-packages\django\core\management\commands\shell.py</span><br><span class="line">c in &lt;module&gt;()</span><br><span class="line">----&gt; 1 json.dumps(json_</span>1)</span><br><span class="line"></span><br><span class="line">TypeError: datetime.datetime(2014, 3, 16, 13, 47, 37, 353000) is not JSON serial</span><br><span class="line">izable</span><br><span class="line"><span class="horizontal_rule">'''</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DateEncoder</span><span class="params">(json.JSONEncoder )</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, obj)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(obj, datetime):</span><br><span class="line">      <span class="keyword">return</span> obj.__str__()</span><br><span class="line">    <span class="keyword">return</span> json.JSONEncoder.default(self, obj)</span><br><span class="line"></span><br><span class="line">json_1 = &#123;<span class="string">'num'</span>:<span class="number">1112</span>, <span class="string">'date'</span>:datetime.now()&#125;</span><br><span class="line"><span class="keyword">print</span> json.dumps(json_1, cls=DateEncoder)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">PS D:\code\python\python_abc&gt; python .\json_extention.py</span><br><span class="line">&#123;"date": "2014-03-16 13:56:39.003000", "num": 1112&#125;</span><br><span class="line">'''</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们自定义一个类试试</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(object)</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">    self.name = name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserEncoder</span><span class="params">(json.JSONEncoder)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, obj)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(obj, User):</span><br><span class="line">      <span class="keyword">return</span> obj.name</span><br><span class="line">    <span class="keyword">return</span> json.JSONEncoder.default(self, obj)</span><br><span class="line"></span><br><span class="line">json_2 = &#123;<span class="string">'user'</span>:User(<span class="string">'orangle'</span>)&#125;</span><br><span class="line"><span class="keyword">print</span> json.dumps(json_2, cls=UserEncoder)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span><br><span class="line">PS D:\code\python\python_abc&gt; python .\json_extention.py</span><br><span class="line">&#123;"date": "2014-03-16 14:01:46.738000", "num": 1112&#125;</span><br><span class="line">&#123;"user": "orangle"&#125;</span><br><span class="line"></span><br><span class="line">'''</span></span><br></pre></td></tr></table></figure></span>
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/技术点滴/" rel="tag">#技术点滴</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/technology/" rel="prev">technology</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/12/Django/" rel="next">Django 问题收集</a>
+              <a href="/2015/10/12/technology/" rel="next">URI和URL的区别</a>
             
           </div>
         </div>
@@ -421,8 +405,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/12/technology/"
-                   data-title="URI和URL的区别" data-url="http://cyan-blue.github.io/2015/10/12/technology/">
+              <div class="ds-thread" data-thread-key="2015/10/13/technology/"
+                   data-title="technology" data-url="http://cyan-blue.github.io/2015/10/13/technology/">
               </div>
             
           </div>
@@ -514,7 +498,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#URIs,_URLs,_and_URNs"><span class="nav-number">1.</span> <span class="nav-text">URIs, URLs, and URNs</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP_Error_400:_Bad_Request"><span class="nav-number">1.</span> <span class="nav-text">HTTP Error 400: Bad Request</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xxx_is_not_JSON_serializable"><span class="nav-number">2.</span> <span class="nav-text">xxx  is not JSON serializable</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
