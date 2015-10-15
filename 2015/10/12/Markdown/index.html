@@ -43,7 +43,8 @@
 =============  第一阶标题
 
 This is an H2
--------------  第二阶标题">
+-------------  第二阶标题
+链接Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。1行内式:这是参考链接 [title](http://cya">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown 使用">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/10/12/Markdown/index.html">
@@ -53,8 +54,9 @@ This is an H2
 =============  第一阶标题
 
 This is an H2
--------------  第二阶标题">
-<meta property="og:updated_time" content="2015-10-14T02:57:20.000Z">
+-------------  第二阶标题
+链接Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。1行内式:这是参考链接 [title](http://cya">
+<meta property="og:updated_time" content="2015-10-15T06:12:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown 使用">
 <meta name="twitter:description" content="简介Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。
@@ -62,7 +64,8 @@ This is an H2
 =============  第一阶标题
 
 This is an H2
--------------  第二阶标题">
+-------------  第二阶标题
+链接Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。1行内式:这是参考链接 [title](http://cya">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -71,7 +74,26 @@ This is an H2
     sidebar: 'hide'
   };
 </script>
-
+<style>
+    icode {
+        font-size: 0.92857em;
+        background-color: #f6f6f6;
+    }
+    icode {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 3px;
+    }
+    icode, kbd, pre, samp {
+        font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    }
+    icode, kbd, pre, samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+</style>
   <title> Markdown 使用 | Yann's Blog </title>
 </head>
 
@@ -395,7 +417,14 @@ This is an H2
 
 This <span class="keyword">is</span> an H2
 <span class="comment">-------------  第二阶标题</span>
-</code></pre></span>
+</code></pre><h1 id="链接">链接</h1><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">行内式:这是参考链接 [<span class="link_label">title</span>](<span class="link_url">http://cyan-blue.github.io</span>) .</span><br></pre></td></tr></table></figure></p>
+<h1 id="强调">强调</h1><p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 <em> 包围的字词会被转成用 <em> 标签包围，用两个 * 或 </em> 包起来的话，则会被转成 <strong>，例如：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span>single asterisks<span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">_single underscores_</span><br><span class="line"></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>double asterisks<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">__double underscores__</span><br></pre></td></tr></table></figure></strong></em></p>
+<p>会转成：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">em</span>&gt;</span>single asterisks<span class="tag">&lt;/<span class="title">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">em</span>&gt;</span>single underscores<span class="tag">&lt;/<span class="title">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">strong</span>&gt;</span>double asterisks<span class="tag">&lt;/<span class="title">strong</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">strong</span>&gt;</span>double underscores<span class="tag">&lt;/<span class="title">strong</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>你可以随便用你喜欢的样式，唯一的限制是，你用什么符号开启标签，就要用什么符号结束。</p>
+<p>强调也可以直接插在文字中间：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">un<span class="keyword">*</span>frigging<span class="keyword">*</span>believable</span><br></pre></td></tr></table></figure></p>
+<p>但是如果你的 * 和 _ 两边都有空白的话，它们就只会被当成普通的符号。</p>
+<p>如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">\*this</span> text <span class="keyword">is</span> surrounded <span class="keyword">by</span> literal asterisks<span class="string">\*</span></span><br></pre></td></tr></table></figure></p>
+</span>
       
     </div>
 
@@ -484,21 +513,21 @@ This <span class="keyword">is</span> an H2
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">标签</span>
               
           </div>
@@ -536,7 +565,7 @@ This <span class="keyword">is</span> an H2
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#强调"><span class="nav-number">4.</span> <span class="nav-text">强调</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
