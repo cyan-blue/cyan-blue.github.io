@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -38,19 +38,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="简介JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
-jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;, btn_save">
+<meta name="description" content="关于python list对象的使用需求如果这时候有需求是，复制一个list对象，然后改变这个复制的对象内容，原来的内容不变，该怎么做？
+使用过程在使用python时候，一个list对象赋值给另外一个，或者是list作为参数传递给函数进行操作，这个list对象的id始终没有变化,如下：12345678910111213141516In [59]: list_a = [1,2,3]In [60]:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 使用">
-<meta property="og:url" content="http://cyan-blue.github.io/2015/10/12/JS/index.html">
+<meta property="og:title" content="python复制（深浅）">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/17/python复制/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="简介JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
-jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;, btn_save">
-<meta property="og:updated_time" content="2015-10-14T02:57:20.000Z">
+<meta property="og:description" content="关于python list对象的使用需求如果这时候有需求是，复制一个list对象，然后改变这个复制的对象内容，原来的内容不变，该怎么做？
+使用过程在使用python时候，一个list对象赋值给另外一个，或者是list作为参数传递给函数进行操作，这个list对象的id始终没有变化,如下：12345678910111213141516In [59]: list_a = [1,2,3]In [60]:">
+<meta property="og:updated_time" content="2015-10-17T13:10:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 使用">
-<meta name="twitter:description" content="简介JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
-jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;, btn_save">
+<meta name="twitter:title" content="python复制（深浅）">
+<meta name="twitter:description" content="关于python list对象的使用需求如果这时候有需求是，复制一个list对象，然后改变这个复制的对象内容，原来的内容不变，该怎么做？
+使用过程在使用python时候，一个list对象赋值给另外一个，或者是list作为参数传递给函数进行操作，这个list对象的id始终没有变化,如下：12345678910111213141516In [59]: list_a = [1,2,3]In [60]:">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -79,7 +79,7 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
         font-size: 1em;
     }
 </style>
-  <title> JavaScript 使用 | Yann's Blog </title>
+  <title> python复制（深浅） | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -346,7 +346,7 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
           
           
             
-              JavaScript 使用
+              python复制（深浅）
             
           
         </h1>
@@ -355,8 +355,8 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T09:20:41+08:00" content="2015-10-12">
-            2015-10-12
+          <time itemprop="dateCreated" datetime="2015-10-17T20:15:35+08:00" content="2015-10-17">
+            2015-10-17
           </time>
         </span>
 
@@ -365,8 +365,8 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/technology/" itemprop="url" rel="index">
-                  <span itemprop="name">technology</span>
+                <a href="/categories/python/" itemprop="url" rel="index">
+                  <span itemprop="name">python</span>
                 </a>
               </span>
 
@@ -381,8 +381,8 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/12/JS/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/12/JS/" itemprop="commentsCount"></span>
+              <a href="/2015/10/17/python复制/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/17/python复制/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -396,8 +396,17 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
       
 
       
-        <span itemprop="articleBody"><h1 id="简介">简介</h1><p>JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。</p>
-<h1 id="jQuery_事件_-_bind()_方法">jQuery 事件 - bind() 方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".btn-save"</span>).bind(<span class="string">"click"</span>, btn_save_func); <span class="comment">//绑定btn_save_func</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">btn_save_func</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"func"</span>)&#125;</span><br><span class="line">$(<span class="string">".btn-save"</span>).unbind(<span class="string">"click"</span>);<span class="comment">//解绑btn_save_func</span></span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><h1 id="关于python_list对象的使用">关于python list对象的使用</h1><h2 id="需求">需求</h2><p>如果这时候有需求是，复制一个list对象，然后<em>改变这个复制的对象内容</em>，<em>原来的内容不变</em>，该怎么做？</p>
+<h2 id="使用过程">使用过程</h2><p>在使用python时候，一个list对象赋值给另外一个，或者是list作为参数传递给函数进行操作，这个list对象的id始终没有变化,如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">59</span>]: list_a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">60</span>]: <span class="function"><span class="title">id</span><span class="params">(list_a)</span></span></span><br><span class="line">Out[<span class="number">60</span>]: <span class="number">47743920</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">61</span>]: list_b = list_a</span><br><span class="line"></span><br><span class="line">In [<span class="number">62</span>]: <span class="function"><span class="title">id</span><span class="params">(list_b)</span></span></span><br><span class="line">Out[<span class="number">62</span>]: <span class="number">47743920</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">63</span>]: def <span class="function"><span class="title">check_list</span><span class="params">(one_list)</span></span>:</span><br><span class="line">   ....:     print <span class="function"><span class="title">id</span><span class="params">(one_list)</span></span></span><br><span class="line">   ....:     </span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: <span class="function"><span class="title">check_list</span><span class="params">(list_b)</span></span></span><br><span class="line"><span class="number">47743920</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>在Python中,无论你把对象作为参数传递,还是作为函数返回值,都是引用传递的.</p>
+<h2 id="copy库">copy库</h2><p>标准库中的copy模块提供了两个方法来实现拷贝.一个方法是copy,它返回和参数包含内容一样的对象.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">65</span>]: import copy</span><br><span class="line"></span><br><span class="line">In [<span class="number">66</span>]: existing_list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">67</span>]: new_list = copy.copy(existing_list)</span><br><span class="line"></span><br><span class="line">In [<span class="number">68</span>]: id(existing_list),id(new_list)</span><br><span class="line">Out[<span class="number">68</span>]: (<span class="number">48317144</span>, <span class="number">48317576</span>)</span><br></pre></td></tr></table></figure></p>
+<p>有些时候,你希望对象中的属性也被复制,可以使用deepcopy方法:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">69</span>]: new_list_deep = copy.<span class="function"><span class="title">deepcopy</span><span class="params">(existing_list)</span></span></span><br><span class="line">In [<span class="number">70</span>]: <span class="function"><span class="title">id</span><span class="params">(existing_list)</span></span>,<span class="function"><span class="title">id</span><span class="params">(new_list_deep)</span></span></span><br><span class="line">Out[<span class="number">70</span>]: (<span class="number">48317144</span>, <span class="number">47701816</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这时候发现，复制的list对象的地址不一样了，那么改变复制后的list内容，会发生什么？<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">71</span>]: new_list</span><br><span class="line">Out[<span class="number">71</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">72</span>]: new_list[<span class="number">0</span>]=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">73</span>]: new_list</span><br><span class="line">Out[<span class="number">73</span>]: [<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">74</span>]: existing_list</span><br><span class="line">Out[<span class="number">74</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: new_list_deep</span><br><span class="line">Out[<span class="number">75</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">76</span>]: new_list_deep[<span class="number">2</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">77</span>]: new_list_deep</span><br><span class="line">Out[<span class="number">77</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: existing_list</span><br><span class="line">Out[<span class="number">78</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure></p>
+<p>似乎已经满足我们最初的需求了，但是如果list对象是这样的，<code>list_of_lists = [ [‘a’], [1, 2], [‘z’, 23] ]</code>,来实验一下<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="name">In</span> [<span class="number">85</span>]: <span class="atom">list_of_lists</span> = [ [<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="string">'z'</span>, <span class="number">23</span>] ]</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">86</span>]: <span class="atom">copy_qian</span> = <span class="atom">copy</span>.<span class="atom">copy</span>(<span class="atom">list_of_lists</span>)</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">87</span>]: <span class="atom">copy_qian</span>[<span class="number">1</span>].<span class="atom">append</span>(<span class="string">"zoo"</span>)</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">88</span>]: <span class="atom">print</span> <span class="atom">list_of_lists</span>,<span class="atom">copy_qian</span>,<span class="atom">id</span>(<span class="atom">list_of_lists</span>),<span class="atom">id</span>(<span class="atom">copy_qian</span>)</span><br><span class="line">[[<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="string">'zoo'</span>], [<span class="string">'z'</span>, <span class="number">23</span>]] [[<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="string">'zoo'</span>], [<span class="string">'z'</span>, <span class="number">23</span>]] <span class="number">46542432</span> <span class="number">48334464</span></span><br></pre></td></tr></table></figure></p>
+<p>发现原来的list里面的内容也被改变了，_其实是因为list_of_lists中有引用了其他的list，copy.copy只是浅复制。因为它们中的元素还是共享引用.</p>
+<p>如果你希望复制一个容器对象,以及它里面的所有元素(包含元素的子元素),使用copy.deepcopy,这个方法会消耗一些时间和空间,不过,如果你需要完全复制,这是唯一的方法.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="name">In</span> [<span class="number">90</span>]: <span class="atom">list_of_lists</span> = [ [<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="string">'z'</span>, <span class="number">23</span>] ]</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">91</span>]: <span class="atom">copy_deep</span> = <span class="atom">copy</span>.<span class="atom">deepcopy</span>(<span class="atom">list_of_lists</span>)</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">92</span>]: <span class="atom">copy_deep</span>.<span class="atom">append</span>(<span class="string">"zoo"</span>)</span><br><span class="line"></span><br><span class="line"><span class="name">In</span> [<span class="number">93</span>]: <span class="atom">print</span> <span class="atom">list_of_lists</span>,<span class="string">";"</span>,<span class="atom">copy_deep</span>,<span class="string">";"</span>,<span class="atom">id</span>(<span class="atom">list_of_lists</span>),<span class="string">";"</span>,<span class="atom">id</span>(<span class="atom">copy_deep</span>)</span><br><span class="line">[[<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="string">'z'</span>, <span class="number">23</span>]] ; [[<span class="string">'a'</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="string">'z'</span>, <span class="number">23</span>], <span class="string">'zoo'</span>]; <span class="number">48319664</span>; <span class="number">48333096</span></span><br></pre></td></tr></table></figure>
+</span>
       
     </div>
 
@@ -405,7 +414,7 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag">#JS</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -414,13 +423,11 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/12/Markdown/" rel="prev">Markdown 使用</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/09/github-user-pwd/" rel="next">github输入用户和密码</a>
+              <a href="/2015/10/15/html/" rel="next">pre 使用</a>
             
           </div>
         </div>
@@ -445,8 +452,8 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/12/JS/"
-                   data-title="JavaScript 使用" data-url="http://cyan-blue.github.io/2015/10/12/JS/">
+              <div class="ds-thread" data-thread-key="2015/10/17/python复制/"
+                   data-title="python复制（深浅）" data-url="http://cyan-blue.github.io/2015/10/17/python复制/">
               </div>
             
           </div>
@@ -538,7 +545,7 @@ jQuery 事件 - bind() 方法123$(&quot;.btn-save&quot;).bind(&quot;click&quot;,
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery_事件_-_bind()_方法"><span class="nav-number">2.</span> <span class="nav-text">jQuery 事件 - bind() 方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于python_list对象的使用"><span class="nav-number">1.</span> <span class="nav-text">关于python list对象的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用过程"><span class="nav-number">1.2.</span> <span class="nav-text">使用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy库"><span class="nav-number">1.4.</span> <span class="nav-text">copy库</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

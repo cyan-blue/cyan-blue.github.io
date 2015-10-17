@@ -48,7 +48,7 @@
 <meta property="og:description" content="问题描述今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：123&amp;lt;td&amp;gt;    &amp;lt;pre&amp;gt;1234567890123456789012345678901234567890&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
 于是乎，上网找解决方法
 这是参考链接 segmentfault stackoverf">
-<meta property="og:updated_time" content="2015-10-15T06:27:32.000Z">
+<meta property="og:updated_time" content="2015-10-15T06:29:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pre 使用">
 <meta name="twitter:description" content="问题描述今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：123&amp;lt;td&amp;gt;    &amp;lt;pre&amp;gt;1234567890123456789012345678901234567890&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
@@ -415,7 +415,11 @@
 <p>而我们想要的自适应宽度的路线：</p>
 <p>fieldset宽度—(定宽机制)—&gt;pre宽度—(<icode>white-space:非pre/非nowrap排版</icode>)—&gt;pre内部文本节点宽度。</p>
 <p>所以，有两种解决方案：</p>
-<p>破坏fieldset的min-width包裹机制，破坏pre的white-space撑宽机制，放弃pre标签的语义。<br>破坏fieldset的min-width包裹机制，保留pre的white-space撑宽机制，给外层加上overflow，如下：<br><code><br>    fieldset {<br>      overflow:scroll;<br>      -webkit-overflow-scrolling:touch;<br>      -moz-overflow-scrolling:touch;<br>      -o-overflow-scrolling:touch ;<br>    }<br></code></p>
+<ul>
+<li>破坏fieldset的min-width包裹机制，破坏pre的white-space撑宽机制，放弃pre标签的语义。</li>
+<li>破坏fieldset的min-width包裹机制，保留pre的white-space撑宽机制，给外层加上overflow，如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">fieldset</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">overflow</span>:<span class="value">scroll</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-overflow-scrolling</span>:<span class="value">touch</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-moz-overflow-scrolling</span>:<span class="value">touch</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-o-overflow-scrolling</span>:<span class="value">touch </span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </span>
       
     </div>
@@ -432,6 +436,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/17/python复制/" rel="prev">python复制（深浅）</a>
             
           </div>
 
@@ -503,21 +509,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               
           </div>
