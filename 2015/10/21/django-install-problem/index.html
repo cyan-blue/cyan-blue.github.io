@@ -41,14 +41,14 @@
 <meta name="description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
 pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装django项目问题汇总">
+<meta property="og:title" content="项目问题汇总">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/10/21/django-install-problem/index.html">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
 pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
-<meta property="og:updated_time" content="2015-10-21T02:54:14.000Z">
+<meta property="og:updated_time" content="2015-10-22T05:09:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装django项目问题汇总">
+<meta name="twitter:title" content="项目问题汇总">
 <meta name="twitter:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
 pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 
@@ -79,7 +79,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
         font-size: 1em;
     }
 </style>
-  <title> 安装django项目问题汇总 | Yann's Blog </title>
+  <title> 项目问题汇总 | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -354,7 +354,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
           
           
             
-              安装django项目问题汇总
+              项目问题汇总
             
           
         </h1>
@@ -375,6 +375,18 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/django/" itemprop="url" rel="index">
                   <span itemprop="name">django</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/django/ubuntu/" itemprop="url" rel="index">
+                  <span itemprop="name">ubuntu</span>
                 </a>
               </span>
 
@@ -409,7 +421,16 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <p>或者尝试下 v2ex 的源<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="keyword">index</span>-url = http:<span class="comment">//pypi.v2ex.com/simple</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</h2><p>安装这些依赖，我在ubuntu 15.10上是有效的<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span> libxslt1-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="valueerror_–enable-jpeg_request_but_jpeg_not_found">valueerror –enable-jpeg request but jpeg not found</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
-<h2 id="python下运行报”SyntaxError:_Non-ASCII_character">python下运行报”SyntaxError: Non-ASCII character</h2></span>
+<h2 id="django下运行报”SyntaxError:_Non-ASCII_character">django下运行报”SyntaxError: Non-ASCII character</h2><p>未找到解决方法，网上找的在头部加coding：utf-8的不属于我这个问题</p>
+<h1 id="ubuntu_源的问题">ubuntu 源的问题</h1><h2 id="1、安装软件时候，找不到软件包">1、安装软件时候，找不到软件包</h2><p><b>问题描述:</b><br>E: 未发现软件包 <em>**</em></p>
+<p><b>解决方法:</b><br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2、无法更新系统软件">2、无法更新系统软件</h2><p><b>问题描述:</b>Some index files failed to download. They have been ignored, or old ones used instead after apt-get update</p>
+<p>这是参考链接 <a href="http://askubuntu.com/questions/329450/e-some-index-files-failed-to-download-they-have-been-ignored-or-old-ones-used" target="_blank" rel="external">askubuntu</a> .</p>
+<p><b>解决方法:</b><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.<span class="type">list</span> ~/   <span class="comment">#备份</span></span><br><span class="line">sudo wget <span class="string">"http://pastebin.com/raw.php?i=uzhrtg5M"</span> -O /etc/apt/sources.<span class="type">list</span> <span class="comment">#替换</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> update <span class="comment">#更新</span></span><br><span class="line">sudo rm /etc/apt/sources.<span class="type">list</span>.d/ubuntu-extras.<span class="type">list</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> update</span><br></pre></td></tr></table></figure></p>
+<p>This solution is not general. It is specific to the sources.list file of the Original Poster.</p>
+<p>The second command which starts with wget downloads and replaces the sources.list file with a specific for Precise (Ubuntu 12.04,我的是ubuntu14.10) sources.list file. See the file in raw format by visiting this <a href="http://pastebin.com/raw.php?i=uzhrtg5M" target="_blank" rel="external">page</a>.</p>
+<p>The fourth command removes the ubuntu-extras.list file which had an impact/conflict with another file of the same, so we removed it to avoid the error<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">W:</span> Duplicate sources<span class="preprocessor">.list</span> entry</span><br></pre></td></tr></table></figure></p>
+</span>
       
     </div>
 
@@ -456,7 +477,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="2015/10/21/django-install-problem/"
-                   data-title="安装django项目问题汇总" data-url="http://cyan-blue.github.io/2015/10/21/django-install-problem/">
+                   data-title="项目问题汇总" data-url="http://cyan-blue.github.io/2015/10/21/django-install-problem/">
               </div>
             
           </div>
@@ -503,7 +524,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
@@ -559,7 +580,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装django项目问题汇总"><span class="nav-number">1.</span> <span class="nav-text">安装django项目问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environmenterror_mysql_config_not_found"><span class="nav-number">1.1.</span> <span class="nav-text">environmenterror mysql_config not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip_超时"><span class="nav-number">1.2.</span> <span class="nav-text">pip 超时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed"><span class="nav-number">1.3.</span> <span class="nav-text">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueerror_–enable-jpeg_request_but_jpeg_not_found"><span class="nav-number">1.4.</span> <span class="nav-text">valueerror –enable-jpeg request but jpeg not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python下运行报”SyntaxError:_Non-ASCII_character"><span class="nav-number">1.5.</span> <span class="nav-text">python下运行报”SyntaxError: Non-ASCII character</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装django项目问题汇总"><span class="nav-number">1.</span> <span class="nav-text">安装django项目问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environmenterror_mysql_config_not_found"><span class="nav-number">1.1.</span> <span class="nav-text">environmenterror mysql_config not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip_超时"><span class="nav-number">1.2.</span> <span class="nav-text">pip 超时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed"><span class="nav-number">1.3.</span> <span class="nav-text">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueerror_–enable-jpeg_request_but_jpeg_not_found"><span class="nav-number">1.4.</span> <span class="nav-text">valueerror –enable-jpeg request but jpeg not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django下运行报”SyntaxError:_Non-ASCII_character"><span class="nav-number">1.5.</span> <span class="nav-text">django下运行报”SyntaxError: Non-ASCII character</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu_源的问题"><span class="nav-number">2.</span> <span class="nav-text">ubuntu 源的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装软件时候，找不到软件包"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装软件时候，找不到软件包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、无法更新系统软件"><span class="nav-number">2.2.</span> <span class="nav-text">2、无法更新系统软件</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
