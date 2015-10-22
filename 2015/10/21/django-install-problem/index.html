@@ -46,7 +46,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
 pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
-<meta property="og:updated_time" content="2015-10-22T05:09:59.000Z">
+<meta property="og:updated_time" content="2015-10-22T05:13:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目问题汇总">
 <meta name="twitter:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
@@ -427,9 +427,11 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <h2 id="2、无法更新系统软件">2、无法更新系统软件</h2><p><b>问题描述:</b>Some index files failed to download. They have been ignored, or old ones used instead after apt-get update</p>
 <p>这是参考链接 <a href="http://askubuntu.com/questions/329450/e-some-index-files-failed-to-download-they-have-been-ignored-or-old-ones-used" target="_blank" rel="external">askubuntu</a> .</p>
 <p><b>解决方法:</b><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.<span class="type">list</span> ~/   <span class="comment">#备份</span></span><br><span class="line">sudo wget <span class="string">"http://pastebin.com/raw.php?i=uzhrtg5M"</span> -O /etc/apt/sources.<span class="type">list</span> <span class="comment">#替换</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> update <span class="comment">#更新</span></span><br><span class="line">sudo rm /etc/apt/sources.<span class="type">list</span>.d/ubuntu-extras.<span class="type">list</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> update</span><br></pre></td></tr></table></figure></p>
-<p>This solution is not general. It is specific to the sources.list file of the Original Poster.</p>
-<p>The second command which starts with wget downloads and replaces the sources.list file with a specific for Precise (Ubuntu 12.04,我的是ubuntu14.10) sources.list file. See the file in raw format by visiting this <a href="http://pastebin.com/raw.php?i=uzhrtg5M" target="_blank" rel="external">page</a>.</p>
-<p>The fourth command removes the ubuntu-extras.list file which had an impact/conflict with another file of the same, so we removed it to avoid the error<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">W:</span> Duplicate sources<span class="preprocessor">.list</span> entry</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>This solution is not general. It is specific to the sources.list file of the Original Poster.</li>
+<li>The second command which starts with wget downloads and replaces the sources.list file with a specific for Precise (Ubuntu 12.04,我的是ubuntu14.10) sources.list file. See the file in raw format by visiting this <a href="http://pastebin.com/raw.php?i=uzhrtg5M" target="_blank" rel="external">page</a>.</li>
+<li>The fourth command removes the ubuntu-extras.list file which had an impact/conflict with another file of the same, so we removed it to avoid the error<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">W:</span> Duplicate sources<span class="preprocessor">.list</span> entry</span><br></pre></td></tr></table></figure></li>
+</ul>
 </span>
       
     </div>
