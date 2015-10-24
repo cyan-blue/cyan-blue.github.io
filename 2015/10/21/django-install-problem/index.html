@@ -46,7 +46,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
 pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
-<meta property="og:updated_time" content="2015-10-22T05:13:31.000Z">
+<meta property="og:updated_time" content="2015-10-24T04:37:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目问题汇总">
 <meta name="twitter:description" content="安装django项目问题汇总environmenterror mysql_config not found12345sudo apt-get install libmysqlclient-devsudo apt-get install mysql-serversudo apt-get install libmysqld-dev
@@ -417,11 +417,19 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 
       
         <span itemprop="articleBody"><h1 id="安装django项目问题汇总">安装django项目问题汇总</h1><h2 id="environmenterror_mysql_config_not_found">environmenterror mysql_config not found</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> libmysqlclient-dev</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">server</span></span><br><span class="line"></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libmysqld-dev</span></span><br></pre></td></tr></table></figure>
-<h2 id="pip_超时">pip 超时</h2><p>建个文件 ~/.pip/pip.conf, 内容如下<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[global]</span></span><br><span class="line"><span class="setting">timeout = <span class="value"><span class="number">6000</span></span></span></span><br><span class="line"><span class="setting">index-url = <span class="value">http://b.pypi.python.org/simple</span></span></span><br><span class="line"><span class="title">[install]</span></span><br><span class="line"><span class="setting">use-mirrors = <span class="value"><span class="keyword">true</span></span></span></span><br><span class="line"><span class="setting">mirrors = <span class="value">http://b.pypi.python.org</span></span></span><br><span class="line"><span class="setting">trusted-host = <span class="value">pypi.douban.com</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="pip_超时">pip 超时</h2><p>建个文件 ~/.pip/pip.conf, 内容如下<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[global]</span></span><br><span class="line"><span class="setting">timeout = <span class="value"><span class="number">6000</span></span></span></span><br><span class="line"><span class="setting">index-url = <span class="value">http://pypi.douban.com/simple/</span></span></span><br><span class="line"><span class="title">[install]</span></span><br><span class="line"><span class="setting">use-mirrors = <span class="value"><span class="keyword">true</span></span></span></span><br><span class="line"><span class="setting">mirrors = <span class="value">http://b.pypi.python.org</span></span></span><br><span class="line"><span class="setting">trusted-host = <span class="value">pypi.douban.com</span></span></span><br></pre></td></tr></table></figure></p>
 <p>或者尝试下 v2ex 的源<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="keyword">index</span>-url = http:<span class="comment">//pypi.v2ex.com/simple</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</h2><p>安装这些依赖，我在ubuntu 15.10上是有效的<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span> libxslt1-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</h2><p>安装这些依赖，我在ubuntu 15.10上是有效的<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install python-<span class="built_in">dev</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span> libxslt1-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="valueerror_–enable-jpeg_request_but_jpeg_not_found">valueerror –enable-jpeg request but jpeg not found</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
-<h2 id="django下运行报”SyntaxError:_Non-ASCII_character">django下运行报”SyntaxError: Non-ASCII character</h2><p>未找到解决方法，网上找的在头部加coding：utf-8的不属于我这个问题</p>
+<h2 id="django下运行报”SyntaxError:_Non-ASCII_character">django下运行报”SyntaxError: Non-ASCII character</h2><p><a href="http://python.org/dev/peps/pep-0263/" target="_blank" rel="external">pep</a><br>找了半天原因在于，没有把声明coding 的代码放在第一位</p>
+<ul>
+<li>尝试了第一种方法，没有成功<br>If you’re using virtualenv you can change (or create if doesn’t exist) env/lib/python2.7/sitecustomize.py and add:<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.<span class="function"><span class="title">setdefaultencoding</span><span class="params">(<span class="string">'utf-8'</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>or, if you are in a production system, you can do the same to /usr/lib/python2.7/sitecustomize.py</p>
+</blockquote>
+<h2 id="error:_[Errno_104]_Connection_reset_by_peer">error: [Errno 104] Connection reset by peer</h2><p>网络的问题，重新试一次就好了</p>
 <h1 id="ubuntu_源的问题">ubuntu 源的问题</h1><h2 id="1、安装软件时候，找不到软件包">1、安装软件时候，找不到软件包</h2><p><b>问题描述:</b><br>E: 未发现软件包 <em>**</em></p>
 <p><b>解决方法:</b><br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="2、无法更新系统软件">2、无法更新系统软件</h2><p><b>问题描述:</b>Some index files failed to download. They have been ignored, or old ones used instead after apt-get update</p>
@@ -430,8 +438,11 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
 <ul>
 <li>This solution is not general. It is specific to the sources.list file of the Original Poster.</li>
 <li>The second command which starts with wget downloads and replaces the sources.list file with a specific for Precise (Ubuntu 12.04,我的是ubuntu14.10) sources.list file. See the file in raw format by visiting this <a href="http://pastebin.com/raw.php?i=uzhrtg5M" target="_blank" rel="external">page</a>.</li>
-<li>The fourth command removes the ubuntu-extras.list file which had an impact/conflict with another file of the same, so we removed it to avoid the error<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">W:</span> Duplicate sources<span class="preprocessor">.list</span> entry</span><br></pre></td></tr></table></figure></li>
+<li>The fourth command removes the ubuntu-extras.list file which had an impact/conflict with another file of the same, so we removed it to avoid the error<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">W:</span> Duplicate sources<span class="preprocessor">.list</span> entry</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<h2 id="3、无法安装软件">3、无法安装软件</h2><p><b>问题描述:</b><br>列软件包有未满足的依赖关系：<br> vim : 依赖: vim-common (= 2:7.4.052-1ubuntu3) 但是 2:7.4.273-2ubuntu4 正要被安装</p>
+<p><b>解决方法:</b><br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> <span class="keyword">vim</span>-common</span><br><span class="line">sudo apt-<span class="built_in">get</span> install <span class="keyword">vim</span></span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -448,6 +459,8 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/24/mysql-use/" rel="prev">ubuntu 使用mysql的简单操作</a>
             
           </div>
 
@@ -519,21 +532,21 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -582,7 +595,7 @@ pip 超时建个文件 ~/.pip/pip.conf, 内容如下123">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装django项目问题汇总"><span class="nav-number">1.</span> <span class="nav-text">安装django项目问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environmenterror_mysql_config_not_found"><span class="nav-number">1.1.</span> <span class="nav-text">environmenterror mysql_config not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip_超时"><span class="nav-number">1.2.</span> <span class="nav-text">pip 超时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed"><span class="nav-number">1.3.</span> <span class="nav-text">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueerror_–enable-jpeg_request_but_jpeg_not_found"><span class="nav-number">1.4.</span> <span class="nav-text">valueerror –enable-jpeg request but jpeg not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django下运行报”SyntaxError:_Non-ASCII_character"><span class="nav-number">1.5.</span> <span class="nav-text">django下运行报”SyntaxError: Non-ASCII character</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu_源的问题"><span class="nav-number">2.</span> <span class="nav-text">ubuntu 源的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装软件时候，找不到软件包"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装软件时候，找不到软件包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、无法更新系统软件"><span class="nav-number">2.2.</span> <span class="nav-text">2、无法更新系统软件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装django项目问题汇总"><span class="nav-number">1.</span> <span class="nav-text">安装django项目问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environmenterror_mysql_config_not_found"><span class="nav-number">1.1.</span> <span class="nav-text">environmenterror mysql_config not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip_超时"><span class="nav-number">1.2.</span> <span class="nav-text">pip 超时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing_lxml_in_virtualenv_via_pip_install_error:_command_‘x86_64-linux-gnu-gcc’_failed"><span class="nav-number">1.3.</span> <span class="nav-text">Installing lxml in virtualenv via pip install error: command ‘x86_64-linux-gnu-gcc’ failed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueerror_–enable-jpeg_request_but_jpeg_not_found"><span class="nav-number">1.4.</span> <span class="nav-text">valueerror –enable-jpeg request but jpeg not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django下运行报”SyntaxError:_Non-ASCII_character"><span class="nav-number">1.5.</span> <span class="nav-text">django下运行报”SyntaxError: Non-ASCII character</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error:_[Errno_104]_Connection_reset_by_peer"><span class="nav-number">1.6.</span> <span class="nav-text">error: [Errno 104] Connection reset by peer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu_源的问题"><span class="nav-number">2.</span> <span class="nav-text">ubuntu 源的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装软件时候，找不到软件包"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装软件时候，找不到软件包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、无法更新系统软件"><span class="nav-number">2.2.</span> <span class="nav-text">2、无法更新系统软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、无法安装软件"><span class="nav-number">2.3.</span> <span class="nav-text">3、无法安装软件</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

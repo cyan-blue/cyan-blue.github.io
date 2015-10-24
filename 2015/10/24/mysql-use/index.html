@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann" />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -38,15 +38,28 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Keep Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yann's Blog">
-<meta property="og:url" content="http://cyan-blue.github.io/archives/page/2/index.html">
+<meta name="description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
+　　1. sudo apt-get install mysql-server
+　　2. apt-get isntall mysql-client
+　　3.  sudo apt-get install libmysqlclient-dev
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu 使用mysql的简单操作">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/24/mysql-use/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="Keep Learning">
+<meta property="og:description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
+　　1. sudo apt-get install mysql-server
+　　2. apt-get isntall mysql-client
+　　3.  sudo apt-get install libmysqlclient-dev
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
+<meta property="og:updated_time" content="2015-10-24T10:32:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yann's Blog">
-<meta name="twitter:description" content="Keep Learning">
+<meta name="twitter:title" content="ubuntu 使用mysql的简单操作">
+<meta name="twitter:description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
+　　1. sudo apt-get install mysql-server
+　　2. apt-get isntall mysql-client
+　　3.  sudo apt-get install libmysqlclient-dev
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +88,7 @@
         font-size: 1em;
     }
 </style>
-  <title> 归档 | Yann's Blog </title>
+  <title> ubuntu 使用mysql的简单操作 | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -93,7 +106,7 @@
 
 
 
-  <div class="container one-column  page-archive ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -338,254 +351,116 @@
       <div class="main-inner">
         <div id="content" class="content"> 
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 17 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
       
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              ubuntu 使用mysql的简单操作
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-24T14:21:03+08:00" content="2015-10-24">
+            2015-10-24
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/24/mysql-use/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/24/mysql-use/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
       
       
 
       
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        <span itemprop="articleBody"><p>ubuntu上安装mysql非常简单只需要几条命令就可以完成。</p>
+<p>　　1. sudo apt-get install mysql-server</p>
+<p>　　2. apt-get isntall mysql-client</p>
+<p>　　3.  sudo apt-get install libmysqlclient-dev</p>
+<p>　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装成功：</p>
+<p>　　sudo netstat -tap | grep mysql</p>
+<p>　　通过上述命令检查之后，如果看到有mysql 的socket处于 listen 状态则表示安装成功。</p>
+<p>　　登陆mysql数据库可以通过如下命令：</p>
+<p>　　mysql -u root -p </p>
+<p>create database dbname；</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/24/nodejs/" rel="prev">nodejs</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/21/django-install-problem/" rel="next">项目问题汇总</a>
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/12/Css/" itemprop="url">
-              <span itemprop="name">Css 使用</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-12T02:11:24.000Z" itemprop="dateCreated" content="2015-10-12"> 10-12 </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/12/Markdown/" itemprop="url">
-              <span itemprop="name">Markdown 使用</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-12T01:40:28.000Z" itemprop="dateCreated" content="2015-10-12"> 10-12 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/12/JS/" itemprop="url">
-              <span itemprop="name">JavaScript 使用</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-12T01:20:41.000Z" itemprop="dateCreated" content="2015-10-12"> 10-12 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/09/github-user-pwd/" itemprop="url">
-              <span itemprop="name">github输入用户和密码</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-09T13:00:20.000Z" itemprop="dateCreated" content="2015-10-09"> 10-09 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/09/Django-Notes/" itemprop="url">
-              <span itemprop="name">Django Notes</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-09T05:39:28.000Z" itemprop="dateCreated" content="2015-10-09"> 10-09 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/09/Git-Use/" itemprop="url">
-              <span itemprop="name">Git Use</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-09T03:30:39.000Z" itemprop="dateCreated" content="2015-10-09"> 10-09 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/08/hello-world/" itemprop="url">
-              <span itemprop="name">Hello World</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-08T09:33:23.000Z" itemprop="dateCreated" content="2015-10-08"> 10-08 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/">&laquo;</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    </div>
+  </div>
 
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/10/24/mysql-use/"
+                   data-title="ubuntu 使用mysql的简单操作" data-url="http://cyan-blue.github.io/2015/10/24/mysql-use/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -602,6 +477,15 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -671,6 +555,17 @@
       </section>
 
       
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
 
     </div>
   </aside>
@@ -711,12 +606,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
   
     
 
@@ -761,10 +650,163 @@
 
   
   
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
 
 
   <script type="text/javascript">
