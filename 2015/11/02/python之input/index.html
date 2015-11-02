@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -38,15 +38,26 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Keep Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yann's Blog">
-<meta property="og:url" content="http://cyan-blue.github.io/tags/Error/index.html">
+<meta name="description" content="raw_input() 与 input()这两个均是 python 的内建函数，通过读取控制台的输入与用户实现交互。但他们的功能不尽相同。举两个小例子。
+
+例子1
+  12345678&amp;gt;&amp;gt;&amp;gt; raw_input_A = raw_input(&quot;raw_input: &quot;)raw_input: test&amp;gt;&amp;gt;&amp;gt; input_A = input(&quot;Input: &quot;)Inp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python之input">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/11/02/python之input/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="Keep Learning">
+<meta property="og:description" content="raw_input() 与 input()这两个均是 python 的内建函数，通过读取控制台的输入与用户实现交互。但他们的功能不尽相同。举两个小例子。
+
+例子1
+  12345678&amp;gt;&amp;gt;&amp;gt; raw_input_A = raw_input(&quot;raw_input: &quot;)raw_input: test&amp;gt;&amp;gt;&amp;gt; input_A = input(&quot;Input: &quot;)Inp">
+<meta property="og:image" content="http://huangyan.qiniudn.com/python-cha.jpg?imageMogr2/thumbnail/400x200">
+<meta property="og:updated_time" content="2015-11-02T05:20:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yann's Blog">
-<meta name="twitter:description" content="Keep Learning">
+<meta name="twitter:title" content="python之input">
+<meta name="twitter:description" content="raw_input() 与 input()这两个均是 python 的内建函数，通过读取控制台的输入与用户实现交互。但他们的功能不尽相同。举两个小例子。
+
+例子1
+  12345678&amp;gt;&amp;gt;&amp;gt; raw_input_A = raw_input(&quot;raw_input: &quot;)raw_input: test&amp;gt;&amp;gt;&amp;gt; input_A = input(&quot;Input: &quot;)Inp">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +86,7 @@
         font-size: 1em;
     }
 </style>
-  <title> 标签: Error | Yann's Blog </title>
+  <title> python之input | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -110,7 +121,7 @@
 
 
 
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -355,44 +366,136 @@
       <div class="main-inner">
         <div id="content" class="content"> 
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Error
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/12/Django/" itemprop="url">
-              <span itemprop="name">Django 问题收集</span>
-            </a>
-        
-      </h1>
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              python之input
+            
+          
+        </h1>
+      
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-10-12T08:46:06.000Z" itemprop="dateCreated" content="2015-10-12"> 10-12 </time>
-      </div>
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-02T09:40:58+08:00" content="2015-11-02">
+            2015-11-02
+          </time>
+        </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Python/" itemprop="url" rel="index">
+                  <span itemprop="name">Python</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/02/python之input/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/python之input/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
     </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="raw_input()_与_input()">raw_input() 与 input()</h1><p>这两个均是 python 的内建函数，通过读取控制台的输入与用户实现交互。但他们的功能不尽相同。举两个小例子。</p>
+<ul>
+<li><p>例子1</p>
+  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;</span>&gt; raw_input_A = raw_input(<span class="string">"raw_input: "</span>)</span><br><span class="line"><span class="symbol">raw_input:</span> test</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt; input_A = input(<span class="string">"Input: "</span>)</span><br><span class="line"><span class="constant">Input</span><span class="symbol">:</span> abc</span><br><span class="line"><span class="constant">Traceback</span> (most recent call last)<span class="symbol">:</span></span><br><span class="line">  <span class="constant">File</span> <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line">  <span class="constant">File</span> <span class="string">"&lt;string&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line"><span class="constant">NameError</span><span class="symbol">:</span> name <span class="string">'abc'</span> is <span class="keyword">not</span> <span class="keyword">defined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子2</p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; raw_input_B = <span class="function"><span class="title">raw_input</span><span class="params">(<span class="string">"raw_input: "</span>)</span></span></span><br><span class="line">raw_input: <span class="number">123</span></span><br><span class="line">&gt;&gt;&gt; <span class="function"><span class="title">type</span><span class="params">(raw_input_B)</span></span></span><br><span class="line">&lt;type <span class="string">'str'</span>&gt;</span><br><span class="line">&gt;&gt;&gt; input_B = <span class="function"><span class="title">input</span><span class="params">(<span class="string">"input: "</span>)</span></span></span><br><span class="line"><span class="tag">input</span>: <span class="number">123</span></span><br><span class="line">&gt;&gt;&gt; <span class="function"><span class="title">type</span><span class="params">(input_B)</span></span></span><br><span class="line">&lt;type <span class="string">'int'</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例子1 可以看到：这两个函数均能接收 字符串 ，但 raw_input() 直接读取控制台的输入（任何类型的输入它都可以接收）。而对于 input() ，它希望能够读取一个合法的 python 表达式，即你输入字符串的时候必须使用引号将它括起来，否则它会引发一个 SyntaxError 。</p>
+<p>例子2 可以看到：raw_input() 将所有输入作为字符串看待，返回字符串类型。而 input() 在对待纯数字输入时具有自己的特性，它返回所输入的数字的类型（ int, float ）；同时在例子 1 知道，input() 可接受合法的 python 表达式，举例：input( 1 + 3 ) 会返回 int 型的 4 。</p>
+<p>查看 <a href="https://docs.python.org/2/library/functions.html#built-in-functions" target="_blank" rel="external">Built-in Functions</a> ，得知：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">input</span><span class="params">([prompt])</span></span></span><br><span class="line">    Equivalent to <span class="function"><span class="title">eval</span><span class="params">(raw_input(prompt)</span></span>)</span><br></pre></td></tr></table></figure></p>
+<p>input() 本质上还是使用 raw_input() 来实现的，只是调用完 raw_input() 之后再调用 eval() 函数，所以，你甚至可以将表达式作为 input() 的参数，并且它会计算表达式的值并返回它。</p>
+<p>不过在 Built-in Functions 里有一句话是这样写的：Consider using the raw_input() function for general input from users.</p>
+<p>除非对 input() 有特别需要，否则一般情况下我们都是推荐使用 raw_input() 来与用户交互。</p>
+<hr>
+<p><img src="http://huangyan.qiniudn.com/python-cha.jpg?imageMogr2/thumbnail/400x200" alt="python" title="python"><br>使用了 raw_input() 接受整数（返回的是字符串）并再用一行语句返回整型数据。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/30/python之ord/" rel="next">python之ord&unichr&chr</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
-  
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/02/python之input/"
+                   data-title="python之input" data-url="http://cyan-blue.github.io/2015/11/02/python之input/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -409,6 +512,15 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -478,6 +590,17 @@
       </section>
 
       
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#raw_input()_与_input()"><span class="nav-number">1.</span> <span class="nav-text">raw_input() 与 input()</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
 
     </div>
   </aside>
@@ -518,12 +641,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
   
     
 
@@ -567,6 +684,165 @@
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
