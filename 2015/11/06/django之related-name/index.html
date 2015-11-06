@@ -58,7 +58,7 @@ many-to- one(多对一关系)
 one-to-one(一对一关系)
 
 一、多对一关系：用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为位置参数。在这里我用django book中的一个">
-<meta property="og:updated_time" content="2015-11-06T10:01:19.000Z">
+<meta property="og:updated_time" content="2015-11-06T13:40:31.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="django之related_name(转载)">
 <meta name="twitter:description" content="转载地址
@@ -459,8 +459,7 @@ one-to-one(一对一关系)
 <li>one-to-one(一对一关系)</li>
 </ol>
 <h1 id="一、多对一关系：">一、多对一关系：</h1><p>用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为<br>位置参数。在这里我用django book中的一个比较经典的实例来和大家一起分享一下：首先，定义了三个模型分别为：Publisher(出版商),Author(作者)和Book(书)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Publisher</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">    address = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    city = models.CharField(max_length=<span class="number">60</span>)</span><br><span class="line">    state_province = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">    country = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    website = models.URLField()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">    ordering = [<span class="string">'name'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Author</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="number">40</span>)</span><br><span class="line">    email = models.EmailField(blank=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">u'%s %s'</span> % (self.first_name, self.last_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    authors = models.ManyToManyField(Author)</span><br><span class="line">    publisher = models.ForeignKey(Publisher, related_name=<span class="string">"publisher_set"</span>)</span><br><span class="line">    publication_date = models.DateField(blank=<span class="keyword">True</span>, verbose_name=<span class="string">'e-mail'</span>)</span><br><span class="line">    num_pages = models.IntegerField(blank=<span class="keyword">True</span>, null=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment"># objects = BookManager()</span></span><br><span class="line">    objects = models.Manager()  <span class="comment"># The default manager.</span></span><br><span class="line">    dahl_objects = DahlBookManager()  <span class="comment"># The Dahl-specific manager</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># .</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure></p>
-<p>要建立一个递归的关系，即一个对象和自身的多对一关系，你可以这样写：models.ForeignKey(‘self’) :</p>
-<p>1 class Employee(models.Model): 2 manager = models.ForeignKey( ‘ self ‘ )</p>
+<p>要建立一个递归的关系，即一个对象和自身的多对一关系，你可以这样写：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">models.<span class="function"><span class="title">ForeignKey</span><span class="params">(<span class="string">'self'</span>)</span></span> :</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> class <span class="function"><span class="title">Employee</span><span class="params">(models.Model)</span></span>: <span class="number">2</span> manager = models.<span class="function"><span class="title">ForeignKey</span><span class="params">( <span class="string">' self '</span> )</span></span></span><br></pre></td></tr></table></figure></p>
 <p>如果你创建关系时,所需的模型还没有被定义,你可以不使用模型对象本身,而是使用那个模型的名字。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class <span class="function"><span class="title">Car</span><span class="params">(models.Model)</span></span>:</span><br><span class="line">    manufacturer = models.<span class="function"><span class="title">ForeignKey</span><span class="params">(<span class="string">'Manufacturer'</span>)</span></span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">class <span class="function"><span class="title">Manufacturer</span><span class="params">(models.Model)</span></span>:</span><br></pre></td></tr></table></figure>
 <p>但是,你要记住,只能对在同一个 models.py 文件中的模型使用字符串引用,对于其他应用程序中的模型或者从其他地方导入</p>
@@ -471,57 +470,50 @@ one-to-one(一对一关系)
 <p>字段名称。</p>
 <p>在这里有几个概念要讲清楚，当初我就是载在这上面的，希望有同感的朋友可以看到， ForeignKey选项</p>
 <ol>
-<li>edit_inline：</li>
+<li><p>edit_inline：</p>
+<p> 如果不设为 False 的话,它对应的对象就可以在页面上内联编辑,就是说这个对象有自 己独立的</p>
+<p> 管理界面。如果设为 models.TABULAR 或者 models.STACKED 的话,这个内 联编辑对象分别显</p>
+<p> 示成一个表格或者一些字段的集合。</p>
+</li>
+<li><p>limit_choices_to：</p>
+<p> 可以限定对象的值的范围的一个参数和值的字典。结合Python的 datetime 模块的</p>
+<p> 函数可以根据日期来限定对象。例如,下面的代码:<br> limit_choices_to = {‘pub_date__lte’: datetime.now}<br> 把可选对象限定到 pub_date 早于当前时间的对象中。<br> 除字典外,这里也可以是一个可以执行更复杂的查询的 Q 对象<br> 这个选项和 edit_inline 是不兼容的。</p>
+</li>
+<li><p>max_num_in_admin<br> 于内联编辑对象,这个是要在管理界面里显示的相关对象的最多个数。所以,如果披萨最多 只会</p>
+<p> 有10种配料, max_num_in_admin=10 会保证用户最多输入10种配料。</p>
+<p> 记住,本项并不保证不会创建10种以上的配料,他只是控制管理界面,而不是在Python的API 层和</p>
+<p> 数据库层做什么限制。</p>
+</li>
+<li><p>min_num_in_admin</p>
+<p> 在管理界面中要显示的相关的对象的最少个数。通常,在创建的时候,显示的内联对象的个数 为</p>
+<p> num_in_admin 个,在编辑的时候,在当前的基础上又会多显示 num_extra_on_change 个空对</p>
+<p> 象,但是显示的对象个数不会少于 min_num_in_admin 个。</p>
+</li>
+<li><p>num_extra_on_change</p>
+<p> 修改对象时要额外显示的对象数目。</p>
+</li>
+<li><p>num_in_admin</p>
+<p> 添加对象时要显示的内联对象的默认个数。</p>
+</li>
+<li><p>raw_id_admin</p>
+<p> 为要键入的整数显示一个文本框,而不是一个下拉列表。在关联对象有很多行时,这个比显示 一个</p>
+<p> 列表选择框更实用。</p>
+<p> 使用 edit_inline 时,本项无效。</p>
+</li>
+<li><p>related_name</p>
+<p> 关联对象反向引用描述符。</p>
+</li>
+<li><p>to_field</p>
+<p> 关联对象的用于关联的字段,Django默认使用关联对象的主键。</p>
+<p> 要学习ForeignKey并了解深刻的话，可以先对以上ForeignKey的这些选项有一定的了解。这样可以加深你对ForeignKey的印象。</p>
+<p> 万事俱备，现在，假如你想通过Book这张表去访问Publisher和Author都是可以直接访问的，因为Book这张表中有外键和这两张</p>
+<p> 表关联，因此可以直接通过语句去访问Book和Publisher表。</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_info</span><span class="params">(request, id)</span>:</span></span><br><span class="line">    books = Book.objects.filter(publisher__id=id).all()</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">"showdb_info.html"</span>, &#123;</span><br><span class="line">        <span class="string">"books"</span>: books&#125;, context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure>
+<p> 这一步相信大家都是知道的，即使不知道，等你看了笔者的这篇博客之后肯定也会一目了然的。但是，假如反过来该怎么去查询呢？</p>
+<p> （通过Publisher或者Author表查询Book表中的内容）在这里就要用到一个相当重要的 ForeignKey 选项，通过该选项你可以随便访问Books</p>
+<p> 中的任意字段。</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_book_info</span><span class="params">(request, id)</span>:</span></span><br><span class="line">    publisher = Publisher.objects.filter(publisher_set__id = id)</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">"showdb_info.html"</span>,&#123;</span><br><span class="line">        <span class="string">"publisher"</span>: publisher,</span><br><span class="line">    &#125;,</span><br><span class="line">     context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>如果不设为 False 的话,它对应的对象就可以在页面上内联编辑,就是说这个对象有自 己独立的</p>
-<p>管理界面。如果设为 models.TABULAR 或者 models.STACKED 的话,这个内 联编辑对象分别显</p>
-<p>示成一个表格或者一些字段的集合。</p>
-<ol>
-<li>limit_choices_to：</li>
-</ol>
-<p>可以限定对象的值的范围的一个参数和值的字典。结合Python的 datetime 模块的</p>
-<p>函数可以根据日期来限定对象。例如,下面的代码:<br>limit_choices_to = {‘pub_date__lte’: datetime.now}<br>把可选对象限定到 pub_date 早于当前时间的对象中。<br>除字典外,这里也可以是一个可以执行更复杂的查询的 Q 对象<br>这个选项和 edit_inline 是不兼容的。</p>
-<ol>
-<li>max_num_in_admin<br>于内联编辑对象,这个是要在管理界面里显示的相关对象的最多个数。所以,如果披萨最多 只会</li>
-</ol>
-<p>有10种配料, max_num_in_admin=10 会保证用户最多输入10种配料。</p>
-<p>记住,本项并不保证不会创建10种以上的配料,他只是控制管理界面,而不是在Python的API 层和</p>
-<p>数据库层做什么限制。</p>
-<ol>
-<li>min_num_in_admin</li>
-</ol>
-<p>在管理界面中要显示的相关的对象的最少个数。通常,在创建的时候,显示的内联对象的个数 为</p>
-<p>num_in_admin 个,在编辑的时候,在当前的基础上又会多显示 num_extra_on_change 个空对</p>
-<p>象,但是显示的对象个数不会少于 min_num_in_admin 个。</p>
-<ol>
-<li>num_extra_on_change</li>
-</ol>
-<p>修改对象时要额外显示的对象数目。</p>
-<ol>
-<li>num_in_admin</li>
-</ol>
-<p>添加对象时要显示的内联对象的默认个数。</p>
-<ol>
-<li>raw_id_admin</li>
-</ol>
-<p>为要键入的整数显示一个文本框,而不是一个下拉列表。在关联对象有很多行时,这个比显示 一个</p>
-<p>列表选择框更实用。</p>
-<p>使用 edit_inline 时,本项无效。</p>
-<ol>
-<li>related_name</li>
-</ol>
-<p>关联对象反向引用描述符。</p>
-<ol>
-<li>to_field</li>
-</ol>
-<p>关联对象的用于关联的字段,Django默认使用关联对象的主键。</p>
-<p>要学习ForeignKey并了解深刻的话，可以先对以上ForeignKey的这些选项有一定的了解。这样可以加深你对ForeignKey的印象。</p>
-<p>万事俱备，现在，假如你想通过Book这张表去访问Publisher和Author都是可以直接访问的，因为Book这张表中有外键和这两张</p>
-<p>表关联，因此可以直接通过语句去访问Book和Publisher表。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_info</span><span class="params">(request, id)</span>:</span></span><br><span class="line">    books = Book.objects.filter(publisher__id=id).all()</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">"showdb_info.html"</span>, &#123;</span><br><span class="line">        <span class="string">"books"</span>: books&#125;, context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure>
-<p>这一步相信大家都是知道的，即使不知道，等你看了笔者的这篇博客之后肯定也会一目了然的。但是，假如反过来该怎么去查询呢？</p>
-<p>（通过Publisher或者Author表查询Book表中的内容）在这里就要用到一个相当重要的 ForeignKey 选项，通过该选项你可以随便访问Books</p>
-<p>中的任意字段。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_book_info</span><span class="params">(request, id)</span>:</span></span><br><span class="line">    publisher = Publisher.objects.filter(publisher_set__id = id)</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">"showdb_info.html"</span>,&#123;</span><br><span class="line">        <span class="string">"publisher"</span>: publisher,</span><br><span class="line">    &#125;,</span><br><span class="line">     context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -609,7 +601,7 @@ one-to-one(一对一关系)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

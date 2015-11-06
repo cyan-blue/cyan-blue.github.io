@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
 1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	sudo a">
-<meta property="og:updated_time" content="2015-11-06T06:50:45.000Z">
+<meta property="og:updated_time" content="2015-11-06T13:40:31.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim之使用">
 <meta name="twitter:description" content="1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
@@ -431,6 +431,19 @@
 <li>:%d     #清空缓存区</li>
 </ul>
 <p><a href="https://github.com/qiwsir/vim/blob/master/tips.md" target="_blank" rel="external">vim 使用</a></p>
+<h2 id="vim_使用tip">vim 使用tip</h2><p>编写python程序</p>
+<p>自动插入头信息：<br><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/usr/bin/env python</span></span><br><span class="line"># coding=utf-<span class="number">8</span></span><br></pre></td></tr></table></figure></p>
+<p>输入.或按TAB键会触发代码补全功能</p>
+<p>:w保存代码之后会自动检查代码错误与规范</p>
+<p>按F6可以按pep8格式对代码格式优化<br>按F5可以一键执行代码<br>F3: documents tree<br>多窗口操作</p>
+<ul>
+<li>使用:sp + 文件名可以水平分割窗口</li>
+<li>使用:vs + 文件名可以垂直分割窗口</li>
+<li>使用Ctrl + w可以快速在窗口间切换</li>
+</ul>
+<p>编写markdown文件</p>
+<p>编写markdown文件(*.md)的时候，在normal模式下按 md 即可在当前目录下生成相应的html文件<br>生成之后还是在normal模式按fi可以使用firefox打开相应的html文件预览<br>当然也可以使用万能的F5键来一键转换并打开预览<br>如果打开过程中屏幕出现一些混乱信息，可以按Ctrl + l来恢复<br>快速注释</p>
+<p>按\ 可以根据文件类型自动注释</p>
 </span>
       
     </div>
@@ -522,7 +535,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -589,7 +602,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim_使用tip"><span class="nav-number">1.</span> <span class="nav-text">vim 使用tip</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
