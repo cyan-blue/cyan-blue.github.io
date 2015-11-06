@@ -39,27 +39,27 @@
 
 
 <meta name="description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
-　　1. sudo apt-get install mysql-server
-　　2. apt-get isntall mysql-client
+　　1. ‘sudo apt-get install mysql-server’
+　　2. apt-get install mysql-client
 　　3.  sudo apt-get install libmysqlclient-dev
-　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu 使用mysql的简单操作">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/10/24/mysql-use/index.html">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
-　　1. sudo apt-get install mysql-server
-　　2. apt-get isntall mysql-client
+　　1. ‘sudo apt-get install mysql-server’
+　　2. apt-get install mysql-client
 　　3.  sudo apt-get install libmysqlclient-dev
-　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
-<meta property="og:updated_time" content="2015-10-30T12:22:17.000Z">
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否">
+<meta property="og:updated_time" content="2015-11-06T01:16:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu 使用mysql的简单操作">
 <meta name="twitter:description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
-　　1. sudo apt-get install mysql-server
-　　2. apt-get isntall mysql-client
+　　1. ‘sudo apt-get install mysql-server’
+　　2. apt-get install mysql-client
 　　3.  sudo apt-get install libmysqlclient-dev
-　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装">
+　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -431,8 +431,8 @@
 
       
         <span itemprop="articleBody"><p>ubuntu上安装mysql非常简单只需要几条命令就可以完成。</p>
-<p>　　1. sudo apt-get install mysql-server</p>
-<p>　　2. apt-get isntall mysql-client</p>
+<p>　　1. ‘sudo apt-get install mysql-server’</p>
+<p>　　2. apt-get install mysql-client</p>
 <p>　　3.  sudo apt-get install libmysqlclient-dev</p>
 <p>　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装成功：</p>
 <p>　　sudo netstat -tap | grep mysql</p>
@@ -440,6 +440,10 @@
 <p>　　登陆mysql数据库可以通过如下命令：</p>
 <p>　　mysql -u root -p </p>
 <p>create database dbname；</p>
+<p>遇到的问题：</p>
+<p>mysql-server : Depends: mysql-server-5.5 but it is not going to be installed<br>E: Unable to correct problems, you have held broken packages.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> mysql-<span class="keyword">client</span>-core-<span class="number">5.6</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> autoremove</span><br><span class="line">sudo apt-<span class="keyword">get</span> autoclean</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">client</span>-core-<span class="number">5.5</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">server</span></span></span><br></pre></td></tr></table></figure>
+<p>然并卵,<br>后面试了一下<a href="http://baike.baidu.com/link?url=tUAAth_0e71ZBGWOArrnufdAk3Hg3frsWXq6VsxOFIIdjP-0ngvFDV5MOdOxUf-5vZ-K-7dPMKqnQpqWeTVtLq" target="_blank" rel="external">aptitude</a><br>后面觉得应该是源使用错误的问题，要对应相同版本的源，<code>lsb_release -a</code>查看</p>
 </span>
       
     </div>
@@ -529,21 +533,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
