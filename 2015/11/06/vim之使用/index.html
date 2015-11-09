@@ -38,19 +38,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
-1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	sudo a">
+<meta name="description" content="Vim安装1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
+1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim之使用">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/11/06/vim之使用/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
-1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	sudo a">
-<meta property="og:updated_time" content="2015-11-06T13:40:31.091Z">
+<meta property="og:description" content="Vim安装1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
+1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	s">
+<meta property="og:updated_time" content="2015-11-07T04:16:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim之使用">
-<meta name="twitter:description" content="1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
-1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	sudo a">
+<meta name="twitter:description" content="Vim安装1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
+1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	s">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -421,14 +421,30 @@
       
 
       
-        <span itemprop="articleBody"><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/ma6174/<span class="keyword">vim</span>/master/setup.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h1 id="Vim安装">Vim安装</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/ma6174/<span class="keyword">vim</span>/master/setup.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装将花费一定时间，请耐心等待直到安装完成^_^"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">which</span> apt-get &gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">	sudo apt-get install -y vim vim-gnome ctags xclip astyle python-setuptools python-dev git</span><br><span class="line"><span class="keyword">elif</span> <span class="built_in">which</span> yum &gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">	sudo yum install -y gcc vim git ctags xclip astyle python-setuptools python-devel	</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##Add HomeBrew support on  Mac OS</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">which</span> brew &gt;/dev/null;<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"You are using HomeBrew tool"</span></span><br><span class="line">    brew install vim ctags git astyle</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sudo easy_install -ZU autopep8 </span><br><span class="line">sudo ln <span class="operator">-s</span> /usr/bin/ctags /usr/<span class="built_in">local</span>/bin/ctags</span><br><span class="line">mv <span class="operator">-f</span> ~/vim ~/vim_old</span><br><span class="line"><span class="built_in">cd</span> ~/ &amp;&amp; git <span class="built_in">clone</span> https://github.com/ma6174/vim.git</span><br><span class="line">mv <span class="operator">-f</span> ~/.vim ~/.vim_old</span><br><span class="line">mv <span class="operator">-f</span> ~/vim ~/.vim</span><br><span class="line">mv <span class="operator">-f</span> ~/.vimrc ~/.vimrc_old</span><br><span class="line">mv <span class="operator">-f</span> ~/.vim/.vimrc ~/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ma6174正在努力为您安装bundle程序"</span> &gt; ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装完毕将自动退出"</span> &gt;&gt; ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"请耐心等待"</span> &gt;&gt; ma6174</span><br><span class="line">vim ma6174 -c <span class="string">"BundleInstall"</span> -c <span class="string">"q"</span> -c <span class="string">"q"</span></span><br><span class="line">rm ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装完成"</span></span><br></pre></td></tr></table></figure>
-<ul>
+<h1 id="Vim_使用">Vim 使用</h1><ul>
 <li>:Tlist  #概略图  <ul>
 <li>快捷开关键 <code style="color:green">tl</code></li>
 </ul>
 </li>
-<li>:%d     #清空缓存区</li>
+<li><p>:%d     #清空缓存区</p>
+</li>
+<li><p>格式化全文： gg=G</p>
+</li>
+<li><p>自动缩进当前行： ==</p>
+</li>
+<li><p>关键字搜索</p>
+<ul>
+<li><p>用/和？的区别</p>
+<p>  /后跟查找的字符串。vim会显示文本中第一个出现的字符串。</p>
+<p>  ?后跟查找的字符串。vim会显示文本中最后一个出现的字符串。</p>
+</li>
+<li><p>注意事项：</p>
+<p>  不管用/还是？查找到第一个字符串后，按回车，vim会高亮所有的匹配文<br>  系统新氧ubuntu下默认的是incsearch模式，就是输完命令后，会自动显示第一个（或最后一个）匹配。<br>  如果输入：set noincsearch 会转到普通模式，不会自动显示第一个匹配，回车后显示所有匹配。<br>  高亮所有的匹配后，按<span style="color:red">n键</span>转到下一个匹配，按N键转到上一个匹配。</p>
+</li>
+</ul>
+</li>
 </ul>
 <p><a href="https://github.com/qiwsir/vim/blob/master/tips.md" target="_blank" rel="external">vim 使用</a></p>
 <h2 id="vim_使用tip">vim 使用tip</h2><p>编写python程序</p>
@@ -535,7 +551,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -602,7 +618,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim_使用tip"><span class="nav-number">1.</span> <span class="nav-text">vim 使用tip</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim安装"><span class="nav-number">1.</span> <span class="nav-text">Vim安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim_使用"><span class="nav-number">2.</span> <span class="nav-text">Vim 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim_使用tip"><span class="nav-number">2.1.</span> <span class="nav-text">vim 使用tip</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
