@@ -39,18 +39,21 @@
 
 
 <meta name="description" content="need string or buffer, long found今天给 Django 设计模型时, 把模型的 unicode() 函数设计成返回 id, 结果出现了coercing to Unicode: need string or buffer, long found
-感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.">
+感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.
+S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django 问题收集">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/10/12/Django/index.html">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="need string or buffer, long found今天给 Django 设计模型时, 把模型的 unicode() 函数设计成返回 id, 结果出现了coercing to Unicode: need string or buffer, long found
-感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.">
-<meta property="og:updated_time" content="2015-10-28T08:27:10.000Z">
+感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.
+S">
+<meta property="og:updated_time" content="2015-11-11T09:08:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 问题收集">
 <meta name="twitter:description" content="need string or buffer, long found今天给 Django 设计模型时, 把模型的 unicode() 函数设计成返回 id, 结果出现了coercing to Unicode: need string or buffer, long found
-感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.">
+感觉很奇怪. 总是提个醒吧, 不要妄图用 unicode() 得到 id.不过 unicode(id) 应该是可以的吧.
+S">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -423,6 +426,8 @@
       
         <span itemprop="articleBody"><h1 id="need_string_or_buffer,_long_found">need string or buffer, long found</h1><p>今天给 Django 设计模型时, 把模型的 <strong>unicode</strong>() 函数设计成返回 id, 结果出现了<br>coercing to Unicode: need string or buffer, long found</p>
 <p>感觉很奇怪. 总是提个醒吧, 不要妄图用 <strong>unicode</strong>() 得到 id.<br>不过 unicode(id) 应该是可以的吧.</p>
+<h1 id="Site_matching_query_does_not_exist-">Site matching query does not exist.</h1><p>If you don’t have a site defined in your database and django wants to reference it, you will need to create one.<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">From <span class="tag">a</span> python manage<span class="class">.py</span> shell :</span><br><span class="line"></span><br><span class="line">from django<span class="class">.contrib</span><span class="class">.sites</span><span class="class">.models</span> import Site</span><br><span class="line">new_site = Site<span class="class">.objects</span><span class="class">.create</span>(domain=<span class="string">'foo.com'</span>, name=<span class="string">'foo.com'</span>)</span><br><span class="line">print new_site.id</span><br></pre></td></tr></table></figure></p>
+<p>Now set that site ID in your settings.py to SITE_ID</p>
 </span>
       
     </div>
@@ -581,7 +586,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#need_string_or_buffer,_long_found"><span class="nav-number">1.</span> <span class="nav-text">need string or buffer, long found</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#need_string_or_buffer,_long_found"><span class="nav-number">1.</span> <span class="nav-text">need string or buffer, long found</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Site_matching_query_does_not_exist-"><span class="nav-number">2.</span> <span class="nav-text">Site matching query does not exist.</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
