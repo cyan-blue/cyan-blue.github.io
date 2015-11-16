@@ -38,15 +38,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Keep Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yann's Blog">
-<meta property="og:url" content="http://cyan-blue.github.io/categories/Python/index.html">
+<meta name="description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android之scroll">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/11/16/android之scroll/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="Keep Learning">
+<meta property="og:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
+<meta property="og:updated_time" content="2015-11-16T11:56:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yann's Blog">
-<meta name="twitter:description" content="Keep Learning">
+<meta name="twitter:title" content="android之scroll">
+<meta name="twitter:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +76,7 @@
         font-size: 1em;
     }
 </style>
-  <title> 分类: Python | Yann's Blog </title>
+  <title> android之scroll | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -110,7 +111,7 @@
 
 
 
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -355,155 +356,119 @@
       <div class="main-inner">
         <div id="content" class="content"> 
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Python
-        <small>分类</small>
-      </h2>
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              android之scroll
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-16T19:55:10+08:00" content="2015-11-16">
+            2015-11-16
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/16/android之scroll/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/16/android之scroll/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p> 前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。<br>解决办法，自定义一个GridView控件<br>public class MyGridView extends GridView {<br>    public MyGridView(Context context, AttributeSet attrs) {<br>        super(context, attrs);<br>    }</p>
+<pre><code><span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context)</span> </span>{
+    <span class="keyword">super</span>(context);
+}
+
+<span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>{
+    <span class="keyword">super</span>(context, attrs, defStyle);
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>{
+
+    <span class="keyword">int</span> expandSpec = MeasureSpec.makeMeasureSpec(
+            Integer.MAX_VALUE &gt;&gt; <span class="number">2</span>, MeasureSpec.AT_MOST);
+    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, expandSpec);
+}
+</code></pre><p>}<br>该自定义控件只是重写了GridView的onMeasure方法，使其不会出现滚动条，ScrollView嵌套ListView也是同样的道理，不再赘述。<br>XML布局代码</p>
+<p><scrollview android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/scroll_content"><br>        <com.yourclass.mygridview xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/grid_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:numcolumns="auto_fit" android:horizontalspacing="1dip" android:verticalspacing="1dip" android:columnwidth="150dip" android:stretchmode="columnWidth" android:gravity="center"></com.yourclass.mygridview></scrollview></p>
+<pre><code>    &lt;/com<span class="class">.yourclass</span><span class="class">.MyGridView</span>&gt;
+&lt;/ScrollView&gt;
+</code></pre><p>Java调用代码<br>MyGridView gridview = (MyGridView) findViewById(R.id.grid_view); </p>
+</span>
+      
     </div>
 
-    
+    <footer class="post-footer">
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/02/python之input/" itemprop="url">
-              <span itemprop="name">python之input</span>
-            </a>
-        
-      </h1>
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/16/android之Gson/" rel="next">android之Gson</a>
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-02T01:40:58.000Z" itemprop="dateCreated" content="2015-11-02"> 11-02 </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/python之ord/" itemprop="url">
-              <span itemprop="name">python之ord&unichr&chr</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-30T11:54:32.000Z" itemprop="dateCreated" content="2015-10-30"> 10-30 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/python列表解析/" itemprop="url">
-              <span itemprop="name">python列表解析</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-30T09:51:36.000Z" itemprop="dateCreated" content="2015-10-30"> 10-30 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/20/python-date/" itemprop="url">
-              <span itemprop="name">python-date</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-20T10:28:44.000Z" itemprop="dateCreated" content="2015-10-20"> 10-20 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/17/python复制/" itemprop="url">
-              <span itemprop="name">python复制（深浅）</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-17T12:15:35.000Z" itemprop="dateCreated" content="2015-10-17"> 10-17 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/13/python_question/" itemprop="url">
-              <span itemprop="name">python 问题</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-13T06:19:59.000Z" itemprop="dateCreated" content="2015-10-13"> 10-13 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
-
-  
+    </div>
+  </div>
 
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/16/android之scroll/"
+                   data-title="android之scroll" data-url="http://cyan-blue.github.io/2015/11/16/android之scroll/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -520,6 +485,15 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -593,6 +567,17 @@
       </section>
 
       
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
 
     </div>
   </aside>
@@ -633,12 +618,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
   
     
 
@@ -682,6 +661,165 @@
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
