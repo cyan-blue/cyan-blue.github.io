@@ -38,15 +38,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Keep Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yann's Blog">
-<meta property="og:url" content="http://cyan-blue.github.io/archives/2015/page/2/index.html">
+<meta name="description" content="oom
+一种比较直接的方法，简单粗暴的解决是在Manifest.xml文件里面的12345678&amp;lt;application        android:name=&quot;.app.Application&quot;        android:allowBackup=&quot;true&quot;        android:icon=&quot;@drawable/icon&quot;        android:label=&quot;@str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android之oom">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/11/18/android之oom/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="Keep Learning">
+<meta property="og:description" content="oom
+一种比较直接的方法，简单粗暴的解决是在Manifest.xml文件里面的12345678&amp;lt;application        android:name=&quot;.app.Application&quot;        android:allowBackup=&quot;true&quot;        android:icon=&quot;@drawable/icon&quot;        android:label=&quot;@str">
+<meta property="og:updated_time" content="2015-11-18T11:44:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yann's Blog">
-<meta name="twitter:description" content="Keep Learning">
+<meta name="twitter:title" content="android之oom">
+<meta name="twitter:description" content="oom
+一种比较直接的方法，简单粗暴的解决是在Manifest.xml文件里面的12345678&amp;lt;application        android:name=&quot;.app.Application&quot;        android:allowBackup=&quot;true&quot;        android:icon=&quot;@drawable/icon&quot;        android:label=&quot;@str">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +79,7 @@
         font-size: 1em;
     }
 </style>
-  <title> 归档 | Yann's Blog </title>
+  <title> android之oom | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -110,7 +114,7 @@
 
 
 
-  <div class="container one-column  page-archive ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -355,346 +359,105 @@
       <div class="main-inner">
         <div id="content" class="content"> 
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 38 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
       
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              android之oom
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-18T19:43:42+08:00" content="2015-11-18">
+            2015-11-18
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/18/android之oom/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/android之oom/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
       
       
 
       
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        <span itemprop="articleBody"><p>oom</p>
+<p>一种比较直接的方法，简单粗暴的解决是<br>在Manifest.xml文件里面的<application 里面添加android:largeheap="true" 如：="" <figure="" class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">        android:name=<span class="string">".app.Application"</span></span><br><span class="line">        android:allowBackup=<span class="string">"true"</span></span><br><span class="line">        android:icon=<span class="string">"<span class="variable">@drawable</span>/icon"</span></span><br><span class="line">        android:label=<span class="string">"<span class="variable">@string</span>/app_name"</span></span><br><span class="line">        android:theme=<span class="string">"<span class="variable">@android</span>:style/Theme.Light.NoTitleBar"</span></span><br><span class="line">        android:largeHeap=<span class="string">"true"</span></span><br><span class="line">         &gt;</span><br></pre></td></tr></table></application></p>
+<p>这种方法允许应用需要耗费手机很多的内存空间，但却是最快捷的解决办法</p>
+<p>第二种是将bitmap.recycle()掉，需要了解加载viewpager的流程<br>/**</p>
+<ul>
+<li>首先ViewPager默认加载两张图片，也就是说第一次初始化这个viewpager的时候会执行两次instantiateItem这个方法。预加载下一个viewpager的item<br>*/<br>然后方法destroyItem会将通过“算法”destroy掉，remove掉view视图<br>可以在里面bitmap.recycle()回收掉bitmap</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/16/android之scroll/" rel="next">android之scroll</a>
+            
+          </div>
         </div>
       
-      
 
       
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/06/django之related-name/" itemprop="url">
-              <span itemprop="name">django之related_name(转载)</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-06T09:54:18.000Z" itemprop="dateCreated" content="2015-11-06"> 11-06 </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/06/linux之缓存/" itemprop="url">
-              <span itemprop="name">Linux下释放内存的方法(转载)</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-06T05:41:15.000Z" itemprop="dateCreated" content="2015-11-06"> 11-06 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/06/vim之使用/" itemprop="url">
-              <span itemprop="name">vim之使用</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-06T02:36:00.000Z" itemprop="dateCreated" content="2015-11-06"> 11-06 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/05/js之闭包/" itemprop="url">
-              <span itemprop="name">js之闭包</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-05T13:34:42.000Z" itemprop="dateCreated" content="2015-11-05"> 11-05 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/05/ubuntu之装机必备/" itemprop="url">
-              <span itemprop="name">ubuntu之装机必备</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-05T02:19:22.000Z" itemprop="dateCreated" content="2015-11-05"> 11-05 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/03/mysql之1292/" itemprop="url">
-              <span itemprop="name">mysql之1292</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-03T01:15:41.000Z" itemprop="dateCreated" content="2015-11-03"> 11-03 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/02/python之input/" itemprop="url">
-              <span itemprop="name">python之input</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-11-02T01:40:58.000Z" itemprop="dateCreated" content="2015-11-02"> 11-02 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/python之ord/" itemprop="url">
-              <span itemprop="name">python之ord&unichr&chr</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-30T11:54:32.000Z" itemprop="dateCreated" content="2015-10-30"> 10-30 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/html5之checkbox/" itemprop="url">
-              <span itemprop="name">html5之checkbox</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-30T11:34:03.000Z" itemprop="dateCreated" content="2015-10-30"> 10-30 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/python列表解析/" itemprop="url">
-              <span itemprop="name">python列表解析</span>
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" datetime="2015-10-30T09:51:36.000Z" itemprop="dateCreated" content="2015-10-30"> 10-30 </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2015/">&laquo;</a><a class="page-number" href="/archives/2015/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2015/page/3/">3</a><a class="page-number" href="/archives/2015/page/4/">4</a><a class="extend next" rel="next" href="/archives/2015/page/3/">&raquo;</a>
-  </nav>
-
+    </div>
+  </div>
 
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/18/android之oom/"
+                   data-title="android之oom" data-url="http://cyan-blue.github.io/2015/11/18/android之oom/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -711,6 +474,15 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -784,6 +556,17 @@
       </section>
 
       
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
 
     </div>
   </aside>
@@ -824,12 +607,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
   
     
 
@@ -874,10 +651,163 @@
 
   
   
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
 
 
   <script type="text/javascript">

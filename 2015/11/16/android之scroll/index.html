@@ -38,16 +38,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
+<meta name="description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件123456789101112131415161718192021public class MyGridView extends GridView &amp;#123;    public MyGridV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android之scroll">
 <meta property="og:url" content="http://cyan-blue.github.io/2015/11/16/android之scroll/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
-<meta property="og:updated_time" content="2015-11-16T11:56:00.000Z">
+<meta property="og:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件123456789101112131415161718192021public class MyGridView extends GridView &amp;#123;    public MyGridV">
+<meta property="og:updated_time" content="2015-11-18T13:37:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android之scroll">
-<meta name="twitter:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件public class MyGridView extends GridView {    public MyGridView(Context context, AttributeSet attr">
+<meta name="twitter:description" content="前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。解决办法，自定义一个GridView控件123456789101112131415161718192021public class MyGridView extends GridView &amp;#123;    public MyGridV">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -403,28 +403,14 @@
       
 
       
-        <span itemprop="articleBody"><p> 前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。<br>解决办法，自定义一个GridView控件<br>public class MyGridView extends GridView {<br>    public MyGridView(Context context, AttributeSet attrs) {<br>        super(context, attrs);<br>    }</p>
-<pre><code><span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context)</span> </span>{
-    <span class="keyword">super</span>(context);
-}
-
-<span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>{
-    <span class="keyword">super</span>(context, attrs, defStyle);
-}
-
-<span class="annotation">@Override</span>
-<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>{
-
-    <span class="keyword">int</span> expandSpec = MeasureSpec.makeMeasureSpec(
-            Integer.MAX_VALUE &gt;&gt; <span class="number">2</span>, MeasureSpec.AT_MOST);
-    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, expandSpec);
-}
-</code></pre><p>}<br>该自定义控件只是重写了GridView的onMeasure方法，使其不会出现滚动条，ScrollView嵌套ListView也是同样的道理，不再赘述。<br>XML布局代码</p>
-<p><scrollview android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/scroll_content"><br>        <com.yourclass.mygridview xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/grid_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:numcolumns="auto_fit" android:horizontalspacing="1dip" android:verticalspacing="1dip" android:columnwidth="150dip" android:stretchmode="columnWidth" android:gravity="center"></com.yourclass.mygridview></scrollview></p>
-<pre><code>    &lt;/com<span class="class">.yourclass</span><span class="class">.MyGridView</span>&gt;
-&lt;/ScrollView&gt;
-</code></pre><p>Java调用代码<br>MyGridView gridview = (MyGridView) findViewById(R.id.grid_view); </p>
-</span>
+        <span itemprop="articleBody"><p> 前些日子在开发中用到了需要ScrollView嵌套GridView的情况，由于这两款控件都自带滚动条，当他们碰到一起的时候便会出问题，即GridView会显示不全。<br>解决办法，自定义一个GridView控件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyGridView</span> <span class="keyword">extends</span> <span class="title">GridView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyGridView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> expandSpec = MeasureSpec.makeMeasureSpec(</span><br><span class="line">                Integer.MAX_VALUE &gt;&gt; <span class="number">2</span>, MeasureSpec.AT_MOST);</span><br><span class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, expandSpec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该自定义控件只是重写了GridView的onMeasure方法，使其不会出现滚动条，ScrollView嵌套ListView也是同样的道理，不再赘述。<br>XML布局代码<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ScrollView <span class="string">Android:</span>layout_height=<span class="string">"wrap_content"</span></span><br><span class="line"><span class="label">        android:</span>layout_width=<span class="string">"fill_parent"</span> <span class="string">android:</span>id=<span class="string">"@+id/scroll_content"</span>&gt;</span><br><span class="line">        &lt;com.yourclass.MyGridView <span class="string">xmlns:</span>android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line"><span class="label">            android:</span>id=<span class="string">"@+id/grid_view"</span> <span class="string">android:</span>layout_width=<span class="string">"fill_parent"</span></span><br><span class="line"><span class="label">            android:</span>layout_height=<span class="string">"wrap_content"</span> <span class="string">android:</span>numColumns=<span class="string">"auto_fit"</span></span><br><span class="line"><span class="label">            android:</span>horizontalSpacing=<span class="string">"1dip"</span> <span class="string">android:</span>verticalSpacing=<span class="string">"1dip"</span></span><br><span class="line"><span class="label">            android:</span>columnWidth=<span class="string">"150dip"</span> <span class="string">android:</span>stretchMode=<span class="string">"columnWidth"</span></span><br><span class="line"><span class="label">            android:</span>gravity=<span class="string">"center"</span>&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/com.yourclass.MyGridView&gt;</span><br><span class="line">    &lt;/ScrollView&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Java调用代码<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyGridView gridview = <span class="list">(<span class="keyword">MyGridView</span>)</span> findViewById<span class="list">(<span class="keyword">R</span>.id.grid_view)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>scrollView 空白</li>
+</ul>
+<pre><code><span class="comment"><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ScrollView</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:id</span>=<span class="value">"@+id/scrollView1"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"fill_parent"</span>  // 关键设置</span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"fill_parent"</span>  // 关键设置  不能用<span class="attribute">match_parent</span></span><br><span class="line">    <span class="attribute">android:fillViewport</span>=<span class="value">"true"</span> </span><br><span class="line">    <span class="attribute">android:layout_alignParentBottom</span>=<span class="value">"true"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>   // 关键设置</span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ScrollView</span>&gt;</span></span><br></pre></td></tr></table></figure></span>
+</code></pre></span>
       
     </div>
 
@@ -434,6 +420,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/18/android之oom/" rel="prev">android之oom</a>
             
           </div>
 
@@ -505,7 +493,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
