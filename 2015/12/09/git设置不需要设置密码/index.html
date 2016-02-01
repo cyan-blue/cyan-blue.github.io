@@ -58,11 +58,7 @@
 如果想自己设置时间，可以这样做：
 1git config credential.helper &apos;cache --timeout=3600&apos;
 这样就设置一个小时之后">
-<<<<<<< HEAD
-<meta property="og:updated_time" content="2015-12-09T09:22:03.247Z">
-=======
 <meta property="og:updated_time" content="2015-12-10T02:56:11.069Z">
->>>>>>> develop
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git设置不需要设置密码">
 <meta name="twitter:description" content="https方式每次都要输入密码，按照如下设置即可输入一次就不用再手输入密码的困扰而且又享受https带来的极速
@@ -456,27 +452,15 @@
 <li><p>长期存储密码：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential<span class="class">.helper</span> store</span><br></pre></td></tr></table></figure>
 <p>增加远程地址的时候带上密码也是可以的。(推荐)</p>
-<<<<<<< HEAD
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-=======
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http:</span><span class="comment">//yourname:password@git.oschina.net/name/project.git</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
->>>>>>> develop
 <li><p>如果你正在使用ssh而且想体验https带来的高速，那么你可以这样做： 切换到项目目录下 ：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> projectfile/</span><br></pre></td></tr></table></figure>
 <p>移除远程ssh方式的仓库地址</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> remote rm origin</span><br></pre></td></tr></table></figure>
 <p>增加https远程仓库地址</p>
-<<<<<<< HEAD
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin <span class="string">http:</span><span class="comment">//yourname:password@git.oschina.net/name/project.git</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-=======
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin <span class="string">http:</span><span class="comment">//yourname:password@git.oschina.net/name/project.git</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>I had similar problem (hang after successful authentication) on HP-UX with git 1.8.5.3.<br>I debugged it with GIT_TRACE=1:</p>
@@ -485,7 +469,6 @@
 </ul>
 <p>and the last line before hang was:<br>trace: run_command: ‘git-credential-cache–daemon’ ‘/home/user_name/.git-credential-cache/socket’<br>so I disabled password caching:<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">unset</span> <span class="comment">credential</span><span class="string">.</span><span class="comment">helper</span></span><br></pre></td></tr></table></figure></p>
 <p>and the problem went away.<br>But now I have to type password every time :(<br>‘/home/user_name/.git-credential-cache/socket’ exists on my Ubuntu and it is a socket, but it is missing on HP-UX.<br>At the same time I’m having another problem related to sockets on HP-UX: vim works fine but prints warning<br>connect /tmp/.X11-unix/X0: No such file or directory<br>every time I launch it. Again, on Ubuntu “/tmp/.X11-unix/X0” exists and it is a socket but on HP-UX it does not exist. I worked around this problem by unsetting DISPLAY:<br>unset DISPLAY<br>Someone told me that rebooting HP-UX box may solve socket problems but I can’t try it since it’s shared server.<br>You may try to investigate your problem with GIT_TRACE=1.</p>
->>>>>>> develop
 </span>
       
     </div>
@@ -503,11 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-<<<<<<< HEAD
-=======
               <a href="/2016/01/07/uwsiguse/" rel="prev">uwsiguse</a>
             
->>>>>>> develop
           </div>
 
           <div class="post-nav-next post-nav-item">
@@ -578,11 +558,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-<<<<<<< HEAD
-              <span class="site-state-item-count">43</span>
-=======
               <span class="site-state-item-count">47</span>
->>>>>>> develop
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -665,13 +641,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-<<<<<<< HEAD
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
-=======
   &copy; &nbsp;  2015 - 
   <span itemprop="copyrightYear">2016</span>
->>>>>>> develop
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
