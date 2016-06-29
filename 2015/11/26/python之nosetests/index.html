@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="python,test," />
+  <meta name="keywords" content="test,python," />
 
 
 
@@ -44,7 +44,7 @@
 <meta property="og:url" content="http://cyan-blue.github.io/2015/11/26/python之nosetests/index.html">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="setup和teardownsetup:在测试用例开始时被执行teardown:在测试用例结束后被执行    nose在文件中如果找到函数setup, setup_module, setUp 或者setUpModule等，那么会在该模块的所有测试执行之前执行该函数。如果找到函数 teardown,tearDown, teardown_module或者 tearDownModule 等，那么会在该模">
-<meta property="og:updated_time" content="2015-12-09T09:17:33.383Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python之nosetests">
 <meta name="twitter:description" content="setup和teardownsetup:在测试用例开始时被执行teardown:在测试用例结束后被执行    nose在文件中如果找到函数setup, setup_module, setUp 或者setUpModule等，那么会在该模块的所有测试执行之前执行该函数。如果找到函数 teardown,tearDown, teardown_module或者 tearDownModule 等，那么会在该模">
@@ -53,7 +53,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -406,7 +406,7 @@
         <span itemprop="articleBody"><p>setup和teardown<br>setup:在测试用例开始时被执行<br>teardown:在测试用例结束后被执行<br>    nose在文件中如果找到函数setup, setup_module, setUp 或者setUpModule等，那么会在该模块的所有测试执行之前执行该函数。如果找到函数 teardown,tearDown, teardown_module或者 tearDownModule 等，那么会在该模块所有的测试执行完之后执行该函数。　<br>    对于上面的代码，nose实际的执行过程是这样的：　　<br>setUp()-&gt;Testfunc1()-&gt;Testfunc2()-&gt;tearDown()</p>
 <pre><code>nose常用参数
 </code></pre><p>nosetests  –v :debug模式，看到具体执行情况，推荐大家执行时用这个选项<br>nose会捕获标准输出，调试的print代码默认不会打印。nosetest  –s 可打开output输出，否则全部通过时不打印stdout。<br>默认nosetests会执行所有的case，若想单独只执行一个case，执行nosetest –tests 后跟要测试的文件(nosetests后面直接跟文件名，其实也可以直接运行该case)。<br>nosetests –collect-only -v :不运行程序，只是搜集并输出各个case的名称<br>nosetests -x  :一旦case失败立即停止，不执行后续case<br>-w ，指定一个目录运行测试。目录可以是相对路径或绝对路径</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setup</span><br><span class="line">test_client_is_mobile</span><br><span class="line">tear down</span><br><span class="line"><span class="class">.setup</span></span><br><span class="line">test_client_is_not_mobile</span><br><span class="line">tear down</span><br><span class="line"><span class="class">.setup</span></span><br><span class="line">test_get_server_name_from_url</span><br><span class="line">tear down</span><br></pre></td></tr></table></figure></span>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">setup</div><div class="line">test_client_is_mobile</div><div class="line">tear <span class="meta">down</span></div><div class="line"><span class="meta">.setup</span></div><div class="line">test_client_is_not_mobile</div><div class="line">tear <span class="meta">down</span></div><div class="line"><span class="meta">.setup</span></div><div class="line">test_get_server_name_from_url</div><div class="line">tear <span class="meta">down</span></div></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -414,9 +414,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
-          
             <a href="/tags/test/" rel="tag">#test</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -497,21 +497,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -550,7 +550,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

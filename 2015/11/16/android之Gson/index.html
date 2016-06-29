@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="Gson 嵌套使用
 我们要解析一个下面这种的Json：1String json = &amp;#123;&quot;a&quot;:&quot;100&quot;,&quot;b&quot;:[&amp;#123;&quot;b1&quot;:&quot;b_value1&quot;,&quot;b2&quot;:&quot;b_value2&quot;&amp;#125;,&amp;#123;&quot;b1&quot;:&quot;b_value1&quot;,&quot;b2&quot;:&quot;b_value2&quot;&amp;#125;]，&quot;c&quot;:&amp;#123;&quot;c1&quot;:&quot;c_value1&quot;,&quot;c2&quot;:&quot;c_value2&quot;&amp;#125;&amp;">
-<meta property="og:updated_time" content="2015-11-20T08:09:33.468Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android之Gson">
 <meta name="twitter:description" content="Gson 嵌套使用
@@ -56,7 +56,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -407,10 +407,10 @@
 
       
         <span itemprop="articleBody"><p>Gson 嵌套使用</p>
-<p>我们要解析一个下面这种的Json：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String json = &#123;<span class="string">"a"</span>:<span class="string">"100"</span>,<span class="string">"b"</span>:[&#123;<span class="string">"b1"</span>:<span class="string">"b_value1"</span>,<span class="string">"b2"</span>:<span class="string">"b_value2"</span>&#125;,&#123;<span class="string">"b1"</span>:<span class="string">"b_value1"</span>,<span class="string">"b2"</span>:<span class="string">"b_value2"</span>&#125;]，<span class="string">"c"</span>:&#123;<span class="string">"c1"</span>:<span class="string">"c_value1"</span>,<span class="string">"c2"</span>:<span class="string">"c_value2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们要解析一个下面这种的Json：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String json = &#123;<span class="string">"a"</span>:<span class="string">"100"</span>,<span class="string">"b"</span>:[&#123;<span class="string">"b1"</span>:<span class="string">"b_value1"</span>,<span class="string">"b2"</span>:<span class="string">"b_value2"</span>&#125;,&#123;<span class="string">"b1"</span>:<span class="string">"b_value1"</span>,<span class="string">"b2"</span>:<span class="string">"b_value2"</span>&#125;]，<span class="string">"c"</span>:&#123;<span class="string">"c1"</span>:<span class="string">"c_value1"</span>,<span class="string">"c2"</span>:<span class="string">"c_value2"</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
 <ol>
 <li><p>首先我们需要定义一个序列化的Bean，这里采用内部类的形式，看起来会比较清晰一些：</p>
- <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> JsonBean &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">String</span> a;</span><br><span class="line">    <span class="keyword">public</span> List&lt;B&gt; b;</span><br><span class="line">    <span class="keyword">public</span> C c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> B &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">String</span> b1;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">String</span> b2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> C &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">String</span> c1;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">String</span> c2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> JsonBean &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> a;</div><div class="line">    <span class="keyword">public</span> List&lt;B&gt; b;</div><div class="line">    <span class="keyword">public</span> C c;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> B &#123;</div><div class="line">        <span class="keyword">public</span> <span class="keyword">String</span> b1;</div><div class="line">        <span class="keyword">public</span> <span class="keyword">String</span> b2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> C &#123;</div><div class="line">        <span class="keyword">public</span> <span class="keyword">String</span> c1;</div><div class="line">        <span class="keyword">public</span> <span class="keyword">String</span> c2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>很多时候大家都是不知道这个Bean是该怎么定义，这里面需要注意几点：</p>
 <ol>
@@ -420,7 +420,7 @@
 </ol>
 </li>
 <li><p>调用的时候</p>
- <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Gson</span> gson = new <span class="type">Gson</span>();</span><br><span class="line"><span class="title">java</span>.lang.reflect.<span class="type">Type</span> <span class="typedef"><span class="keyword">type</span> = new <span class="type">TypeToken</span>&lt;<span class="type">JsonBean</span>&gt;<span class="container">()</span> <span class="container">&#123;&#125;</span>.getType<span class="container">()</span>;</span></span><br><span class="line"><span class="type">JsonBean</span> jsonBean = gson.fromJson(json, <span class="typedef"><span class="keyword">type</span>);</span></span><br><span class="line"><span class="type">Log</span>.v(<span class="string">"tag"</span>,jsonBean.a.toString())</span><br></pre></td></tr></table></figure>
+ <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Gson gson = new Gson()<span class="comment">;</span></div><div class="line"><span class="keyword">java.lang.reflect.Type </span>type = new TypeToken&lt;<span class="keyword">JsonBean&gt;() </span>&#123;&#125;.getType()<span class="comment">;</span></div><div class="line"><span class="keyword">JsonBean </span><span class="keyword">jsonBean </span>= gson.fromJson(<span class="keyword">json, </span>type)<span class="comment">;</span></div><div class="line">Log.v(<span class="string">"tag"</span>,<span class="keyword">jsonBean.a.toString())</span></div></pre></td></tr></table></figure>
 <p> 然后想拿数据就很简单啦，直接在jsonBean里面取就可以了！<br> 如果需要解析的Json嵌套了很多层，同样可以可以定义一个嵌套很多层内部类的Bean，需要细心的对照Json字段来定义哦。</p>
 </li>
 </ol>
@@ -513,21 +513,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -566,7 +566,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

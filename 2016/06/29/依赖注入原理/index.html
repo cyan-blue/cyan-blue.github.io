@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql,代码" />
+  <meta name="keywords" content="代码," />
 
 
 
@@ -38,22 +38,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="fatal error: openssl/aes.h: No such file or directory
-
-解决方法：1sudo apt-get install libssl-dev">
+<meta name="description" content="0. 前言在软件工程领域，依赖注入（Dependency Injection）是用于实现控制反转（Inversion of Control）的最常见的方式之一。本文主要介绍依赖注入原理和常见的实现方式，重点在于介绍这种年轻的设计模式的适用场景及优势。1. 为什么需要依赖注入控制反转用于解耦，解的究竟是谁和谁的耦？这是我在最初了解依赖注入时候产生的第一个问题。下面我引用Martin Flower在解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flask之错误收集">
-<meta property="og:url" content="http://cyan-blue.github.io/2015/11/25/flask之错误收集/index.html">
+<meta property="og:title" content="依赖注入原理">
+<meta property="og:url" content="http://cyan-blue.github.io/2016/06/29/依赖注入原理/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="fatal error: openssl/aes.h: No such file or directory
-
-解决方法：1sudo apt-get install libssl-dev">
-<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
+<meta property="og:description" content="0. 前言在软件工程领域，依赖注入（Dependency Injection）是用于实现控制反转（Inversion of Control）的最常见的方式之一。本文主要介绍依赖注入原理和常见的实现方式，重点在于介绍这种年轻的设计模式的适用场景及优势。1. 为什么需要依赖注入控制反转用于解耦，解的究竟是谁和谁的耦？这是我在最初了解依赖注入时候产生的第一个问题。下面我引用Martin Flower在解">
+<meta property="og:updated_time" content="2016-06-29T16:23:37.401Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flask之错误收集">
-<meta name="twitter:description" content="fatal error: openssl/aes.h: No such file or directory
-
-解决方法：1sudo apt-get install libssl-dev">
+<meta name="twitter:title" content="依赖注入原理">
+<meta name="twitter:description" content="0. 前言在软件工程领域，依赖注入（Dependency Injection）是用于实现控制反转（Inversion of Control）的最常见的方式之一。本文主要介绍依赖注入原理和常见的实现方式，重点在于介绍这种年轻的设计模式的适用场景及优势。1. 为什么需要依赖注入控制反转用于解耦，解的究竟是谁和谁的耦？这是我在最初了解依赖注入时候产生的第一个问题。下面我引用Martin Flower在解">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -82,7 +76,7 @@
         font-size: 1em;
     }
 </style>
-  <title> flask之错误收集 | Yann's Blog </title>
+  <title> 依赖注入原理 | Yann's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -374,7 +368,7 @@
           
           
             
-              flask之错误收集
+              依赖注入原理
             
           
         </h1>
@@ -383,19 +377,34 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-25T12:45:01+08:00" content="2015-11-25">
-            2015-11-25
+          <time itemprop="dateCreated" datetime="2016-06-29T23:56:58+08:00" content="2016-06-29">
+            2016-06-29
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/代码/" itemprop="url" rel="index">
+                  <span itemprop="name">代码</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/25/flask之错误收集/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/25/flask之错误收集/" itemprop="commentsCount"></span>
+              <a href="/2016/06/29/依赖注入原理/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/依赖注入原理/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -409,32 +418,32 @@
       
 
       
-        <span itemprop="articleBody"><ul>
-<li><p>fatal error: openssl/aes.h: No such file or directory</p>
-<ul>
-<li>解决方法：<figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install libssl-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
+        <span itemprop="articleBody"><div class="post-body"><br><span itemprop="articleBody"><h1 id="0-_前言">0. 前言</h1><p>在软件工程领域，依赖注入（Dependency Injection）是用于实现控制反转（Inversion of Control）的最常见的方式之一。本文主要介绍依赖注入原理和常见的实现方式，重点在于介绍这种年轻的设计模式的适用场景及优势。</p><br><h1 id="1-_为什么需要依赖注入">1. 为什么需要依赖注入</h1><p>控制反转用于解耦，解的究竟是谁和谁的耦？这是我在最初了解依赖注入时候产生的第一个问题。</p><br><p>下面我引用Martin Flower在解释介绍注入时使用的一部分代码来说明这个问题。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder finder;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MovieLister</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        finder = <span class="keyword">new</span> MovieFinderImpl();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> Movie[] moviesDirectedBy(String arg) &#123;</span><br><span class="line">        List allMovies = finder.findAll();</span><br><span class="line">        <span class="keyword">for</span> (Iterator it = allMovies.iterator(); it.hasNext();) &#123;</span><br><span class="line">            Movie movie = (Movie) it.next();</span><br><span class="line">            <span class="keyword">if</span> (!movie.getDirector().equals(arg)) it.remove();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (Movie[]) allMovies.toArray(<span class="keyword">new</span> Movie[allMovies.size()]);</span><br><span class="line">    &#125;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MovieFinder</span> </span>&#123;</span><br><span class="line">    <span class="function">List <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><a id="more"></a><br><p>我们创建了一个名为MovieLister的类来提供需要的电影列表，它moviesDirectedBy方法提供根据导演名来搜索电影的方式。真正负责搜索电影的是实现了MovieFinder接口的MovieFinderImpl，我们的MovieLister类在构造函数中创建了一个MovieFinderImpl的对象。</p><br><p>目前看来，一切都不错。但是，当我们希望修改finder，将finder替换为一种新的实现时（比如为MovieFinder增加一个参数表明Movie数据的来源是哪个数据库），我们不仅需要修改MovieFinderImpl类，还需要修改我们MovieLister中创建MovieFinderImpl的代码。</p><br><p><strong>这就是依赖注入要处理的耦合。这种在MovieLister中创建MovieFinderImpl的方式，使得MovieLister不仅仅依赖于MovieFinder这个接口，它还依赖于MovieListImpl这个实现。</strong> 这种在一个类中直接创建另一个类的对象的代码，和硬编码（hard-coded strings)以及硬编码的数字（magic numbers）一样，是一种导致耦合的坏味道，我们可以把这种坏味道称为硬初始化（hard init）。同时，我们也应该像记住硬编码一样记住，new（对象创建）是有毒的。</p><br><p>Hard Init带来的主要坏处有两个方面：1）上文所述的修改其实现时，需要修改创建处的代码；2）不便于测试，这种方式创建的类（上文中的MovieLister）无法单独被测试，其行为和MovieFinderImpl紧紧耦合在一起，同时，也会导致代码的可读性问题（“如果一段代码不便于测试，那么它一定不便于阅读。”）。</p><br><h1 id="2-_依赖注入的实现方式">2. 依赖注入的实现方式</h1><p>依赖注入其实并不神奇，我们日常的代码中很多都用到了依赖注入，但很少注意到它，也很少主动使用依赖注入进行解耦。这里我们简单介绍一下赖注入实现三种的方式。</p><br><h2 id="2-1_构造函数注入（Contructor_Injection）">2.1 构造函数注入（Contructor Injection）</h2><p>这是我认为的最简单的依赖注入方式，我们修改一下上面代码中MovieList的构造函数，使得MovieFinderImpl的实现在MovieLister类之外创建。这样，MovieLister就只依赖于我们定义的MovieFinder接口，而不依赖于MovieFinder的实现了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder finder;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MovieLister</span><span class="params">(MovieFinder finder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.finder = finder;</span><br><span class="line">    &#125;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><br><h2 id="2-2_setter注入">2.2 setter注入</h2><p>类似的，我们可以增加一个setter函数来传入创建好的MovieFinder对象，这样同样可以避免在MovieFinder中hard init这个对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieLister</span> </span>&#123;</span><br><span class="line">    s…</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFinder</span><span class="params">(MovieFinder finder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.finder = finder;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><br><h2 id="2-3_接口注入">2.3 接口注入</h2><p>接口注入使用接口来提供setter方法，其实现方式如下。<br>首先要创建一个注入使用的接口。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InjectFinder</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">injectFinder</span><span class="params">(MovieFinder finder)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>之后，我们让MovieLister实现这个接口。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MovieLister</span> <span class="keyword">implements</span> <span class="title">InjectFinder</span> </span>&#123;</span><br><span class="line">    …</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">injectFinder</span><span class="params">(MovieFinder finder)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.finder = finder;</span><br><span class="line">    &#125;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>最后，我们需要根据不同的框架创建被依赖的MovieFinder的实现。</p><br><h1 id="3-_最后">3. 最后</h1><p>依赖注入降低了依赖和被依赖类型间的耦合，在修改被依赖的类型实现时，不需要修改依赖类型的实现，同时，对于依赖类型的测试，可以更方便的使用mocking object替代原有的被依赖类型，以达到对依赖对象独立进行单元测试的目的。</p><br><p>最后需要注意的是，依赖注入只是控制反转的一种实现方式。控制反转还有一种常见的实现方式称为依赖查找。</p><br><h1 id="转载">转载自</h1><br><a href="http://codethink.me/2015/08/01/dependency-injection-theory" target="_blank" rel="external">http://codethink.me/2015/08/01/dependency-injection-theory</a><br><br></span><br><br></div>
+
+
+
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/代码/" rel="tag">#代码</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/26/python之nosetests/" rel="prev">python之nosetests</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/20/flask之学习安装/" rel="next">flask之学习安装学习1</a>
+              <a href="/2016/02/01/linux之find文件夹/" rel="next">linux之find文件夹</a>
             
           </div>
         </div>
@@ -459,8 +468,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/25/flask之错误收集/"
-                   data-title="flask之错误收集" data-url="http://cyan-blue.github.io/2015/11/25/flask之错误收集/">
+              <div class="ds-thread" data-thread-key="2016/06/29/依赖注入原理/"
+                   data-title="依赖注入原理" data-url="http://cyan-blue.github.io/2016/06/29/依赖注入原理/">
               </div>
             
           </div>
@@ -567,7 +576,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-_前言"><span class="nav-number">1.</span> <span class="nav-text">0. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-_为什么需要依赖注入"><span class="nav-number">2.</span> <span class="nav-text">1. 为什么需要依赖注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-_依赖注入的实现方式"><span class="nav-number">3.</span> <span class="nav-text">2. 依赖注入的实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1_构造函数注入（Contructor_Injection）"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 构造函数注入（Contructor Injection）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2_setter注入"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 setter注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3_接口注入"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 接口注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-_最后"><span class="nav-number">4.</span> <span class="nav-text">3. 最后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转载"><span class="nav-number">5.</span> <span class="nav-text">转载自</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

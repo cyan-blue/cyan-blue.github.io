@@ -48,7 +48,7 @@
 <meta property="og:description" content="问题描述今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：123&amp;lt;td&amp;gt;    &amp;lt;pre&amp;gt;1234567890123456789012345678901234567890&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
 于是乎，上网找解决方法
 这是参考链接 segmentfault stackoverf">
-<meta property="og:updated_time" content="2015-11-06T01:20:18.986Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pre 使用">
 <meta name="twitter:description" content="问题描述今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：123&amp;lt;td&amp;gt;    &amp;lt;pre&amp;gt;1234567890123456789012345678901234567890&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
@@ -59,7 +59,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -424,16 +424,16 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="问题描述">问题描述</h1><p>今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">pre</span>&gt;</span>1234567890123456789012345678901234567890<span class="tag">&lt;/<span class="title">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天遇到一个问题，在table td中使用pre标签后，整个td被撑宽了，设置了td 和pre 的宽度也不起作用，代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span>1234567890123456789012345678901234567890<span class="tag">&lt;/<span class="name">pre</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>于是乎，上网找解决方法</p>
 <p>这是参考链接 <a href="http://segmentfault.com/q/1010000000271095" target="_blank" rel="external">segmentfault</a> <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685" target="_blank" rel="external">stackoverflow</a>.</p>
-<h2 id="1、fieldset或者td的设置宽度以后，为何会被撑宽？">1、fieldset或者td的设置宽度以后，为何会被撑宽？</h2><p>fieldset在没有内部元素时，是以block方式解析的，即外部100%宽度自适应；但设置width以后，本应当维持这个宽度了，为何会被撑宽呢？</p>
-<p>因为它的min-width属性，在CSS的属性的权重中，min-width &gt; width，在chrome里面：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">fieldset</span> <span class="rules">&#123; <span class="rule"><span class="attribute">min-width</span>:<span class="value"> -webkit-min-content</span></span>; &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>改变它的min-width就可以，复写它的值，或者改为inherit（考虑到是手机端开发，inherit是全支持的）都可以。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">fieldset</span> <span class="rules">&#123; <span class="rule"><span class="attribute">min-width</span>:<span class="value"> inherit</span></span>; &#125;</span></span><br><span class="line"><span class="comment">/*or*/</span></span><br><span class="line"><span class="tag">fieldset</span> <span class="rules">&#123; <span class="rule"><span class="attribute">min-width</span>:<span class="value"> <span class="number">100px</span></span></span>; &#125;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="2、pre元素为何会自动撑宽?">2、pre元素为何会自动撑宽?</h2><p>因为其white-space属性：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">pre</span> <span class="rules">&#123; <span class="rule"><span class="attribute">white-space</span>:<span class="value"> pre</span></span>; &#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="1、fieldset或者td的设置宽度以后，为何会被撑宽？"><a href="#1、fieldset或者td的设置宽度以后，为何会被撑宽？" class="headerlink" title="1、fieldset或者td的设置宽度以后，为何会被撑宽？"></a>1、fieldset或者td的设置宽度以后，为何会被撑宽？</h2><p>fieldset在没有内部元素时，是以block方式解析的，即外部100%宽度自适应；但设置width以后，本应当维持这个宽度了，为何会被撑宽呢？</p>
+<p>因为它的min-width属性，在CSS的属性的权重中，min-width &gt; width，在chrome里面：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">fieldset</span> &#123; <span class="attribute">min-width</span>: -webkit-min-content; &#125;</div></pre></td></tr></table></figure></p>
+<p>改变它的min-width就可以，复写它的值，或者改为inherit（考虑到是手机端开发，inherit是全支持的）都可以。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">fieldset</span> &#123; <span class="attribute">min-width</span>: inherit; &#125;</div><div class="line"><span class="comment">/*or*/</span></div><div class="line"><span class="selector-tag">fieldset</span> &#123; <span class="attribute">min-width</span>: <span class="number">100px</span>; &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2、pre元素为何会自动撑宽"><a href="#2、pre元素为何会自动撑宽" class="headerlink" title="2、pre元素为何会自动撑宽?"></a>2、pre元素为何会自动撑宽?</h2><p>因为其white-space属性：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">pre</span> &#123; <span class="attribute">white-space</span>: pre; &#125;</div></pre></td></tr></table></figure></p>
 <p>pre的语义既是预保留格式，这意味着（外部标签无法决定pre标签的宽度，pre标签自动包裹内部的文本节点，不忽略空白//有误，见下）。</p>
 <p>pre标签的宽度是由如下机制进行的：</p>
-<p>在内部内容不宽过父容器时，其宽度自适应于父容器；<br>在内部内容比父容器宽的时候，其宽度包裹内部内容。<br>这个机制类似于min-width，但比min-width还多了对于换行/空白符的处理，下面是w3school对于white-space属性值的解释：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">normal</span>  默认。空白会被浏览器忽略。</span><br><span class="line"><span class="keyword">pre</span> 空白会被浏览器保留。其行为方式类似 HTML 中的 &lt;<span class="keyword">pre</span>&gt; 标签。</span><br><span class="line">nowrap  文本不会换行，文本会在在同一行上继续，直到遇到 &lt;<span class="keyword">br</span>&gt; 标签为止。</span><br><span class="line"><span class="keyword">pre</span>-wrap    保留空白符序列，但是正常地进行换行。</span><br><span class="line"><span class="keyword">pre</span>-<span class="built_in">line</span>    合并空白符序列，但是保留换行符。</span><br><span class="line">inherit 规定应该从父元素继承 white-space 属性的值。</span><br></pre></td></tr></table></figure></p>
+<p>在内部内容不宽过父容器时，其宽度自适应于父容器；<br>在内部内容比父容器宽的时候，其宽度包裹内部内容。<br>这个机制类似于min-width，但比min-width还多了对于换行/空白符的处理，下面是w3school对于white-space属性值的解释：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">normal</span>  默认。空白会被浏览器忽略。</div><div class="line"><span class="keyword">pre</span> 空白会被浏览器保留。其行为方式类似 HTML 中的 <span class="symbol">&lt;pre&gt;</span> 标签。</div><div class="line">nowrap  文本不会换行，文本会在在同一行上继续，直到遇到 <span class="symbol">&lt;br&gt;</span> 标签为止。</div><div class="line"><span class="keyword">pre</span>-wrap    保留空白符序列，但是正常地进行换行。</div><div class="line"><span class="keyword">pre</span>-<span class="built_in">line</span>    合并空白符序列，但是保留换行符。</div><div class="line">inherit 规定应该从父元素继承 white-space 属性的值。</div></pre></td></tr></table></figure></p>
 <p>把white-space改为除了nowrap和pre以外的值即可符合你的要求。不过我想问，<strong>你真的需要修改pre标签的默认行为吗？</strong>改变pre标签的默认行为，即意味着你放弃了pre标签的原本语义。</p>
 <p>所以我们看看撑宽的路线：</p>
 <p>pre内部文本节点宽度—(<icode>white-space:pre</icode>撑宽机制)—&gt;pre宽度—(<icode style="color: #c7254e;">min-width</icode>自动包裹内部内容撑宽机制)—&gt;fieldset宽度。</p>
@@ -442,7 +442,7 @@
 <p>所以，有两种解决方案：</p>
 <ul>
 <li>破坏fieldset的min-width包裹机制，破坏pre的white-space撑宽机制，放弃pre标签的语义。</li>
-<li>破坏fieldset的min-width包裹机制，保留pre的white-space撑宽机制，给外层加上overflow，如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">fieldset</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">overflow</span>:<span class="value">scroll</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-overflow-scrolling</span>:<span class="value">touch</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-moz-overflow-scrolling</span>:<span class="value">touch</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-o-overflow-scrolling</span>:<span class="value">touch </span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<li>破坏fieldset的min-width包裹机制，保留pre的white-space撑宽机制，给外层加上overflow，如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">fieldset</span> &#123;</div><div class="line">  <span class="attribute">overflow</span>:scroll;</div><div class="line">  <span class="attribute">-webkit-overflow-scrolling</span>:touch;</div><div class="line">  <span class="attribute">-moz-overflow-scrolling</span>:touch;</div><div class="line">  <span class="attribute">-o-overflow-scrolling</span>:touch ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </span>
@@ -534,21 +534,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -587,7 +587,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
@@ -601,7 +601,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、fieldset或者td的设置宽度以后，为何会被撑宽？"><span class="nav-number">1.1.</span> <span class="nav-text">1、fieldset或者td的设置宽度以后，为何会被撑宽？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、pre元素为何会自动撑宽?"><span class="nav-number">1.2.</span> <span class="nav-text">2、pre元素为何会自动撑宽?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、fieldset或者td的设置宽度以后，为何会被撑宽？"><span class="nav-number">1.1.</span> <span class="nav-text">1、fieldset或者td的设置宽度以后，为何会被撑宽？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、pre元素为何会自动撑宽"><span class="nav-number">1.2.</span> <span class="nav-text">2、pre元素为何会自动撑宽?</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

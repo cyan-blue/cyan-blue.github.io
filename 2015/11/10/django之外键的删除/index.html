@@ -54,7 +54,7 @@ Django的models和底层的数据库联系很密切，models之间创建的关�
 django删除外键
 Django还是采用级联的删除方式，当你删除一个外键的时候，外键关联的实体也被删除，但在创建models的时候，外键增加了一个可选参数on_delete
   12class Blog（models.Model）:  	user =">
-<meta property="og:updated_time" content="2015-11-10T13:35:31.941Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="django之外键的删除">
 <meta name="twitter:description" content="Django的外键使用
@@ -68,7 +68,7 @@ Django还是采用级联的删除方式，当你删除一个外键的时候，�
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -445,12 +445,12 @@ Django还是采用级联的删除方式，当你删除一个外键的时候，�
       
 
       
-        <span itemprop="articleBody"><h1 id="Django的外键使用">Django的外键使用</h1><ul>
+        <span itemprop="articleBody"><h1 id="Django的外键使用"><a href="#Django的外键使用" class="headerlink" title="Django的外键使用"></a>Django的外键使用</h1><ul>
 <li>Django的models和底层的数据库联系很密切，models之间创建的关联，都直接映射到数据库，是真正的物理关联。</li>
 </ul>
-<h1 id="django删除外键">django删除外键</h1><ul>
+<h1 id="django删除外键"><a href="#django删除外键" class="headerlink" title="django删除外键"></a>django删除外键</h1><ul>
 <li><p>Django还是采用级联的删除方式，当你删除一个外键的时候，外键关联的实体也被删除，但在创建models的时候，外键增加了一个可选参数on_delete</p>
-  <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Blog</span>（models.<span class="type">Model</span>）:  </span><br><span class="line">	user = models.<span class="type">ForeignKey</span><span class="container">(<span class="type">User</span>, <span class="title">blank</span>=<span class="type">True</span>, <span class="title">null</span>=<span class="type">True</span>, <span class="title">on_delete</span>=<span class="title">models</span>.<span class="type">SET_NULL</span>)</span></span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">Blog</span>（models.<span class="type">Model</span>）:  </span></div><div class="line">	user = models.<span class="type">ForeignKey</span>(<span class="type">User</span>, <span class="title">blank</span>=<span class="type">True</span>, <span class="title">null</span>=<span class="type">True</span>, <span class="title">on_delete</span>=<span class="title">models</span>.<span class="type">SET_NULL</span>)</div></pre></td></tr></table></figure>
 <p>  当blog对应的user被删除了，blog里的user字段会设置为空值，而不是连同blog也删除掉</p>
 </li>
 <li><p>on_delete有多少个选项呢：</p>
@@ -460,27 +460,27 @@ Django还是采用级联的删除方式，当你删除一个外键的时候，�
 <li>SET_NULL: 置空模式，删除的时候，外键字段被设置为空，前提就是blank=True, null=True,定义该字段的时候，允许为空。</li>
 <li>SET_DEFAULT: 置默认值，删除的时候，外键字段设置为默认值，所以定义外键的时候注意加上一个默认值。</li>
 <li><p>SET(): 自定义一个值，该值当然只能是对应的实体了，看一下代码：    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_sentinel_user</span><span class="params">()</span>:</span>  </span><br><span class="line">    <span class="keyword">return</span> User.objects.get_or_create(username=<span class="string">'deleted'</span>)[<span class="number">0</span>]  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyModel</span><span class="params">(models.Model)</span>:</span>  </span><br><span class="line">    user = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_sentinel_user</span><span class="params">()</span>:</span>  </div><div class="line">    <span class="keyword">return</span> User.objects.get_or_create(username=<span class="string">'deleted'</span>)[<span class="number">0</span>]  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyModel</span><span class="params">(models.Model)</span>:</span>  </div><div class="line">    user = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))</div></pre></td></tr></table></figure>
 <p>以上的代码，当删除mymodel对应的user的时候，mymodel不会删除掉，而是找到一个名叫 deleted的user，与之重建关联。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="手动增加外键">手动增加外键</h1><ul>
+<h1 id="手动增加外键"><a href="#手动增加外键" class="headerlink" title="手动增加外键"></a>手动增加外键</h1><ul>
 <li><p>作为外键的model为（该model从数据库中自动产生）：</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.TextField(primary_key=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    entrance_date = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    entrance_semester = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    degree = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    phone_number = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    email = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    qq = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    remarks = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">u'people'</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.TextField(primary_key=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    entrance_date = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    entrance_semester = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    degree = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    phone_number = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    email = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    qq = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    remarks = models.TextField(blank=<span class="keyword">True</span>)  <span class="comment"># This field type is a guess.</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        db_table = <span class="string">u'people'</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>另一Model(Equipment)追加一个字段：</p>
-  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lab_user = models.<span class="function"><span class="title">ForeignKey</span><span class="params">(People)</span></span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">lab_user</span> = models.ForeignKey(People)</div></pre></td></tr></table></figure>
 </li>
 <li><p>数据库（sqlite3）中新加入一个字段：</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="string">'equipment'</span> <span class="keyword">add</span> <span class="string">'lab_user_id'</span>;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="string">'equipment'</span> <span class="keyword">add</span> <span class="string">'lab_user_id'</span>;</div></pre></td></tr></table></figure>
 </li>
 <li><p>赋值：</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">update</span> equipment <span class="keyword">set</span> lab_user_id = <span class="string">'张山'</span>;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update equipment <span class="keyword">set</span> lab_user_id <span class="comment">=</span> <span class="comment">'张山'</span>;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="在admin中添加外键search字段">在admin中添加外键search字段</h1><p>若要被search到，search_fields 中添加 lab_user__name 。</p>
+<h1 id="在admin中添加外键search字段"><a href="#在admin中添加外键search字段" class="headerlink" title="在admin中添加外键search字段"></a>在admin中添加外键search字段</h1><p>若要被search到，search_fields 中添加 lab_user__name 。</p>
 </span>
       
     </div>
@@ -570,21 +570,21 @@ Django还是采用级联的删除方式，当你删除一个外键的时候，�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -623,7 +623,7 @@ Django还是采用级联的删除方式，当你删除一个外键的时候，�
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

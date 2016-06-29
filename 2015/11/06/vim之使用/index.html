@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Vim," />
+  <meta name="keywords" content="Vim,Linux," />
 
 
 
@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="Vim安装1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
 1234567891011121314151617181920212223242526272829#!/bin/bashecho &quot;安装将花费一定时间，请耐心等待直到安装完成^_^&quot;if which apt-get &amp;gt;/dev/null; then	s">
-<meta property="og:updated_time" content="2015-11-09T01:45:58.755Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim之使用">
 <meta name="twitter:description" content="Vim安装1wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh
@@ -56,7 +56,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -421,9 +421,9 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Vim安装">Vim安装</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/ma6174/<span class="keyword">vim</span>/master/setup.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装将花费一定时间，请耐心等待直到安装完成^_^"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">which</span> apt-get &gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">	sudo apt-get install -y vim vim-gnome ctags xclip astyle python-setuptools python-dev git</span><br><span class="line"><span class="keyword">elif</span> <span class="built_in">which</span> yum &gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">	sudo yum install -y gcc vim git ctags xclip astyle python-setuptools python-devel	</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##Add HomeBrew support on  Mac OS</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">which</span> brew &gt;/dev/null;<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"You are using HomeBrew tool"</span></span><br><span class="line">    brew install vim ctags git astyle</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sudo easy_install -ZU autopep8 </span><br><span class="line">sudo ln <span class="operator">-s</span> /usr/bin/ctags /usr/<span class="built_in">local</span>/bin/ctags</span><br><span class="line">mv <span class="operator">-f</span> ~/vim ~/vim_old</span><br><span class="line"><span class="built_in">cd</span> ~/ &amp;&amp; git <span class="built_in">clone</span> https://github.com/ma6174/vim.git</span><br><span class="line">mv <span class="operator">-f</span> ~/.vim ~/.vim_old</span><br><span class="line">mv <span class="operator">-f</span> ~/vim ~/.vim</span><br><span class="line">mv <span class="operator">-f</span> ~/.vimrc ~/.vimrc_old</span><br><span class="line">mv <span class="operator">-f</span> ~/.vim/.vimrc ~/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ma6174正在努力为您安装bundle程序"</span> &gt; ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装完毕将自动退出"</span> &gt;&gt; ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"请耐心等待"</span> &gt;&gt; ma6174</span><br><span class="line">vim ma6174 -c <span class="string">"BundleInstall"</span> -c <span class="string">"q"</span> -c <span class="string">"q"</span></span><br><span class="line">rm ma6174</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"安装完成"</span></span><br></pre></td></tr></table></figure>
-<h1 id="Vim_使用">Vim 使用</h1><ul>
+        <span itemprop="articleBody"><h1 id="Vim安装"><a href="#Vim安装" class="headerlink" title="Vim安装"></a>Vim安装</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/ma6174/<span class="keyword">vim</span>/master/setup.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"安装将花费一定时间，请耐心等待直到安装完成^_^"</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">which</span> apt-get &gt;/dev/null; <span class="keyword">then</span></div><div class="line">	sudo apt-get install -y vim vim-gnome ctags xclip astyle python-setuptools python-dev git</div><div class="line"><span class="keyword">elif</span> <span class="built_in">which</span> yum &gt;/dev/null; <span class="keyword">then</span></div><div class="line">	sudo yum install -y gcc vim git ctags xclip astyle python-setuptools python-devel	</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment">##Add HomeBrew support on  Mac OS</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">which</span> brew &gt;/dev/null;<span class="keyword">then</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"You are using HomeBrew tool"</span></div><div class="line">    brew install vim ctags git astyle</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line">sudo easy_install -ZU autopep8 </div><div class="line">sudo ln <span class="_">-s</span> /usr/bin/ctags /usr/<span class="built_in">local</span>/bin/ctags</div><div class="line">mv <span class="_">-f</span> ~/vim ~/vim_old</div><div class="line"><span class="built_in">cd</span> ~/ &amp;&amp; git <span class="built_in">clone</span> https://github.com/ma6174/vim.git</div><div class="line">mv <span class="_">-f</span> ~/.vim ~/.vim_old</div><div class="line">mv <span class="_">-f</span> ~/vim ~/.vim</div><div class="line">mv <span class="_">-f</span> ~/.vimrc ~/.vimrc_old</div><div class="line">mv <span class="_">-f</span> ~/.vim/.vimrc ~/</div><div class="line">git <span class="built_in">clone</span> https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle</div><div class="line"><span class="built_in">echo</span> <span class="string">"ma6174正在努力为您安装bundle程序"</span> &gt; ma6174</div><div class="line"><span class="built_in">echo</span> <span class="string">"安装完毕将自动退出"</span> &gt;&gt; ma6174</div><div class="line"><span class="built_in">echo</span> <span class="string">"请耐心等待"</span> &gt;&gt; ma6174</div><div class="line">vim ma6174 -c <span class="string">"BundleInstall"</span> -c <span class="string">"q"</span> -c <span class="string">"q"</span></div><div class="line">rm ma6174</div><div class="line"><span class="built_in">echo</span> <span class="string">"安装完成"</span></div></pre></td></tr></table></figure>
+<h1 id="Vim-使用"><a href="#Vim-使用" class="headerlink" title="Vim 使用"></a>Vim 使用</h1><ul>
 <li>:Tlist  #概略图  <ul>
 <li>快捷开关键 <code style="color:green">tl</code></li>
 </ul>
@@ -447,8 +447,8 @@
 </li>
 </ul>
 <p><a href="https://github.com/qiwsir/vim/blob/master/tips.md" target="_blank" rel="external">vim 使用</a></p>
-<h2 id="vim_使用tip">vim 使用tip</h2><p>编写python程序</p>
-<p>自动插入头信息：<br><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/usr/bin/env python</span></span><br><span class="line"># coding=utf-<span class="number">8</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="vim-使用tip"><a href="#vim-使用tip" class="headerlink" title="vim 使用tip"></a>vim 使用tip</h2><p>编写python程序</p>
+<p>自动插入头信息：<br><figure class="highlight d"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env python</span></div><div class="line"># coding=utf-<span class="number">8</span></div></pre></td></tr></table></figure></p>
 <p>输入.或按TAB键会触发代码补全功能</p>
 <p>:w保存代码之后会自动检查代码错误与规范</p>
 <p>按F6可以按pep8格式对代码格式优化<br>按F5可以一键执行代码<br>F3: documents tree<br>多窗口操作</p>
@@ -468,9 +468,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag">#Linux</a>
-          
             <a href="/tags/Vim/" rel="tag">#Vim</a>
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
           
         </div>
       
@@ -551,21 +551,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -604,7 +604,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
@@ -618,7 +618,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim安装"><span class="nav-number">1.</span> <span class="nav-text">Vim安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim_使用"><span class="nav-number">2.</span> <span class="nav-text">Vim 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim_使用tip"><span class="nav-number">2.1.</span> <span class="nav-text">vim 使用tip</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim安装"><span class="nav-number">1.</span> <span class="nav-text">Vim安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-使用"><span class="nav-number">2.</span> <span class="nav-text">Vim 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-使用tip"><span class="nav-number">2.1.</span> <span class="nav-text">vim 使用tip</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

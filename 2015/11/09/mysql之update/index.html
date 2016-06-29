@@ -46,7 +46,7 @@ Multiple-table语法：123UPDATE">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="Single-table语法：12345UPDATE [LOW_PRIORITY] [IGNORE] tbl_name    SET col_name1=expr1 [, col_name2=expr2 ...]    [WHERE where_definition]    [ORDER BY ...]    [LIMIT row_count]
 Multiple-table语法：123UPDATE">
-<meta property="og:updated_time" content="2015-11-10T03:57:22.444Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql之update">
 <meta name="twitter:description" content="Single-table语法：12345UPDATE [LOW_PRIORITY] [IGNORE] tbl_name    SET col_name1=expr1 [, col_name2=expr2 ...]    [WHERE where_definition]    [ORDER BY ...]    [LIMIT row_count]
@@ -56,7 +56,7 @@ Multiple-table语法：123UPDATE">
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -421,17 +421,17 @@ Multiple-table语法：123UPDATE">
       
 
       
-        <span itemprop="articleBody"><p>Single-table语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> [<span class="keyword">LOW_PRIORITY</span>] [<span class="keyword">IGNORE</span>] tbl_name</span><br><span class="line">    <span class="keyword">SET</span> col_name1=expr1 [, col_name2=expr2 ...]</span><br><span class="line">    [<span class="keyword">WHERE</span> where_definition]</span><br><span class="line">    [<span class="keyword">ORDER</span> <span class="keyword">BY</span> ...]</span><br><span class="line">    [<span class="keyword">LIMIT</span> <span class="keyword">row_count</span>]</span></span><br></pre></td></tr></table></figure></p>
-<p>Multiple-table语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> [<span class="keyword">LOW_PRIORITY</span>] [<span class="keyword">IGNORE</span>] table_references</span><br><span class="line">    <span class="keyword">SET</span> col_name1=expr1 [, col_name2=expr2 ...]</span><br><span class="line">    [<span class="keyword">WHERE</span> where_definition]</span></span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>Single-table语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> [<span class="keyword">LOW_PRIORITY</span>] [<span class="keyword">IGNORE</span>] tbl_name</div><div class="line">    <span class="keyword">SET</span> col_name1=expr1 [, col_name2=expr2 ...]</div><div class="line">    [<span class="keyword">WHERE</span> where_definition]</div><div class="line">    [<span class="keyword">ORDER</span> <span class="keyword">BY</span> ...]</div><div class="line">    [<span class="keyword">LIMIT</span> <span class="keyword">row_count</span>]</div></pre></td></tr></table></figure></p>
+<p>Multiple-table语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> [<span class="keyword">LOW_PRIORITY</span>] [<span class="keyword">IGNORE</span>] table_references</div><div class="line">    <span class="keyword">SET</span> col_name1=expr1 [, col_name2=expr2 ...]</div><div class="line">    [<span class="keyword">WHERE</span> where_definition]</div></pre></td></tr></table></figure></p>
 <p>UPDATE语法可以用新值更新原有表行中的各列。SET子句指示要修改哪些列和要给予哪些值。WHERE子句指定应更新哪些行。如果没有WHERE子句，则更新所有的行。如果指定了ORDER BY子句，则按照被指定的顺序对行进行更新。LIMIT子句用于给定一个限值，限制可以被更新的行的数目。</p>
-<p>如果您在一个表达式中通过tbl_name访问一列，则UPDATE使用列中的当前值。例如，以下语句把年龄列设置为比当前值多一：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> persondata <span class="keyword">SET</span> age=age+<span class="number">1</span>;</span></span><br></pre></td></tr></table></figure></p>
-<p>UPDATE赋值被从左到右评估。例如，以下语句对年龄列加倍，然后再进行增加：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> persondata <span class="keyword">SET</span> age=age*<span class="number">2</span>, age=age+<span class="number">1</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果您在一个表达式中通过tbl_name访问一列，则UPDATE使用列中的当前值。例如，以下语句把年龄列设置为比当前值多一：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> persondata <span class="keyword">SET</span> age=age+<span class="number">1</span>;</div></pre></td></tr></table></figure></p>
+<p>UPDATE赋值被从左到右评估。例如，以下语句对年龄列加倍，然后再进行增加：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> persondata <span class="keyword">SET</span> age=age*<span class="number">2</span>, age=age+<span class="number">1</span>;</div></pre></td></tr></table></figure></p>
 <p>如果您把一列设置为其当前含有的值，则MySQL会注意到这一点，但不会更新。</p>
-<p>update表的某些字段为null<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">update</span> person <span class="keyword">set</span> <span class="built_in">number</span>=<span class="literal">null</span>,<span class="keyword">name</span>=<span class="literal">null</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>update表的某些字段为null<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> person <span class="keyword">set</span> <span class="built_in">number</span>=<span class="literal">null</span>,<span class="keyword">name</span>=<span class="literal">null</span>;</div></pre></td></tr></table></figure></p>
 <p>如果您把被已定义为NOT NULL的列更新为NULL，则该列被设置到与列类型对应的默认值，并且累加警告数。对于数字类型，默认值为0；对于字符串类型，默认值为空字符串(‘’)；对于日期和时间类型，默认值为“zero”值。</p>
 <p>多个表的UPDATE操作</p>
 <p>UPDATE items,month SET items.price=month.price WHERE items.id=month.id;<br>以上的例子显示出了使用逗号操作符的内部联合，但是multiple-table UPDATE语句可以使用在SELECT语句中允许的任何类型的联合，比如LEFT JOIN，但是您不能把ORDER BY或LIMIT与multiple-table UPDATE同时使用。</p>
-<p>例子：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">update</span> product <span class="keyword">set</span> contactor_id=<span class="number">57</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">491294</span> ;</span></span><br></pre></td></tr></table></figure></p>
+<p>例子：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> product <span class="keyword">set</span> contactor_id=<span class="number">57</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">491294</span> ;</div></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -521,21 +521,21 @@ Multiple-table语法：123UPDATE">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -574,7 +574,7 @@ Multiple-table语法：123UPDATE">
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

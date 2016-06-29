@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql" />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -38,34 +38,31 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="linux统计文件夹中文件数目Jan 30, 2008转载自乌秋博客
-第一种方法：
-ls -l|grep “^-“|wc -l
+<meta name="description" content="linux统计文件夹中文件数目第一种方法‘’’ ls -l|grep “^-“|wc -l #这儿是列出当前目录下面的总共的文件夹数量’’’
+
 ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文件一起统计。
-grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^">
+grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux之find文件夹">
 <meta property="og:url" content="http://cyan-blue.github.io/2016/02/01/linux之find文件夹/index.html">
 <meta property="og:site_name" content="Yann's Blog">
-<meta property="og:description" content="linux统计文件夹中文件数目Jan 30, 2008转载自乌秋博客
-第一种方法：
-ls -l|grep “^-“|wc -l
+<meta property="og:description" content="linux统计文件夹中文件数目第一种方法‘’’ ls -l|grep “^-“|wc -l #这儿是列出当前目录下面的总共的文件夹数量’’’
+
 ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文件一起统计。
-grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^">
-<meta property="og:updated_time" content="2016-02-01T09:54:29.619Z">
+grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只">
+<meta property="og:updated_time" content="2016-06-29T15:52:33.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux之find文件夹">
-<meta name="twitter:description" content="linux统计文件夹中文件数目Jan 30, 2008转载自乌秋博客
-第一种方法：
-ls -l|grep “^-“|wc -l
+<meta name="twitter:description" content="linux统计文件夹中文件数目第一种方法‘’’ ls -l|grep “^-“|wc -l #这儿是列出当前目录下面的总共的文件夹数量’’’
+
 ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文件一起统计。
-grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^">
+grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -395,6 +392,21 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
         </span>
 
         
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <span itemprop="name">Linux</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -415,15 +427,16 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
       
 
       
-        <span itemprop="articleBody"><p>linux统计文件夹中文件数目<br>Jan 30, 2008<br>转载自乌秋博客</p>
-<p>第一种方法：</p>
-<p>ls -l|grep “^-“|wc -l</p>
-<p>ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文件一起统计。</p>
-<p>grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^d</p>
-<p>wc -l 统计输出信息的行数，因为已经过滤得只剩一般文件了，所以统计结果就是一般文件信息的行数，又由于一行信息对应一个文件，所以也就是文件的个数。</p>
-<p>第二种方法：</p>
-<p>find ./ -type f|wc -l</p>
-<p>由于默认find会去子目录查找，如果只想查找当前目录的文件用find ./ -maxdepth 1 -type f|wc -l即可。</p>
+        <span itemprop="articleBody"><h2 id="linux统计文件夹中文件数目"><a href="#linux统计文件夹中文件数目" class="headerlink" title="linux统计文件夹中文件数目"></a>linux统计文件夹中文件数目</h2><h5 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h5><p>‘’’ ls -l|grep “^-“|wc -l #这儿是列出当前目录下面的总共的文件夹数量’’’</p>
+<ul>
+<li>ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文件一起统计。</li>
+<li>grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^d</li>
+<li>wc -l 统计输出信息的行数，因为已经过滤得只剩一般文件了，所以统计结果就是一般文件信息的行数，又由于一行信息对应一个文件，所以也就是文件的个数。</li>
+</ul>
+<h4 id="第二种方法："><a href="#第二种方法：" class="headerlink" title="第二种方法："></a>第二种方法：</h4><p><code>find ./ -type f|wc -l</code></p>
+<ul>
+<li>由于默认find会去子目录查找，如果只想查找当前目录的文件用find ./ -maxdepth 1 -type f|wc -l即可。</li>
+</ul>
 <p>需要说明的是第二种方法会比第一种方法快很多，尤其是也统计子目录时。</p>
 </span>
       
@@ -431,10 +444,18 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/29/依赖注入原理/" rel="prev">依赖注入原理</a>
             
           </div>
 
@@ -506,21 +527,21 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -559,7 +580,7 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
@@ -573,7 +594,7 @@ grep ^- 这里将长列表输出信息过滤一部分，只保留一般文件，
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux统计文件夹中文件数目"><span class="nav-number">1.</span> <span class="nav-text">linux统计文件夹中文件数目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一种方法"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">第一种方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方法："><span class="nav-number">1.0.1.</span> <span class="nav-text">第二种方法：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

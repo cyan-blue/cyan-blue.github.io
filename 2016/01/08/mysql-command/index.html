@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql" />
+  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql,代码" />
 
 
 
@@ -44,7 +44,7 @@
 <meta property="og:url" content="http://cyan-blue.github.io/2016/01/08/mysql-command/index.html">
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="1234567891011121314151617181920SET character_set_client = utf8;SET character_set_connection = utf8;SET character_set_database = utf8;SET character_set_results = utf8;SET character_set_server = utf8;SE">
-<meta property="og:updated_time" content="2016-01-08T02:11:19.713Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql_command">
 <meta name="twitter:description" content="1234567891011121314151617181920SET character_set_client = utf8;SET character_set_connection = utf8;SET character_set_database = utf8;SET character_set_results = utf8;SET character_set_server = utf8;SE">
@@ -53,7 +53,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -403,7 +403,7 @@
       
 
       
-        <span itemprop="articleBody"><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SET</span> character_set_client = utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">SET</span> character_set_connection = utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">SET</span> character_set_database = utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">SET</span> character_set_results = utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">SET</span> character_set_server = utf8;</span></span><br><span class="line"><span class="operator"><span class="keyword">SET</span> default_storage_engine=<span class="keyword">INNODB</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">engines</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">"have_%"</span>;</span> </span><br><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">databases</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">use</span> AAA;</span></span><br><span class="line"><span class="operator"><span class="keyword">drop</span> <span class="keyword">database</span> AAA;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> AAA  <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> gbk <span class="keyword">COLLATE</span> gbk_chinese_ci;</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> AAA <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'collation_%'</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'character_set_server'</span>;</span> </span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">tables</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">create</span>  <span class="keyword">table</span> order_history;</span></span><br><span class="line"><span class="operator"><span class="keyword">alter</span> <span class="keyword">database</span> AAA <span class="built_in">character</span> <span class="keyword">set</span> gbk;</span></span><br><span class="line"><span class="operator"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`role`</span>;</span></span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> character_set_client = utf8;</div><div class="line"><span class="keyword">SET</span> character_set_connection = utf8;</div><div class="line"><span class="keyword">SET</span> character_set_database = utf8;</div><div class="line"><span class="keyword">SET</span> character_set_results = utf8;</div><div class="line"><span class="keyword">SET</span> character_set_server = utf8;</div><div class="line"><span class="keyword">SET</span> default_storage_engine=<span class="keyword">INNODB</span>;</div><div class="line"><span class="keyword">show</span> <span class="keyword">engines</span>;</div><div class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">"have_%"</span>; </div><div class="line"></div><div class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</div><div class="line"><span class="keyword">use</span> AAA;</div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> AAA;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> AAA  <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> gbk <span class="keyword">COLLATE</span> gbk_chinese_ci;</div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> AAA <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</div><div class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'collation_%'</span>;</div><div class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'character_set_server'</span>; </div><div class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</div><div class="line"><span class="keyword">show</span> <span class="keyword">create</span>  <span class="keyword">table</span> order_history;</div><div class="line"><span class="keyword">alter</span> <span class="keyword">database</span> AAA <span class="built_in">character</span> <span class="keyword">set</span> gbk;</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`role`</span>;</div></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -486,21 +486,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -539,7 +539,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

@@ -45,16 +45,17 @@
 <meta property="og:site_name" content="Yann's Blog">
 <meta property="og:description" content="Django中favicon.ico文件的配置默认情况下，浏览器访问一个网站的时候，同时还会向服务器请求“/favicon.ico”这个URL，目的是获取网站的图标。默认情况下，Django会返回404错误的，只是这个错误不会打印出来，并且浏览器接收到这个404错误后，也无伤大雅，因为没有图标就用默认的图标，所以这个错误也没有跟通常的404错误一样在网页上显示出来。不过我们还是应该给网站配置一个图">
 <meta property="og:image" content="http://huangyan.qiniudn.com/django-learn.png?imageMogr2/thumbnail/600x400">
-<meta property="og:updated_time" content="2015-11-06T01:20:19.002Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django中favicon.ico文件的配置">
 <meta name="twitter:description" content="Django中favicon.ico文件的配置默认情况下，浏览器访问一个网站的时候，同时还会向服务器请求“/favicon.ico”这个URL，目的是获取网站的图标。默认情况下，Django会返回404错误的，只是这个错误不会打印出来，并且浏览器接收到这个404错误后，也无伤大雅，因为没有图标就用默认的图标，所以这个错误也没有跟通常的404错误一样在网页上显示出来。不过我们还是应该给网站配置一个图">
+<meta name="twitter:image" content="http://huangyan.qiniudn.com/django-learn.png?imageMogr2/thumbnail/600x400">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -419,7 +420,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Django中favicon-ico文件的配置">Django中favicon.ico文件的配置</h1><p>默认情况下，浏览器访问一个网站的时候，同时还会向服务器请求“/favicon.ico”这个URL，目的是获取网站的图标。默认情况下，Django会返回404错误的，只是这个错误不会打印出来，并且浏览器接收到这个404错误后，也无伤大雅，因为没有图标就用默认的图标，所以这个错误也没有跟通常的404错误一样在网页上显示出来。<br>不过我们还是应该给网站配置一个图标，这样用户体验会更好一些。<br>配置favicon.ico文件，可以在url.py文件中这样配置：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># favicon.cio</span></span><br><span class="line">url(<span class="string">r'^favicon\.ico$'</span>, <span class="string">'django.views.generic.simple.redirect_to'</span>, &#123;<span class="string">'url'</span>:<span class="string">'/static/images/favicon.ico'</span>&#125;),</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><h1 id="Django中favicon-ico文件的配置"><a href="#Django中favicon-ico文件的配置" class="headerlink" title="Django中favicon.ico文件的配置"></a>Django中favicon.ico文件的配置</h1><p>默认情况下，浏览器访问一个网站的时候，同时还会向服务器请求“/favicon.ico”这个URL，目的是获取网站的图标。默认情况下，Django会返回404错误的，只是这个错误不会打印出来，并且浏览器接收到这个404错误后，也无伤大雅，因为没有图标就用默认的图标，所以这个错误也没有跟通常的404错误一样在网页上显示出来。<br>不过我们还是应该给网站配置一个图标，这样用户体验会更好一些。<br>配置favicon.ico文件，可以在url.py文件中这样配置：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># favicon.cio</span></div><div class="line">url(<span class="string">r'^favicon\.ico$'</span>, <span class="string">'django.views.generic.simple.redirect_to'</span>, &#123;<span class="string">'url'</span>:<span class="string">'/static/images/favicon.ico'</span>&#125;),</div></pre></td></tr></table></figure></p>
 <p>不过这个有个前提是在Django中，配置静态文件的支持。</p>
 <p>然后在static/images目录下放一个名为favicon.ico的图片就大功告成了。</p>
 <p><img src="http://huangyan.qiniudn.com/django-learn.png?imageMogr2/thumbnail/600x400" alt="一起使用django" title="一起使用django"></p>
@@ -512,21 +513,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -565,7 +566,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

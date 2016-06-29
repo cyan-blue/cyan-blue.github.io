@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql" />
+  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql,代码" />
 
 
 
@@ -52,7 +52,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -369,6 +369,98 @@
           
           
             
+              <a class="post-title-link" href="/2016/06/29/依赖注入原理/" itemprop="url">
+                依赖注入原理
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-29T23:56:58+08:00" content="2016-06-29">
+            2016-06-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/代码/" itemprop="url" rel="index">
+                  <span itemprop="name">代码</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/06/29/依赖注入原理/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/依赖注入原理/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            0. 前言在软件工程领域，依赖注入（Dependency Injection）是用于实现控制反转（Inversion of Control）的最常见的方式之一。本文主要介绍依赖注入原理和常见的实现方式，重点在于介绍这种年轻的设计模式的适用场景及优势。1. 为什么需要依赖注入控制反转用于解耦，解的究竟
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/29/依赖注入原理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/01/linux之find文件夹/" itemprop="url">
                 linux之find文件夹
               </a>
@@ -385,6 +477,21 @@
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <span itemprop="name">Linux</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -409,10 +516,9 @@
         
           <span itemprop="articleBody">
             
-            linux统计文件夹中文件数目Jan 30, 2008转载自乌秋博客
-第一种方法：
-ls -l|grep “^-“|wc -l
-ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可以连子目录下的文
+            linux统计文件夹中文件数目第一种方法‘’’ ls -l|grep “^-“|wc -l #这儿是列出当前目录下面的总共的文件夹数量’’’
+
+ls -l 长列表输出该目录下文件信息(注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)。如果ls -lR|grep “^-“|wc-l则可
             ...
           </span>
           <div class="post-more-link text-center">
@@ -1092,84 +1198,6 @@ pip install Flask
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/18/android之oom/" itemprop="url">
-                android之oom
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-18T19:43:42+08:00" content="2015-11-18">
-            2015-11-18
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/18/android之oom/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/android之oom/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            oom
-一种比较直接的方法，简单粗暴的解决是在Manifest.xml文件里面的12345678&lt;application        android:name=".app.Application"        android:allowBackup="true"        androi
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/18/android之oom/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1208,21 +1236,21 @@ pip install Flask
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -1261,7 +1289,7 @@ pip install Flask
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           

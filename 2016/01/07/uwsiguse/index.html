@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql" />
+  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql,代码" />
 
 
 
@@ -48,7 +48,7 @@ uwsgi –http :8000 –wsgi-file test.py
 <meta property="og:description" content="test.pydef application(env, start_response):    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])    return ‘Welcome to MuxiStudio!’然后，Run uWSGI:
 uwsgi –http :8000 –wsgi-file test.py
 抵不住朋友的诱惑，今">
-<meta property="og:updated_time" content="2016-01-08T02:14:28.882Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="uwsiguse">
 <meta name="twitter:description" content="test.pydef application(env, start_response):    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])    return ‘Welcome to MuxiStudio!’然后，Run uWSGI:
@@ -59,7 +59,7 @@ uwsgi –http :8000 –wsgi-file test.py
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -409,7 +409,7 @@ uwsgi –http :8000 –wsgi-file test.py
       
 
       
-        <span itemprop="articleBody"><h1 id="test-py">test.py</h1><p>def application(env, start_response):<br>    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])<br>    return ‘Welcome to MuxiStudio!’<br>然后，Run uWSGI:</p>
+        <span itemprop="articleBody"><h1 id="test-py"><a href="#test-py" class="headerlink" title="test.py"></a>test.py</h1><p>def application(env, start_response):<br>    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])<br>    return ‘Welcome to MuxiStudio!’<br>然后，Run uWSGI:</p>
 <p>uwsgi –http :8000 –wsgi-file test.py</p>
 <p>抵不住朋友的诱惑，今天终于入手了一台阿里云服务器，是Ubuntu 1.4 32位版本，最初考虑是用来尝尝鲜只是买了个最低配的，价格算起来与在国外买个空间的价格相当吧（可能一年才贵100多），但用起来感觉就很不错，速度那是一个字：快。</p>
 <p>自从倒戈向Linux世界后，对于一切大而全的开发框架与软件都有一种不讨喜的感觉，个人更喜欢于使用那些小而精，高性能高产生力的软件和开发框架，So 我现在的第一语言是Python和Coffee，开发框架就当然是 AngularJS (前端) + Flask (后端) ，关于 AngularJS 与 Flask 不在本文的叙述范围之内，本文解决的是 Flask 最后一公里的问题：Linux 部署。</p>
@@ -444,7 +444,7 @@ uwsgi –http :8000 –wsgi-file test.py
 <p>#!/usr/bin/env python<br>import os</p>
 <p>if os.path.exists(‘.env’):<br>    print(‘Importing environment from .env…’)<br>    for line in open(‘.env’):<br>        var = line.strip().split(‘=’)<br>        if len(var) == 2:<br>            os.environ[var[0]] = var[1]</p>
 <p>from app import create_app<br>from flask.ext.script import Manager, Shell</p>
-<h1 id="通过配置创建_app">通过配置创建 app</h1><p>app = create_app(os.getenv(‘FLASK_CONFIG’) or ‘default’)<br>manager = Manager(app)</p>
+<h1 id="通过配置创建-app"><a href="#通过配置创建-app" class="headerlink" title="通过配置创建 app"></a>通过配置创建 app</h1><p>app = create_app(os.getenv(‘FLASK_CONFIG’) or ‘default’)<br>manager = Manager(app)</p>
 <p>def make_shell_context():<br>    return dict(app=app)</p>
 <p>manager.add_command(“shell”, Shell(make_context=make_shell_context))</p>
 <p>@manager.command<br>def deploy():<br>    “””Run deployment tasks.”””<br>    pass</p>
@@ -454,39 +454,39 @@ uwsgi –http :8000 –wsgi-file test.py
 <p>www/<br>└── my_flask<br>│   ├── logs<br>│   └── venv  //虚拟目录<br>│   │   ├── bin<br>│   │   │         ├── activate<br>│   │   │         ├── easy_install<br>│   │   │         ├── gunicorn<br>│   │   │         ├── pip<br>│   │   │         └── python<br>│   │   ├── include<br>│   │   │          └── python2.7 -&gt; /usr/include/python2.7<br>│   │   ├── lib<br>│   │   │         └── python2.7<br>│   │   ├── local<br>│   │   │         ├── bin -&gt; /home/shenye/shenyefuli/bin<br>│   │   │         ├── include -&gt; /home/shenye/shenyefuli/include<br>│   │   │         └── lib -&gt; /home/shenye/shenyefuli/lib<br>│   └── app  //Flask 程序目录<br>│   │           └──  <strong>init</strong>.py //这是程序包文件。这个目录下还有其它的文件此处略过<br>│   ├── manage.py<br>│   ├── requirements.txt<br>配置 uwsgi<br>好了，项目的准备工作已经做完了，是时候回过头去配置 uwsgi 了，它的具体指令可以去看它的官方文档，我们在这里采用其中的一种指令方式：配置起动。我采用 .ini文件作为配置，在项目目录下创建一个 confg.ini （具体见下文）写好后可以这样执行</p>
 <p>(venv)my_flask root$ uwsgi config.ini<br>我认为是最简单的方式，也容易更改。好了重要部分来了，config.ini 是这样写的：</p>
 <p>[uwsgi]</p>
-<h1 id="uwsgi_启动时所使用的地址与端口">uwsgi 启动时所使用的地址与端口</h1><p>socket = 127.0.0.1:8001 </p>
-<h1 id="指向网站目录">指向网站目录</h1><p>chdir = /home/www/my_flask</p>
-<h1 id="python_启动程序文件">python 启动程序文件</h1><p>wsgi-file = manage.py </p>
-<h1 id="python_程序内用以启动的_application_变量名">python 程序内用以启动的 application 变量名</h1><p>callable = app </p>
-<h1 id="处理器数">处理器数</h1><p>processes = 4</p>
-<h1 id="线程数">线程数</h1><p>threads = 2</p>
+<h1 id="uwsgi-启动时所使用的地址与端口"><a href="#uwsgi-启动时所使用的地址与端口" class="headerlink" title="uwsgi 启动时所使用的地址与端口"></a>uwsgi 启动时所使用的地址与端口</h1><p>socket = 127.0.0.1:8001 </p>
+<h1 id="指向网站目录"><a href="#指向网站目录" class="headerlink" title="指向网站目录"></a>指向网站目录</h1><p>chdir = /home/www/my_flask</p>
+<h1 id="python-启动程序文件"><a href="#python-启动程序文件" class="headerlink" title="python 启动程序文件"></a>python 启动程序文件</h1><p>wsgi-file = manage.py </p>
+<h1 id="python-程序内用以启动的-application-变量名"><a href="#python-程序内用以启动的-application-变量名" class="headerlink" title="python 程序内用以启动的 application 变量名"></a>python 程序内用以启动的 application 变量名</h1><p>callable = app </p>
+<h1 id="处理器数"><a href="#处理器数" class="headerlink" title="处理器数"></a>处理器数</h1><p>processes = 4</p>
+<h1 id="线程数"><a href="#线程数" class="headerlink" title="线程数"></a>线程数</h1><p>threads = 2</p>
 <p>#状态检测地址<br>stats = 127.0.0.1:9191<br>注意 ： callable=app 这个 app 是 manage.py 程序文件内的一个变量，这个变量的类型是 Flask的 application 类 。</p>
 <p>运行 uwsgi</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(venv)my_flask root$ uwsgi config.ini</span><br><span class="line"></span><br><span class="line">[uWSGI] getting INI configuration from config.ini</span><br><span class="line"></span><br><span class="line">*** Starting uWSGI <span class="number">2.0</span><span class="number">.8</span> (<span class="number">64</span>bit) on [Fri Dec <span class="number">19</span> <span class="number">14</span>:<span class="number">34</span>:<span class="number">11</span> <span class="number">2014</span>] </span><br><span class="line"><span class="comment">// 此处略去那些无用的启动信息</span></span><br><span class="line">Stats server enabled on <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9191</span> fd: <span class="number">15</span> ***</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(venv)my_flask root$ uwsgi <span class="built_in">config</span>.ini</div><div class="line"></div><div class="line">[uWSGI] getting INI configuration from <span class="built_in">config</span>.ini</div><div class="line"></div><div class="line">*** Starting uWSGI <span class="number">2.0</span><span class="number">.8</span> (<span class="number">64</span><span class="built_in">bit</span>) on [Fri Dec <span class="number">19</span> <span class="number">14</span>:<span class="number">34</span>:<span class="number">11</span> <span class="number">2014</span>] </div><div class="line"><span class="comment">// 此处略去那些无用的启动信息</span></div><div class="line">Stats server enabled on <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9191</span> fd: <span class="number">15</span> ***</div></pre></td></tr></table></figure>
 <p>OK， 此时已经正常启动 uwsgi 并将 Flask 项目载入其中了，ctrl+c 关闭程序。但这只是命令启动形式，要使其随同服务器启动并作为后台服务运行才是运营环境的实际所需要。因此接下来我们需要安装另一个工具来引导 uwsgi 。</p>
 <p>安装 Supervisor<br>[Supervisor|<a href="http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。" target="_blank" rel="external">http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。</a></p>
 <p>sudo apt-get install supervisor<br>Supervisor 的全局的配置文件位置在：</p>
 <p>/etc/supervisor/supervisor.conf<br>正常情况下我们并不需要去对其作出任何的改动，只需要添加一个新的 *.conf 文件放在</p>
 <p>/etc/supervisor/conf.d/<br>下就可以，那么我们就新建立一个用于启动 my_flask 项目的 uwsgi 的 supervisor 配置 (命名为：my_flask_supervisor.conf)：</p>
 <p>[program:my_flask]</p>
-<h1 id="启动命令入口">启动命令入口</h1><p>command=/home/www/my_flask/venv/bin/uwsgi /home/www/my_flask/config.ini</p>
-<h1 id="命令程序所在目录">命令程序所在目录</h1><p>directory=/home/www/my_flask</p>
+<h1 id="启动命令入口"><a href="#启动命令入口" class="headerlink" title="启动命令入口"></a>启动命令入口</h1><p>command=/home/www/my_flask/venv/bin/uwsgi /home/www/my_flask/config.ini</p>
+<h1 id="命令程序所在目录"><a href="#命令程序所在目录" class="headerlink" title="命令程序所在目录"></a>命令程序所在目录</h1><p>directory=/home/www/my_flask</p>
 <p>#运行命令的用户名<br>user=root</p>
 <p>autostart=true<br>autorestart=true</p>
 <p>#日志地址<br>stdout_logfile=/home/www/my_flask/logs/uwsgi_supervisor.log<br>启动服务<br>sudo service supervisor start<br>终止服务<br>sudo service supervisor stop<br>安装 Nginx<br>[Nginx|<a href="http://nginx.com/]是轻量级、性能强、占用资源少，能很好的处理高并发的反向代理软件。" target="_blank" rel="external">http://nginx.com/]是轻量级、性能强、占用资源少，能很好的处理高并发的反向代理软件。</a></p>
 <p>sudo apt-get install nginx<br>配置 Nginx<br>Ubuntu 上配置 Nginx 也是很简单，不要去改动默认的 nginx.conf 只需要将</p>
 <p>/ext/nginx/sites-available/default<br>文件替换掉就可以了。</p>
 <p>新建一个 default 文件:</p>
-<pre><code><span class="title">server</span> {
-  <span class="title">listen</span>  <span class="number">80</span>;
-  <span class="title">server_name</span> XXX.XXX.XXX; <span class="comment">#公网地址</span>
+<pre><code>server {
+  listen  80;
+  server_name XXX.XXX.XXX; #公网地址
 
-  <span class="title">location</span> / {
-    <span class="title">include</span>      uwsgi_params;
-    <span class="title">uwsgi_pass</span>   <span class="number">127.0.0.1:8001</span>;  <span class="comment"># 指向uwsgi 所应用的内部地址,所有请求将转发给uwsgi 处理</span>
-    <span class="title">uwsgi_param</span> UWSGI_PYHOME /home/www/my_flask/venv; <span class="comment"># 指向虚拟环境目录</span>
-    <span class="title">uwsgi_param</span> UWSGI_CHDIR  /home/www/my_flask; <span class="comment"># 指向网站根目录</span>
-    <span class="title">uwsgi_param</span> UWSGI_SCRIPT manage:app; <span class="comment"># 指定启动程序</span>
+  location / {
+    include      uwsgi_params;
+    uwsgi_pass   127.0.0.1:8001;  # 指向uwsgi 所应用的内部地址,所有请求将转发给uwsgi 处理
+    uwsgi_param UWSGI_PYHOME /home/www/my_flask/venv; # 指向虚拟环境目录
+    uwsgi_param UWSGI_CHDIR  /home/www/my_flask; # 指向网站根目录
+    uwsgi_param UWSGI_SCRIPT manage:app; # 指定启动程序
   }
 }
 </code></pre><p>将default配置文件替换掉就大功告成了！<br>还有，更改配置还需要记得重启一下nginx:</p>
@@ -574,21 +574,21 @@ uwsgi –http :8000 –wsgi-file test.py
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -627,7 +627,7 @@ uwsgi –http :8000 –wsgi-file test.py
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
@@ -641,7 +641,7 @@ uwsgi –http :8000 –wsgi-file test.py
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#test-py"><span class="nav-number">1.</span> <span class="nav-text">test.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过配置创建_app"><span class="nav-number">2.</span> <span class="nav-text">通过配置创建 app</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uwsgi_启动时所使用的地址与端口"><span class="nav-number">3.</span> <span class="nav-text">uwsgi 启动时所使用的地址与端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指向网站目录"><span class="nav-number">4.</span> <span class="nav-text">指向网站目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python_启动程序文件"><span class="nav-number">5.</span> <span class="nav-text">python 启动程序文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python_程序内用以启动的_application_变量名"><span class="nav-number">6.</span> <span class="nav-text">python 程序内用以启动的 application 变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理器数"><span class="nav-number">7.</span> <span class="nav-text">处理器数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程数"><span class="nav-number">8.</span> <span class="nav-text">线程数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动命令入口"><span class="nav-number">9.</span> <span class="nav-text">启动命令入口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令程序所在目录"><span class="nav-number">10.</span> <span class="nav-text">命令程序所在目录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#test-py"><span class="nav-number">1.</span> <span class="nav-text">test.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过配置创建-app"><span class="nav-number">2.</span> <span class="nav-text">通过配置创建 app</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uwsgi-启动时所使用的地址与端口"><span class="nav-number">3.</span> <span class="nav-text">uwsgi 启动时所使用的地址与端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指向网站目录"><span class="nav-number">4.</span> <span class="nav-text">指向网站目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-启动程序文件"><span class="nav-number">5.</span> <span class="nav-text">python 启动程序文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-程序内用以启动的-application-变量名"><span class="nav-number">6.</span> <span class="nav-text">python 程序内用以启动的 application 变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理器数"><span class="nav-number">7.</span> <span class="nav-text">处理器数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程数"><span class="nav-number">8.</span> <span class="nav-text">线程数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动命令入口"><span class="nav-number">9.</span> <span class="nav-text">启动命令入口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令程序所在目录"><span class="nav-number">10.</span> <span class="nav-text">命令程序所在目录</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

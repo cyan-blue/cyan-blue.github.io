@@ -58,7 +58,7 @@
 强制删除使用 -D
 切换branch1git checkout abc_branch
 合并分支1git m">
-<meta property="og:updated_time" content="2016-01-11T10:06:14.156Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Use">
 <meta name="twitter:description" content="Git StartGit是目前世界上最先进的分布式版本控制系统（没有之一）。
@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -439,67 +439,67 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Git_Start"><span style="color:#408140">Git Start</span></h1><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
-<h2 id="查看本地分支:">查看本地分支:</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch</span><br></pre></td></tr></table></figure>
-<h2 id="查看远程分支:">查看远程分支:</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-r</span><br></pre></td></tr></table></figure>
-<h2 id="新建branch：">新建branch：</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> abc_branch</span><br></pre></td></tr></table></figure>
-<h2 id="删除分支">删除分支</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-d abc_branch</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h1 id="Git-Start"><a href="#Git-Start" class="headerlink" title="Git Start"></a><span style="color:#408140">Git Start</span></h1><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
+<h2 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支:"></a>查看本地分支:</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> branch</div></pre></td></tr></table></figure>
+<h2 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支:"></a>查看远程分支:</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-r</div></pre></td></tr></table></figure>
+<h2 id="新建branch："><a href="#新建branch：" class="headerlink" title="新建branch："></a>新建branch：</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -<span class="selector-tag">b</span> abc_branch</div></pre></td></tr></table></figure>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-d abc_branch</div></pre></td></tr></table></figure>
 <p><span style="color:#408140;">强制删除使用 -D</span></p>
-<h2 id="切换branch">切换branch</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> checkout abc_branch</span><br></pre></td></tr></table></figure>
-<h2 id="合并分支">合并分支</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">merge</span> abc_branch</span><br></pre></td></tr></table></figure>
-<h2 id="查看记录">查看记录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git blame filename 查看该文件目前的每一行最后改动的是什么时候提交的</span><br><span class="line">git log -<span class="tag">p</span> filename 查看这个文件所有的详细提交</span><br></pre></td></tr></table></figure>
-<p>查看某一个文件的所有提交记录：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span> <span class="comment">--pretty=oneline 文件路径`</span></span><br><span class="line">git <span class="command">log</span> <span class="comment">--pretty=oneline views.py</span></span><br><span class="line">&gt;&gt;f850a9ef393584e49d46391897db614ed56a2903 <span class="keyword">third</span> commit</span><br><span class="line">&gt;&gt;<span class="number">0</span>d08b578371afb8f45748a0491faa2a7820d7928 <span class="keyword">second</span> commit</span><br><span class="line">&gt;&gt;<span class="number">3</span>fcc3973deee5c33695c0b40b18a11f83c986b2d <span class="keyword">first</span> commit</span><br></pre></td></tr></table></figure></p>
-<h2 id="查看某一个记录的修改内容：">查看某一个记录的修改内容：</h2><p>*<br>    <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show 3fcc3973deee<span class="number">5c33695c0</span>b<span class="number">40b18a11f83</span>c986b2d</span><br></pre></td></tr></table></figure></p>
-<pre><code>例子里面打印出来的就是针对文件<span class="built_in">views</span>.py的所有的改动历史，每一行最前面的那一长串数字就是每次提交形成的哈希值，接下来使用git <span class="built_in">show</span>即可显示具体的某次的改动的修改
-</code></pre><h2 id="存储">存储</h2><ul>
-<li><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> stash</span><br></pre></td></tr></table></figure>
+<h2 id="切换branch"><a href="#切换branch" class="headerlink" title="切换branch"></a>切换branch</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> checkout abc_branch</div></pre></td></tr></table></figure>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">merge</span> abc_branch</div></pre></td></tr></table></figure>
+<h2 id="查看记录"><a href="#查看记录" class="headerlink" title="查看记录"></a>查看记录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git blame filename 查看该文件目前的每一行最后改动的是什么时候提交的</div><div class="line">git log -<span class="selector-tag">p</span> filename 查看这个文件所有的详细提交</div></pre></td></tr></table></figure>
+<p>查看某一个文件的所有提交记录：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span> <span class="comment">--pretty=oneline 文件路径`</span></div><div class="line">git <span class="built_in">log</span> <span class="comment">--pretty=oneline views.py</span></div><div class="line">&gt;&gt;f850a9ef393584e49d46391897db614ed56a2903 <span class="keyword">third</span> commit</div><div class="line">&gt;&gt;<span class="number">0</span>d08b578371afb8f45748a0491faa2a7820d7928 <span class="keyword">second</span> commit</div><div class="line">&gt;&gt;<span class="number">3</span>fcc3973deee5c33695c0b40b18a11f83c986b2d <span class="keyword">first</span> commit</div></pre></td></tr></table></figure></p>
+<h2 id="查看某一个记录的修改内容："><a href="#查看某一个记录的修改内容：" class="headerlink" title="查看某一个记录的修改内容："></a>查看某一个记录的修改内容：</h2><p>*<br>    <figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">show</span> <span class="number">3</span>fcc3973deee5c33695c0b40b18a11f83c986b2d</div></pre></td></tr></table></figure></p>
+<pre><code>例子里面打印出来的就是针对文件views.py的所有的改动历史，每一行最前面的那一长串数字就是每次提交形成的哈希值，接下来使用git show即可显示具体的某次的改动的修改
+</code></pre><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><ul>
+<li><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> stash</div></pre></td></tr></table></figure>
 <blockquote>
 <p>用来暂存当前正在进行的工作， 比如突然你想pull 最新代码， 又不想加新commit， 或者为了fix 一个紧急的bug, 先stash, 使返回到自己上一个commit, 改完bug之后再stash pop, 继续原来的工作。</p>
 </blockquote>
 </li>
-<li><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash 做一些操作后</span><br><span class="line">git stash <span class="keyword">list</span> 查看stash 列表</span><br><span class="line">git <span class="keyword">pop</span> 将最近的一个取出，并且删除</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash 做一些操作后</div><div class="line">git stash <span class="keyword">list</span> 查看stash 列表</div><div class="line">git <span class="keyword">pop</span> 将最近的一个取出，并且删除</div></pre></td></tr></table></figure>
 </li>
 <li><blockquote>
 <p>if你的stash里面有好多个，这个时候可以使用git stash list 将Git栈信息打印出来，然后git stash apply stash@{0},取出对应的，注意这个时候并没有清除，如果需要清除，git stash clear，清空</p>
 <p>stash 多了，会发现list中你不知道哪一个对应的修改是什么？解决方法</p>
 </blockquote>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git stash save <span class="string">"I DO SOMETHING"</span></span><br><span class="line">git stash list</span><br><span class="line">&gt;&gt;stash<span class="variable">@&#123;0&#125;</span>: On develop: I DO SOMETHING</span><br><span class="line">git stash <span class="keyword">pop</span> stash<span class="variable">@&#123;0&#125;</span> <span class="keyword">or</span> git stash apply stash<span class="variable">@&#123;0&#125;</span></span><br><span class="line"> 两者区别在于<span class="keyword">pop</span>会删除stash，apply不会删除最后apply结束后，git stash clear</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git stash save <span class="string">"I DO SOMETHING"</span></div><div class="line">git stash list</div><div class="line">&gt;&gt;stash@&#123;0&#125;: On develop: I DO SOMETHING</div><div class="line">git stash <span class="keyword">pop</span> stash@&#123;0&#125; <span class="keyword">or</span> git stash apply stash@&#123;0&#125;</div><div class="line"> 两者区别在于<span class="keyword">pop</span>会删除stash，apply不会删除最后apply结束后，git stash clear</div></pre></td></tr></table></figure>
 <p><strong>详细可以使用 git stash -help</strong></p>
 </li>
 </ul>
-<h2 id="git_pull_–rebase">git pull –rebase</h2><blockquote>
+<h2 id="git-pull-–rebase"><a href="#git-pull-–rebase" class="headerlink" title="git pull –rebase"></a>git pull –rebase</h2><blockquote>
 <p>当本地commit一个提交和远端服务器中的代码有冲突(别人也改了相同的文件)时可以在pull 中加 –rebase。</p>
 <p>加上rebase的意思是：<br>把本地 repo. 从上次 pull 之后的变更暂存起來<br>恢复到上次 pull 时的状态<br>合并远端的变更到本地<br>最后再合并刚刚暂存下來的本地变更</p>
 </blockquote>
-<h2 id="修改commit_内容">修改commit 内容</h2><ol>
+<h2 id="修改commit-内容"><a href="#修改commit-内容" class="headerlink" title="修改commit 内容"></a>修改commit 内容</h2><ol>
 <li><p>// 查看修改</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> <span class="comment">--amend 可以修改最后一次 commit</span></span></span><br></pre></td></tr></table></figure>
- <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -<span class="tag">i</span> master~<span class="number">1</span> <span class="comment">//最后一次</span></span><br><span class="line">git rebase -<span class="tag">i</span> master~<span class="number">5</span> <span class="comment">//最后五次</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">commit</span> <span class="comment">--amend 可以修改最后一次 commit</span></div></pre></td></tr></table></figure>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git rebase -<span class="selector-tag">i</span> master~<span class="number">1</span> <span class="comment">//最后一次</span></div><div class="line">git rebase -<span class="selector-tag">i</span> master~<span class="number">5</span> <span class="comment">//最后五次</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>// 显示结果如下，修改 pick 为 edit ，并 :wq 保存退出</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pick 92b495b 2009-08-08: ×××××××</span><br><span class="line">Rebase 9ef2b1f..92b495b onto 9ef2b1f</span><br><span class="line">Commands:</span><br><span class="line">pick = <span class="operator"><span class="keyword">use</span> <span class="keyword">commit</span></span><br><span class="line">edit = <span class="keyword">use</span> <span class="keyword">commit</span>, but <span class="keyword">stop</span> <span class="keyword">for</span> amending //改上面的 pick 为 edit</span><br><span class="line">squash = <span class="keyword">use</span> <span class="keyword">commit</span>, but meld <span class="keyword">into</span> previous <span class="keyword">commit</span></span><br><span class="line"><span class="keyword">If</span> you remove a line here THAT <span class="keyword">COMMIT</span> WILL BE LOST.</span><br><span class="line"> However, <span class="keyword">if</span> you remove everything, the rebase will be aborted.</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pick 92b495b 2009-08-08: ×××××××</div><div class="line">Rebase 9ef2b1f..92b495b onto 9ef2b1f</div><div class="line">Commands:</div><div class="line">pick = <span class="keyword">use</span> <span class="keyword">commit</span></div><div class="line">edit = <span class="keyword">use</span> <span class="keyword">commit</span>, but <span class="keyword">stop</span> <span class="keyword">for</span> amending //改上面的 pick 为 edit</div><div class="line">squash = <span class="keyword">use</span> <span class="keyword">commit</span>, but meld <span class="keyword">into</span> previous <span class="keyword">commit</span></div><div class="line"><span class="keyword">If</span> you remove a line here THAT <span class="keyword">COMMIT</span> WILL BE LOST.</div><div class="line"> However, <span class="keyword">if</span> you remove everything, the rebase will be aborted.</div></pre></td></tr></table></figure>
 </li>
 <li><p>命令行显示：</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rebasing (1/1)</span><br><span class="line">You can amend the <span class="operator"><span class="keyword">commit</span> <span class="keyword">now</span>, <span class="keyword">with</span></span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Rebasing (1/1)</div><div class="line">You can amend the <span class="keyword">commit</span> <span class="keyword">now</span>, <span class="keyword">with</span></div><div class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>使用 <code>git commit --amend</code> 进行修改，完成后 :wq 退出</p>
 </li>
 <li>使用 <code>git rebase --continue</code> 完成操作</li>
 </ol>
-<h2 id="恢复文件">恢复文件</h2><ul>
+<h2 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a>恢复文件</h2><ul>
 <li><p>git 恢复        </p>
-  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> checkout</span><br></pre></td></tr></table></figure>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> checkout</div></pre></td></tr></table></figure>
 </li>
 <li><p>git 返回到某个节点的文件</p>
-  <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 1bbbb91aaf<span class="number">96f1274750</span>c6fd<span class="number">21d77c5e71</span>42d424 文件路径</span><br></pre></td></tr></table></figure>
+  <figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="number">1</span>bbbb91aaf96f1274750c6fd21d77c5e<span class="number">7142d424</span> 文件路径</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="git_有用的小贴士">git 有用的小贴士</h2><pre><code><span class="comment"><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 内建的git输出 gitk</span><br><span class="line">&gt; 彩色的git输出 git config <span class="attribute">color</span><span class="class">.ui</span> true</span><br><span class="line">&gt; git config format<span class="class">.pretty</span> oneline</span><br></pre></td></tr></table></figure></span>
-</code></pre><h1 id="Git_使用时候遇到的错误"><span style="color:red;">Git 使用时候遇到的错误</span></h1><ol>
-<li>GIT CLONE ERROR<br>错误fatal: The remote end hung up unexpectedly<br>解决方案： <figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">http</span>.postBuffer <span class="number">24288000</span></span><br><span class="line">git config --<span class="keyword">list</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-有用的小贴士"><a href="#git-有用的小贴士" class="headerlink" title="git 有用的小贴士"></a>git 有用的小贴士</h2><pre><code><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="quote">&gt; 内建的git输出 gitk</span></div><div class="line"><span class="quote">&gt; 彩色的git输出 git config color.ui true</span></div><div class="line"><span class="quote">&gt; git config format.pretty oneline</span></div></pre></td></tr></table></figure>
+</code></pre><h1 id="Git-使用时候遇到的错误"><a href="#Git-使用时候遇到的错误" class="headerlink" title="Git 使用时候遇到的错误"></a><span style="color:red;">Git 使用时候遇到的错误</span></h1><ol>
+<li>GIT CLONE ERROR<br>错误fatal: The remote end hung up unexpectedly<br>解决方案： <figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --<span class="keyword">global</span> <span class="keyword">http</span>.postBuffer <span class="number">24288000</span></div><div class="line">git config --<span class="keyword">list</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="GIT_一般使用："><span style="color:blue;">GIT 一般使用：</span></h1><h2 id="从一般开发者的角度来看，git有以下功能：">从一般开发者的角度来看，git有以下功能：</h2><ol>
+<h1 id="GIT-一般使用："><a href="#GIT-一般使用：" class="headerlink" title="GIT 一般使用："></a><span style="color:blue;">GIT 一般使用：</span></h1><h2 id="从一般开发者的角度来看，git有以下功能："><a href="#从一般开发者的角度来看，git有以下功能：" class="headerlink" title="从一般开发者的角度来看，git有以下功能："></a>从一般开发者的角度来看，git有以下功能：</h2><ol>
 <li>从服务器上克隆数据库（包括代码和版本信息）到单机上。</li>
 <li>在自己的机器上创建分支，修改代码。</li>
 <li>在单机上自己创建的分支上提交代码。</li>
@@ -509,7 +509,7 @@
 <li>看主开发者的反馈，如果主开发者发现两个一般开发者之间有冲突（他们之间可以合作解决的冲突），就会要求他们先解决冲突，然后再由其中一个人提交。如果主开发者可以自己解决，或者没有冲突，就通过。</li>
 <li>一般开发者之间解决冲突的方法，开发者之间可以使用pull 命令解决冲突，解决完冲突之后再向主开发者提交补丁。</li>
 </ol>
-<h2 id="从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：">从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</h2><ol>
+<h2 id="从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："><a href="#从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：" class="headerlink" title="从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："></a>从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</h2><ol>
 <li>查看邮件或者通过其它方式查看一般开发者的提交状态。</li>
 <li>打上补丁，解决冲突（可以自己解决，也可以要求开发者之间解决以后再重新提交，如果是开源项目，还要决定哪些补丁有用，哪些不用）。</li>
 <li>向公共服务器提交结果，然后通知所有开发人员。</li>
@@ -602,21 +602,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -655,7 +655,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
@@ -669,7 +669,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git_Start"><span class="nav-number">1.</span> <span class="nav-text">Git Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看本地分支:"><span class="nav-number">1.1.</span> <span class="nav-text">查看本地分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程分支:"><span class="nav-number">1.2.</span> <span class="nav-text">查看远程分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建branch："><span class="nav-number">1.3.</span> <span class="nav-text">新建branch：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除分支"><span class="nav-number">1.4.</span> <span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换branch"><span class="nav-number">1.5.</span> <span class="nav-text">切换branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">1.6.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看记录"><span class="nav-number">1.7.</span> <span class="nav-text">查看记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看某一个记录的修改内容："><span class="nav-number">1.8.</span> <span class="nav-text">查看某一个记录的修改内容：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储"><span class="nav-number">1.9.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git_pull_–rebase"><span class="nav-number">1.10.</span> <span class="nav-text">git pull –rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改commit_内容"><span class="nav-number">1.11.</span> <span class="nav-text">修改commit 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恢复文件"><span class="nav-number">1.12.</span> <span class="nav-text">恢复文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git_有用的小贴士"><span class="nav-number">1.13.</span> <span class="nav-text">git 有用的小贴士</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git_使用时候遇到的错误"><span class="nav-number">2.</span> <span class="nav-text">Git 使用时候遇到的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT_一般使用："><span class="nav-number">3.</span> <span class="nav-text">GIT 一般使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从一般开发者的角度来看，git有以下功能："><span class="nav-number">3.1.</span> <span class="nav-text">从一般开发者的角度来看，git有以下功能：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："><span class="nav-number">3.2.</span> <span class="nav-text">从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-Start"><span class="nav-number">1.</span> <span class="nav-text">Git Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看本地分支"><span class="nav-number">1.1.</span> <span class="nav-text">查看本地分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程分支"><span class="nav-number">1.2.</span> <span class="nav-text">查看远程分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建branch："><span class="nav-number">1.3.</span> <span class="nav-text">新建branch：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除分支"><span class="nav-number">1.4.</span> <span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换branch"><span class="nav-number">1.5.</span> <span class="nav-text">切换branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">1.6.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看记录"><span class="nav-number">1.7.</span> <span class="nav-text">查看记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看某一个记录的修改内容："><span class="nav-number">1.8.</span> <span class="nav-text">查看某一个记录的修改内容：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储"><span class="nav-number">1.9.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull-–rebase"><span class="nav-number">1.10.</span> <span class="nav-text">git pull –rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改commit-内容"><span class="nav-number">1.11.</span> <span class="nav-text">修改commit 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恢复文件"><span class="nav-number">1.12.</span> <span class="nav-text">恢复文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-有用的小贴士"><span class="nav-number">1.13.</span> <span class="nav-text">git 有用的小贴士</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-使用时候遇到的错误"><span class="nav-number">2.</span> <span class="nav-text">Git 使用时候遇到的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT-一般使用："><span class="nav-number">3.</span> <span class="nav-text">GIT 一般使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从一般开发者的角度来看，git有以下功能："><span class="nav-number">3.1.</span> <span class="nav-text">从一般开发者的角度来看，git有以下功能：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："><span class="nav-number">3.2.</span> <span class="nav-text">从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

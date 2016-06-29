@@ -52,7 +52,7 @@
 　　2. apt-get install mysql-client
 　　3.  sudo apt-get install libmysqlclient-dev
 　　安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否">
-<meta property="og:updated_time" content="2015-11-06T06:54:47.850Z">
+<meta property="og:updated_time" content="2016-06-29T15:29:25.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu 使用mysql的简单操作">
 <meta name="twitter:description" content="ubuntu上安装mysql非常简单只需要几条命令就可以完成。
@@ -65,7 +65,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'hide'
+    sidebar: 'always'
   };
 </script>
 <style>
@@ -442,7 +442,7 @@
 <p>create database dbname；</p>
 <p>遇到的问题：</p>
 <p>mysql-server : Depends: mysql-server-5.5 but it is not going to be installed<br>E: Unable to correct problems, you have held broken packages.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> mysql-<span class="keyword">client</span>-core-<span class="number">5.6</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> autoremove</span><br><span class="line">sudo apt-<span class="keyword">get</span> autoclean</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">client</span>-core-<span class="number">5.5</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">server</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get <span class="keyword">purge</span> mysql-<span class="keyword">client</span>-core<span class="number">-5.6</span></div><div class="line">sudo apt-<span class="keyword">get</span> autoremove</div><div class="line">sudo apt-<span class="keyword">get</span> autoclean</div><div class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">client</span>-core<span class="number">-5.5</span></div><div class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-<span class="keyword">server</span></div></pre></td></tr></table></figure>
 <p>然并卵,<br>后面试了一下<a href="http://baike.baidu.com/link?url=tUAAth_0e71ZBGWOArrnufdAk3Hg3frsWXq6VsxOFIIdjP-0ngvFDV5MOdOxUf-5vZ-K-7dPMKqnQpqWeTVtLq" target="_blank" rel="external">aptitude</a><br>后面觉得应该是源使用错误的问题，要对应相同版本的源，<code>lsb_release -a</code>查看</p>
 </span>
       
@@ -533,21 +533,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -586,7 +586,7 @@
               </span>
             
               <span class="links-of-author-item">
-              <a href="https://www.anotherhome.net/" target="_blank">anotherhome</a>
+              <a href="" target="_blank">anotherhome</a>
               </span>
             
           
