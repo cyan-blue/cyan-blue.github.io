@@ -1,0 +1,1089 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Keep Learning" />
+
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Django Basics使用django的权限管理系统permission
+为model添加权限
+  123456789101112131415class OrderList(models.Model):    id = BigIntegerAutoField(primary_key=True)    buyer_name = models.CharField(default=&amp;quot;&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Notes">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/09/2015/10/09/Django-Notes/index.html">
+<meta property="og:site_name" content="Yann's Blog">
+<meta property="og:description" content="Django Basics使用django的权限管理系统permission
+为model添加权限
+  123456789101112131415class OrderList(models.Model):    id = BigIntegerAutoField(primary_key=True)    buyer_name = models.CharField(default=&amp;quot;&amp;qu">
+<meta property="og:updated_time" content="2016-09-16T14:44:49.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Notes">
+<meta name="twitter:description" content="Django Basics使用django的权限管理系统permission
+为model添加权限
+  123456789101112131415class OrderList(models.Model):    id = BigIntegerAutoField(primary_key=True)    buyer_name = models.CharField(default=&amp;quot;&amp;qu">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+<style>
+    icode {
+        font-size: 0.92857em;
+        background-color: #f6f6f6;
+    }
+    icode {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 3px;
+    }
+    icode, kbd, pre, samp {
+        font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    }
+    icode, kbd, pre, samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+</style>
+  <title> Django Notes | Yann's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bc84aa88f6fa1f006b5cb3fe1d8af37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Yann's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+  <span class="site-title" style="font-size:13px;color:#B18C8C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Walk steps step by step</span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        <li class="menu-item">
+            <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+            function c() {
+                var e = document.createElement("link");
+                e.setAttribute("type", "text/css");
+                e.setAttribute("rel", "stylesheet");
+                e.setAttribute("href", f);
+                e.setAttribute("class", l);
+                document.body.appendChild(e)
+            }
+
+            function h() {
+                var e = document.getElementsByClassName(l);
+                for (var t = 0; t < e.length; t++) {
+                    document.body.removeChild(e[t])
+                }
+            }
+
+            function p() {
+                var e = document.createElement("div");
+                e.setAttribute("class", a);
+                document.body.appendChild(e);
+                setTimeout(function() {
+                    document.body.removeChild(e)
+                }, 100)
+            }
+
+            function d(e) {
+                return {
+                    height : e.offsetHeight,
+                    width : e.offsetWidth
+                }
+            }
+
+            function v(i) {
+                var s = d(i);
+                return s.height > e &amp;&amp; s.height < n &amp;&amp; s.width > t &amp;&amp; s.width < r
+            }
+
+            function m(e) {
+                var t = e;
+                var n = 0;
+                while (!!t) {
+                    n += t.offsetTop;
+                    t = t.offsetParent
+                }
+                return n
+            }
+
+            function g() {
+                var e = document.documentElement;
+                if (!!window.innerWidth) {
+                    return window.innerHeight
+                } else if (e &amp;&amp; !isNaN(e.clientHeight)) {
+                    return e.clientHeight
+                }
+                return 0
+            }
+
+            function y() {
+                if (window.pageYOffset) {
+                    return window.pageYOffset
+                }
+                return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+            }
+
+            function E(e) {
+                var t = m(e);
+                return t >= w &amp;&amp; t <= b + w
+            }
+
+            function S() {
+                var e = document.createElement("audio");
+                e.setAttribute("class", l);
+                e.src = i;
+                e.loop = false;
+                e.addEventListener("canplay", function() {
+                    setTimeout(function() {
+                        x(k)
+                    }, 500);
+                    setTimeout(function() {
+                        N();
+                        p();
+                        for (var e = 0; e < O.length; e++) {
+                            T(O[e])
+                        }
+                    }, 15500)
+                }, true);
+                e.addEventListener("ended", function() {
+                    N();
+                    h()
+                }, true);
+                e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+                document.body.appendChild(e);
+                e.play()
+            }
+
+            function x(e) {
+                e.className += " " + s + " " + o
+            }
+
+            function T(e) {
+                e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+            }
+
+            function N() {
+                var e = document.getElementsByClassName(s);
+                var t = new RegExp("\\b" + s + "\\b");
+                for (var n = 0; n < e.length; ) {
+                    e[n].className = e[n].className.replace(t, "")
+                }
+            }
+
+            var e = 30;
+            var t = 30;
+            var n = 350;
+            var r = 350;
+            var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+            var s = "mw-harlem_shake_me";
+            var o = "im_first";
+            var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+            var a = "mw-strobe_light";
+            var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+            var l = "mw_added_css";
+            var b = g();
+            var w = y();
+            var C = document.getElementsByTagName("*");
+            var k = null;
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    if (E(A)) {
+                        k = A;
+                        break
+                    }
+                }
+            }
+            if (A === null) {
+                console.warn("Could not find a node of the right size. Please try a different page.");
+                return
+            }
+            c();
+            S();
+            var O = [];
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    O.push(A)
+                }
+            }
+        })()'>High一下</a>
+        </li>
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Django Notes
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-09T13:39:28+08:00" content="2015-10-09">
+            2015-10-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Django/" itemprop="url" rel="index">
+                  <span itemprop="name">Django</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/09/2015/10/09/Django-Notes/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/09/2015/10/09/Django-Notes/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Django-Basics"><a href="#Django-Basics" class="headerlink" title="Django Basics"></a>Django Basics</h2><h5 id="使用django的权限管理系统permission"><a href="#使用django的权限管理系统permission" class="headerlink" title="使用django的权限管理系统permission"></a>使用django的权限管理系统permission</h5><ul>
+<li><p>为model添加权限</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class OrderList(models.Model):</div><div class="line">    id = BigIntegerAutoField(primary_key=True)</div><div class="line">    buyer_name = models.CharField(default=&quot;&quot;,max_length=32, verbose_name=u&apos;买手&apos;)</div><div class="line">    order_amount = models.FloatField(default=0, verbose_name=u&apos;金额&apos;)</div><div class="line">    created = models.DateField(auto_now_add=True, verbose_name=u&apos;订货日期&apos;)</div><div class="line">    updated = models.DateTimeField(auto_now=True, verbose_name=u&apos;更新日期&apos;)</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        db_table = &apos;suplychain_flashsale_orderlist&apos;</div><div class="line">        verbose_name = u&apos;**表&apos;</div><div class="line">        verbose_name_plural = u&apos;**表&apos;</div><div class="line">        permissions = [(&quot;change_order_list_inline&quot;, u&quot;**&quot;),]</div><div class="line"></div><div class="line">    def __unicode__(self):</div><div class="line">        return &apos;&lt;%s,%s,%s&gt;&apos; % (str(self.id or &apos;&apos;), self.id, self.buyer_name)</div></pre></td></tr></table></figure>
+</li>
+<li><p>views中可以使用如下方法来操作权限</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.user.has_perm(&apos;dinghuo.change_order_list_inline&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>在template中使用权限方法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;% if perms.conf %&#125;</div><div class="line">    &lt;p&gt;You have permission to do something in the foo app.&lt;/p&gt;</div><div class="line">&lt;p&gt;You can vote!&lt;/p&gt;</div><div class="line">&#123;% endif %&#125;</div><div class="line">&#123;% if perms.conf.oprater_task %&#125;</div><div class="line">       &lt;p&gt;You can drive!&lt;/p&gt;</div><div class="line">&lt;p&gt;You don&apos;t have permission to do anything in the foo app.&lt;/p&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="在Django中MySQL的Composite-Primary-Key的实现"><a href="#在Django中MySQL的Composite-Primary-Key的实现" class="headerlink" title="在Django中MySQL的Composite Primary Key的实现"></a>在Django中MySQL的Composite Primary Key的实现</h5><ul>
+<li><p>Django不直接支持Composite Primary Key，但是可以如下实现。</p>
+<ul>
+<li>定义model，选择composite key中的一个作为主键。</li>
+<li><p>在model内部的Meta内，使用<strong>unique_together</strong>把composite key组织在一起。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Test(models.Model):</div><div class="line">    user_id = models.CharField(max_length=16, primary_key=True) # 选取user_id作为django层面的primary key</div><div class="line">    item_id = models.CharField(max_length=16)</div><div class="line">    class Meta:</div><div class="line">        unique_together = (&quot;user_id&quot;, &quot;item_id&quot;) # (user_id, item_id)就是我们需要的composite primary key</div></pre></td></tr></table></figure>
+</li>
+<li><p>在MySQL层面（只针对MySQL数据库），对Test这个model所对应的表重新创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DROP TABLE service_test; #丢弃Django syncdb创建的表</div><div class="line">mysql&gt; CREATE TABLE service_test (</div><div class="line">         user_id VARCHAR(16) NOT NULL,</div><div class="line">         item_id VARCHAR(16) NOT NULL,</div><div class="line">         primary key (user_id, item_id)</div><div class="line">       ) ENGINE=InnoDB;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Model字段缺省值-default"><a href="#Model字段缺省值-default" class="headerlink" title="Model字段缺省值(default=)"></a>Model字段缺省值(default=)</h5><ul>
+<li><p>用例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">created_at = models.DatetimeField(default=datetime.datetime.now)</div><div class="line">dummy_int  = models.IntegerField(default=0)</div></pre></td></tr></table></figure>
+</li>
+<li><p>原理:</p>
+<ul>
+<li>default值并没有写入数据库的表中：如果写入数据库表中，字段//dummy_int//的定义应包含“DEFAULT 0”；但数据库表中未有体现。</li>
+<li>django model在构造函数//%%<strong>init</strong>%%()//中设置各字段的default值:根据default=0,构造函数内就把dummy_int的值设为0.</li>
+<li>代码体现在///django/db/models/base.py//, 308-354行。</li>
+</ul>
+</li>
+<li><p>如果要让default值的设置体现在数据库表上，则要做以下改动：</p>
+<ul>
+<li><p>改动文件//django/db/backends/creation.py//:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def sql_create_model(self, model, style, known_models=set()):</div><div class="line">    ...</div><div class="line">    ## add the following code：</div><div class="line">    if(f.default != models.fields.NOT_PROVIDED):</div><div class="line">        if hasattr(f.default, &apos;__call__&apos;):</div><div class="line">            pass ## we have a little bit trouble here -- default is a python method!!!</div><div class="line">        else:</div><div class="line">            field_output.append(style.SQL_KEYWORD(&apos;DEFAULT &apos; + f.default.__str__()))</div></pre></td></tr></table></figure>
+</li>
+<li><p>什么时候需要把default值体现在数据库表中？</p>
+<ul>
+<li>一个简单的用列：更新数据库中记录，如果记录被修改，时间戳也会自动更新为修改记录的新时间；如果记录其他字段未被修改，时间戳不会变化。<ul>
+<li>在django层面，无法达到该效果。因为每次update操作，django必须设置时间戳字段的值，这样即使数据库表中其他字段没有修改，该时间戳字段也被修改了。</li>
+<li>而在数据库表里面，只要把timestamp字段设为//default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP//则可以达到理想效果：如果其他字段没有修改，时间戳也不会变化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>问题（注意！！）<ul>
+<li>正如上面代码中注释那样，如果在model中定义的字段的default值为python函数，比如//datetime.datetime.now//，就难以通过代码解析来设置数据库表中的default定义。</li>
+<li>如果数据库表中对相应字段已有default配置，那么model的构造函数内就不必对该字段进行default值的设置。<strong>所以这不是一项简单的工作，请不要轻易去尝试改动</strong>。</li>
+</ul>
+</li>
+<li>Reference: <a href="http://www.supermind.org/blog/671/django-not-setting-default-column-value-in-mysql" target="_blank" rel="external">http://www.supermind.org/blog/671/django-not-setting-default-column-value-in-mysql</a></li>
+</ul>
+</li>
+</ul>
+<h5 id="Model主键自增"><a href="#Model主键自增" class="headerlink" title="Model主键自增"></a>Model主键自增</h5><ul>
+<li>用例:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">d = models.AutoField(primary_key=True)</div><div class="line">这是一个自增主键(auto-incrementing primary key)如果你要指定一个自定义主键，将该字段设置为primary_key=True。如果</div><div class="line">Django看到你显式的设置了Field primary key，</div><div class="line">它将不会增加自增id字段。每个model必须有exactly one字段设置为primary_key=True.</div><div class="line">如显示添加自己的主键：uid = models.BigIntegerField(primary_key=True)</div><div class="line">则uid需要自己在程序里去赋值或去数据库将主键更改为自增，并保证满足主键要求</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="update-方法"><a href="#update-方法" class="headerlink" title="update() 方法"></a>update() 方法</h6><ul>
+<li><p>用例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># change User record: set status=1 for all records that have id=1;</div><div class="line"># return value x is the number of records that have id=1.</div><div class="line">x = User.objects.filter(id=1).update(status=1)</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果希望update()返回被更新的记录数(而不是满足filter条件的记录数),需要改变文件///django/db/backends/mysql/base.py//:</p>
+<ul>
+<li><p>源代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># We need the number of potentially affected rows after an</div><div class="line"># &quot;UPDATE&quot;, not the number of changed rows.</div><div class="line">kwargs[&apos;client_flag&apos;] = CLIENT.FOUND_ROWS</div></pre></td></tr></table></figure>
+</li>
+<li><p>改为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kwargs[&apos;client_flag&apos;] = CLIENT.MULTI_RESULTS</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="save-方法"><a href="#save-方法" class="headerlink" title="save() 方法"></a>save() 方法</h5><ul>
+<li><p>内部处理流程:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1) 发出一个预存信号。 它发出一个将要存储一个对象的通知。你可以注册一个监听程序，</div><div class="line">在信号发出的时候就会被调用。</div><div class="line"></div><div class="line">2) 预处理数据. 对于对象的每个字段，将根据需要进行自动的数据修改。大部分字段并不预处理</div><div class="line">，它们会保持它们原来的样子。预处理仅仅用在那些有特殊性质的字段，比如文件字段。</div><div class="line"></div><div class="line">3) 为数据库准备数据。 每一个字段先要把当前值转化成数据库中可以保存的数据的类型。</div><div class="line">大多数字段的数据不需要预先准备。简单的数据类型，比如整型和字符串等python对象可以直接写进数据库。</div><div class="line">然而，更复杂的数据类型需要做一些修改。比如， DateFields 使用python的 datetime 对象来存储数据。</div><div class="line">数据库并不能存储 datetime 对象，所以该字段要存入数据库先要把值转化为符合ISO标准的日期字符串。</div><div class="line"></div><div class="line">4) 向数据库中插入数据。 经过预处理准备好的数据然后会组合成一条SQL语句来插入数据库。</div><div class="line"></div><div class="line">5) 发出存毕信号。 与预存信号类似，存毕信号在对象成功保存之后发出。同样，这些信号也还没有文档化。</div></pre></td></tr></table></figure>
+</li>
+<li><p>处理原则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1) 如果对象的主键属性被设置成相当于 True 的值（比如 None 或者空字符串之外的值），Django会执行一个 SELECT 查询来检测是否已存在一个相同主键的记录。</div><div class="line"></div><div class="line">2) 如果已经存在一个主键相同的记录，Django就执行 UPDATE 查询。</div><div class="line"></div><div class="line">3) 如果对象的主键属性 没有 被设置，或者被设置但数据库中没有与之同主键的记录，那么Django就会执行 INSERT 插入。</div></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<h5 id="类实例序列化与反序列化"><a href="#类实例序列化与反序列化" class="headerlink" title="类实例序列化与反序列化"></a>类实例序列化与反序列化</h5><ul>
+<li>对于django中Model对象:<code python=""><br>from django.core import serializers<br>serializers.serialize(‘json’, queryset, indent=2,<br>use_natural_keys=True)//序列化<br>serializers.deserialize(“json”, sstring)//反序列化<br>这种方式的反序列化后是一个DeserializeObject包装类</code></li>
+<li>使用对于一般的复杂对象：<code python=""><br>import jsonpickle<br>pickled = jsonpickle.encode(obj)//序列化<br>unpickled = jsonpickle.decode(pickled)//反序列化<br>反序列化后是一个新的类对象</code></li>
+<li>jsonpickle的安装：<code><br>先要安装pip工具:sudo apt-get install python-pip。<br>然后执行命令：pip install -U jsonpickle。</code></li>
+<li>参考：[[<a href="http://zhdoc.bitsrv.net/django/html/topics/serialization.html]]and[[http://jsonpickle.github.com/" target="_blank" rel="external">http://zhdoc.bitsrv.net/django/html/topics/serialization.html]]and[[http://jsonpickle.github.com/</a>]]</li>
+</ul>
+<h6 id="django中静态文件路径配置"><a href="#django中静态文件路径配置" class="headerlink" title="django中静态文件路径配置"></a>django中静态文件路径配置</h6><ul>
+<li>首先，在settings.py中加入一条静态路径的常量：<code python=""><br>STATIC_FILE_ROOT=’/home/meixqhi/workspace/django/src/fbproject’<br></code></li>
+<li>其次，在urls.py文件中加入以下内容:<code python=""><br>from settings import STATIC_FILE_ROOT<br>(r’^static/(?P<path></path>.*)’,’django.views.static.serve’,{‘document_root’: ‘%s/static/‘ % STATIC_FILE_ROOT}),<br></code></li>
+<li>然后就可以通过以下路径来访问STATIC_FILE_ROOT路径下static目录中的静态文件了:<code><br><a href="http://domain/apppath/static/home.html" target="_blank" rel="external">http://domain/apppath/static/home.html</a><br></code></li>
+</ul>
+<h5 id="paginator"><a href="#paginator" class="headerlink" title="paginator"></a>paginator</h5><p>  *分页 <code><br>   from django.core.paginator import Paginator<br>   from models import Weibo</code></p>
+<p>   queryset = Weibo.objects.all()<br>   paginator = Paginator(queryset, 5)<br>   page = paginator.page(1)<br>   page.object_list</p>
+<h5 id="Import-module-model"><a href="#Import-module-model" class="headerlink" title="Import module,model"></a>Import module,model</h5><ul>
+<li><p>动态加载module,model：<code><br>from django.utils.importlib import import_module<br>import_module(module)</code></p>
+<p>from django.db import model<br>model = models.get_model(‘weibo’, ‘weibo’) #(app_label,model_name)</p>
+</li>
+</ul>
+<h5 id="Signal"><a href="#Signal" class="headerlink" title="Signal"></a>Signal</h5><ul>
+<li>Signal机制 <code><pre><code>function:
+</code></pre>connect(self, receiver, sender=None, weak=True, dispatch_uid=None)<br>send(self, sender, <strong>named):<br>decoretor:<br>receiver(signal, </strong>kwargs):</code></li>
+<li>使用方法：<ul>
+<li>声明：<code><br>from django.dispatch import Signal<br>user_logged_in = Signal(providing_args=[‘request’, ‘user’])</code></li>
+<li>注册你要触发的方法：<code><br>def logged_status(user,access_token):<br>user.is_active = True<br>user_logged_in.connect(logged_status,sender=user.<strong>class</strong>) #sender不传参,则sender默认为None,表示响应所有的send信号 </code></li>
+<li>在某个你要触发某个方法的地方发送消息，让这些注册的方法执行：<code><br>user_logged_in.send(sender=user.<strong>class</strong>, user=user, access_token=request.session.get(‘access_token’, None))</code></li>
+<li>如果要防止某个方法在module重复加载时也被重复监听，可以在connect方法中添加唯一的标识：dispatch_uid=’my_update_blogs’</li>
+<li>由于监听方法默认状态weak=True是不保证一定会执行的，由于方法的弱引用会在资源不够的时候被垃圾回收器回收，如果一定要执行，则需显示在connect中设置weak=False。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Django-Deployment"><a href="#Django-Deployment" class="headerlink" title="Django Deployment"></a>Django Deployment</h5><ul>
+<li>Install //libapache2-mod-wsgi//: \ <code><br>sudo apt-get install libapache2-mod-wsgi </code></li>
+<li>Suppose you have django project //system// under directory ///srv/internals//: <code><br>cd /srv/internals/system<br>mkdir apache </code></li>
+<li><p>Create file //django.wsgi// under directory //apache//, the file contains: <code python=""><br>import os<br>import sys</code></p>
+<p>path = ‘/srv/internals’<br>if path not in sys.path:</p>
+<pre><code>sys.path.append(path)
+sys.path.append(path+&quot;/system&quot;)
+</code></pre><p>os.environ[‘DJANGO_SETTINGS_MODULE’] = ‘system.settings’</p>
+<p>import django.core.handlers.wsgi<br>application = django.core.handlers.wsgi.WSGIHandler() </p>
+</li>
+<li><p>Edit // /etc/apache2/httpd.conf//, adding the following: \ <code bash=""><br>Alias /system/media /srv/internals/system/media/   # make sure directory ‘media’ exists<br>Alias /system/static /srv/internals/system/static/ # make sure directory ‘static’ exists</code></p>
+<directory srv="" internals="" system="" media=""><br>    AllowOverride All<br>    Order deny,allow<br>    Allow from all<br></directory>
+
+<directory srv="" internals="" system="" static=""><br>    Order deny,allow<br>    Allow from all<br></directory>
+
+<p>WSGIScriptAlias /internal /srv/internals/system/apache/django.wsgi</p>
+<p><directory srv="" internals="" system="" apache=""></directory></p>
+<pre><code>Order deny,allow
+Allow from all
+</code></pre><p> </p>
+</li>
+<li>Edit ///srv/internals/system/settings.py//: <code bash=""><br>MEDIA_ROOT = ‘/srv/internals/system/media/‘<br>MEDIA_URL = ‘/system/media/‘ # http://<your_domain>/system/media points to /srv/internals/system/media<br>STATIC_ROOT = ‘/srv/internals/system/static/‘<br>STATIC_URL = ‘/system/static/‘<br>ADMIN_MEDIA_PREFIX = ‘/system/static/admin/‘<br>ROOT_URLCONF = ‘system.urls’ </your_domain></code></li>
+<li>Visit the django project via http: <code><br>http://<your_domain>/internal/admin/<br>http://<your_domain>/internal/<app_name> # visit application with name “app_name”</app_name></your_domain></your_domain></code></li>
+<li><strong>Keep Admin Style</strong>: \ <code><br>cd /srv/internals/system/static/admin/<br>cp -rf /usr/local/lib/python2.7/dist-packages/Django-1.3-py2.7.egg/django/contrib/admin/media/<em> .<br>or<br>cp -rf /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/</em> . </code></li>
+<li><strong>Unicode Decoding Error</strong>: (uploading file and filename has //non-ascii// characters) add the following to ///etc/apache2/envvars//: <code bash=""><br>export LANG=’en_US.UTF-8’<br>export LC_ALL=’en_US.UTF-8’ </code></li>
+<li>Debug with apache: <code><br>apache2ctl -k restart # with root<br>tail -f /var/log/apache/error.log </code></li>
+</ul>
+<p>===== Django DB Schema Migration with South =====<br>====  For Django &lt; 1.7   ====</p>
+<ul>
+<li>往Django App //tagtex.qpoints// 的表内增加一个字段：<ul>
+<li>初始化: <code><br>python manage.py schemamigration tagtex.qpoints –initial<br>(如果APP执行过syncdb操作，需要执行以下操作： python manage.py migrate tagtex.qpoints –fake )</code></li>
+<li>修改表，增加字段</li>
+<li>进行migration: <code><br>python manage.py schemamigration tagtex.qpoints –auto<br>python manage.py migrate tagtex.qpoints </code></li>
+</ul>
+</li>
+</ul>
+<p>====  For Django &gt; 1.7   ====</p>
+<ul>
+<li>south 操作命令:<code><br>$ python manage.py makemigrations [appname]<br>$ python manage.py migrate [appname]<br></code><br>===== Django Developement Tips =====<br><a href="http://ericholscher.com/blog/2008/oct/5/django-tips/" target="_blank" rel="external">http://ericholscher.com/blog/2008/oct/5/django-tips/</a></li>
+</ul>
+<p>===== django-middleware =====</p>
+<ul>
+<li>django 中间件</li>
+<li>编写自己的中间件需要实现下面一个或几个方法：<ul>
+<li>process_request(self, request)：返回None或HttpResponse。</li>
+<li>process_view(self, request, view_func, view_args, view_kwargs)：djangoview处理中间件返回None或HttpResponse。</li>
+<li>process_exception(request, e):该中间件对业务处理方法执行未捕获的异常进行处理。</li>
+<li>process_template_response(request, response):如果返回的TemplateResponse含有可执行的render方法，则该中间件生效。</li>
+<li>process_response(self, request, response):返回HttpResponse。</li>
+</ul>
+</li>
+<li>参考：<a href="https://docs.djangoproject.com/en/1.3/topics/http/middleware/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.3/topics/http/middleware/</a></li>
+<li>code参考django源代码：django/core/handlers/base.py中get_response</li>
+</ul>
+<p>===== django-profile-middleware =====</p>
+<ul>
+<li>profile是一款能够记录程序方法或请求在运行过程调用了多少其他方法，以及每个方法消耗了多少时间及系统资源的python工具</li>
+<li>使用步骤：<ul>
+<li>先安装 python-profiler <code><br>sudo apt-get install python-profiler</code></li>
+<li>创建ProfileMiddleware类,参考：<a href="http://djangosnippets.org/snippets/605/" target="_blank" rel="external">http://djangosnippets.org/snippets/605/</a></li>
+<li>将类路径名加入settings.py里的MIDDLEWARE_CLASSES中 <code><br>MIDDLEWARE_CLASSES = (<br>  ‘tagtex.base.middleware.ProfileMiddleware’,<br>  )</code></li>
+<li>运行server，发送请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如http://&lt;yourserver&gt;/yoururl/?prof&amp;params</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>===== mockserver =====</p>
+<ul>
+<li>mockserver的主要功能是通过代理记录上次请求的状态并保存，并为下次请求返回相同的结果。</li>
+<li><p>使用步骤：</p>
+<ul>
+<li><p>先安装mock_server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git+ssh://git@s2/django-mock-server.git#egg=django-mock-server (也可以直接下载)</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后将recorder app添加到settings.py的INSTALLED_APPS中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = (</div><div class="line">    &apos;mock_server.recorder&apos;</div><div class="line">  )</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置代理url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls.defaults import patterns, include, url</div><div class="line">from mock_server.recorder.views import RecordView,PlaybackView</div><div class="line">from mock_server.recorder.recorder import Recorder</div><div class="line">SITE_API_ENDPOINT = &apos;你要访问的站点域名或http://ip:port&apos;</div><div class="line"></div><div class="line">recorder = Recorder(format=&apos;http://localhost:8000%s&apos;)</div><div class="line"></div><div class="line">urlpatterns = patterns(&apos;&apos;,</div><div class="line"></div><div class="line">    url(r&apos;^(?P&lt;url&gt;.*)$&apos;, RecordView.as_view(recorder=recorder,proxy_format=&apos;%s/%%s&apos;%SITE_API_ENDPOINT),name=&apos;site_api&apos;),</div><div class="line">    #url(r&apos;^(?P&lt;url&gt;.*)$&apos;, PlaybackView.as_view(recorder=recorder,proxy_format=&apos;%s/%%s&apos;%SITE_API_ENDPOINT),name=&apos;site_api&apos;),</div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用前先使用第一条url，RecordView，注释掉第二条，启动服务器，将你要mock的所有请求都先都由mockserver来代理，mockserver会将所有请求都记录保存到数据库。</p>
+</li>
+<li>然后再打开第二条url，Playback回放，注释掉第一条，所有请求都会返回之前一样的结果。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Override-Runserver-Command"><a href="#Override-Runserver-Command" class="headerlink" title="Override Runserver Command"></a>Override Runserver Command</h5><ul>
+<li>To override <strong>runserver</strong> Command,<br>add the following to into //management/commands/runnserver.py//:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Command(BaseRunserverCommand):</div><div class="line">    option_list = BaseRunserverCommand.option_list + (</div><div class="line">        make_option(&apos;--adminmedia&apos;, dest=&apos;admin_media_path&apos;, default=&apos;&apos;,</div><div class="line">            help=&apos;Specifies the directory from which to serve admin media.&apos;),</div><div class="line">    )</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Change the runserver default port to 9000. The method can be generically applied if</div><div class="line">    the default port needs to be changed.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    def handle(self, addrport=&quot;9000&quot;, *args, **options):</div><div class="line">        super(Command, self).handle(addrport, *args, **options)</div><div class="line"></div><div class="line">    def get_handler(self, *args, **options):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        Serves admin media like old-school (deprecation pending).</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        handler = super(Command, self).get_handler(*args, **options)</div><div class="line">        return AdminMediaHandler(handler, options.get(&apos;admin_media_path&apos;, &apos;&apos;))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h5><ul>
+<li><p>数据导出:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py dumpdata logistics.LogisticsCompany --indent=2 --format=json --natural &gt;fixtures/initial_logistics_company.json</div></pre></td></tr></table></figure>
+</li>
+<li><p>数据导入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py loaddata fixtures/initial_logistics_company.json</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="多个queryset-合并成一个"><a href="#多个queryset-合并成一个" class="headerlink" title="多个queryset 合并成一个"></a>多个queryset 合并成一个</h5><ul>
+<li>django<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">from itertools import islice, chain</div><div class="line"></div><div class="line">class QuerySetChain(object):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Chains multiple subquerysets (possibly of different models) and behaves as</div><div class="line">    one queryset.  Supports minimal methods needed for use with</div><div class="line">    django.core.paginator.</div><div class="line">    &quot;&quot;&quot;</div><div class="line"></div><div class="line">    def __init__(self, *subquerysets):</div><div class="line">        self.querysets = subquerysets</div><div class="line"></div><div class="line">    def count(self):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        Performs a .count() for all subquerysets and returns the number of</div><div class="line">        records as an integer.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return sum(qs.count() for qs in self.querysets)</div><div class="line"></div><div class="line">    def _clone(self):</div><div class="line">        &quot;Returns a clone of this queryset chain&quot;</div><div class="line">        return self.__class__(*self.querysets)</div><div class="line"></div><div class="line">    def _all(self):</div><div class="line">        &quot;Iterates records in all subquerysets&quot;</div><div class="line">        return chain(*self.querysets)</div><div class="line"></div><div class="line">    def __getitem__(self, ndx):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        Retrieves an item or slice from the chained set of results from all</div><div class="line">        subquerysets.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if type(ndx) is slice:</div><div class="line">            return list(islice(self._all(), ndx.start, ndx.stop, ndx.step or 1))</div><div class="line">        else:</div><div class="line">            return islice(self._all(), ndx, ndx+1).next()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="django批量添加和更新"><a href="#django批量添加和更新" class="headerlink" title="django批量添加和更新"></a>django批量添加和更新</h5><ul>
+<li>django insert&amp;update:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">def insert_many(objects, using=&quot;default&quot;):</div><div class="line">    &quot;&quot;&quot;Insert list of Django objects in one SQL query. Objects must be</div><div class="line">    of the same Django model. Note that save is not called and signals</div><div class="line">    on the model are not raised.&quot;&quot;&quot;</div><div class="line">    if not objects:</div><div class="line">        return</div><div class="line"></div><div class="line">    import django.db.models</div><div class="line">    from django.db import connections</div><div class="line">    con = connections[using]</div><div class="line"></div><div class="line">    model = objects[0].__class__</div><div class="line">    fields = [f for f in model._meta.fields if not isinstance(f, django.db.models.AutoField)]</div><div class="line">    parameters = []</div><div class="line">    for o in objects:</div><div class="line">        parameters.append(tuple(f.get_db_prep_save(f.pre_save(o, True), connection=con) for f in fields))</div><div class="line"></div><div class="line">    table = model._meta.db_table</div><div class="line">    column_names = &quot;,&quot;.join(con.ops.quote_name(f.column) for f in fields)</div><div class="line">    placeholders = &quot;,&quot;.join((&quot;%s&quot;,) * len(fields))</div><div class="line">    con.cursor().executemany(</div><div class="line">        &quot;insert into %s (%s) values (%s)&quot; % (table, column_names, placeholders),</div><div class="line">        parameters)</div><div class="line"></div><div class="line">def update_many(objects, fields=[], using=&quot;default&quot;):</div><div class="line">    &quot;&quot;&quot;Update list of Django objects in one SQL query,</div><div class="line">     optionally only overwrite the given fields (as names, e.g. fields=[&quot;foo&quot;]).</div><div class="line">    Objects must be of the same Django model.</div><div class="line">    Note that save is not called and signals on the model are not raised.&quot;&quot;&quot;</div><div class="line">    if not objects:</div><div class="line">        return</div><div class="line"></div><div class="line">    import django.db.models</div><div class="line">    from django.db import connections</div><div class="line">    con = connections[using]</div><div class="line"></div><div class="line">    names = fields</div><div class="line">    meta = objects[0]._meta</div><div class="line">    fields = [f for f in meta.fields if not isinstance(f, django.db.models.AutoField) and (not names or f.name in names)]</div><div class="line"></div><div class="line">    if not fields:</div><div class="line">        raise ValueError(&quot;No fields to update, field names are %s.&quot; % names)</div><div class="line"></div><div class="line">    fields_with_pk = fields + [meta.pk]</div><div class="line">    parameters = []</div><div class="line">    for o in objects:</div><div class="line">        parameters.append(tuple(f.get_db_prep_save(f.pre_save(o, True), connection=con) for f in fields_with_pk))</div><div class="line"></div><div class="line">    table = meta.db_table</div><div class="line">    assignments = &quot;,&quot;.join((&quot;%s=%%s&quot;% con.ops.quote_name(f.column)) for f in fields)</div><div class="line">    con.cursor().executemany(</div><div class="line">        &quot;update %s set %s where %s=%%s&quot; % (table, assignments, con.ops.quote_name(meta.pk.column)),</div><div class="line">        parameters)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag">#Django</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/09/2015/10/09/github-user-pwd/" rel="prev">github输入用户和密码</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/09/2015/10/09/Git-Use/" rel="next">Git Use</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/10/09/2015/10/09/Django-Notes/"
+                   data-title="Django Notes" data-url="http://cyan-blue.github.io/2015/10/09/2015/10/09/Django-Notes/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Yann" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Yann</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Keep Learning</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cyan-blue/" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/dale_dede" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5443185/yann" target="_blank">StackOverFlow</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-Basics"><span class="nav-number">1.</span> <span class="nav-text">Django Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用django的权限管理系统permission"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">使用django的权限管理系统permission</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在Django中MySQL的Composite-Primary-Key的实现"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">在Django中MySQL的Composite Primary Key的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Model字段缺省值-default"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Model字段缺省值(default=)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Model主键自增"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">Model主键自增</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#update-方法"><span class="nav-number">1.0.0.4.1.</span> <span class="nav-text">update() 方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#save-方法"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">save() 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#类实例序列化与反序列化"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">类实例序列化与反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#django中静态文件路径配置"><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">django中静态文件路径配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#paginator"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">paginator</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Import-module-model"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">Import module,model</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Signal"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">Signal</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Django-Deployment"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">Django Deployment</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Override-Runserver-Command"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">Override Runserver Command</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据导入导出"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">数据导入导出</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多个queryset-合并成一个"><span class="nav-number">1.0.0.13.</span> <span class="nav-text">多个queryset 合并成一个</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#django批量添加和更新"><span class="nav-number">1.0.0.14.</span> <span class="nav-text">django批量添加和更新</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yun-yan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

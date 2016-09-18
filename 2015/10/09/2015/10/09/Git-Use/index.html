@@ -1,0 +1,958 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Keep Learning" />
+
+
+
+  <meta name="keywords" content="Git," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Git StartGit是目前世界上最先进的分布式版本控制系统（没有之一）。
+查看本地分支:1git branch
+查看远程分支:1git branch -r
+新建branch：1git checkout -b abc_branch
+删除分支1git branch -d abc_branch
+强制删除使用 -D
+切换branch1git checkout abc_branch
+合并分支1git m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Use">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/10/09/2015/10/09/Git-Use/index.html">
+<meta property="og:site_name" content="Yann's Blog">
+<meta property="og:description" content="Git StartGit是目前世界上最先进的分布式版本控制系统（没有之一）。
+查看本地分支:1git branch
+查看远程分支:1git branch -r
+新建branch：1git checkout -b abc_branch
+删除分支1git branch -d abc_branch
+强制删除使用 -D
+切换branch1git checkout abc_branch
+合并分支1git m">
+<meta property="og:updated_time" content="2016-09-16T14:44:49.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Use">
+<meta name="twitter:description" content="Git StartGit是目前世界上最先进的分布式版本控制系统（没有之一）。
+查看本地分支:1git branch
+查看远程分支:1git branch -r
+新建branch：1git checkout -b abc_branch
+删除分支1git branch -d abc_branch
+强制删除使用 -D
+切换branch1git checkout abc_branch
+合并分支1git m">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+<style>
+    icode {
+        font-size: 0.92857em;
+        background-color: #f6f6f6;
+    }
+    icode {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 3px;
+    }
+    icode, kbd, pre, samp {
+        font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    }
+    icode, kbd, pre, samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+</style>
+  <title> Git Use | Yann's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bc84aa88f6fa1f006b5cb3fe1d8af37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Yann's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+  <span class="site-title" style="font-size:13px;color:#B18C8C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Walk steps step by step</span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        <li class="menu-item">
+            <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+            function c() {
+                var e = document.createElement("link");
+                e.setAttribute("type", "text/css");
+                e.setAttribute("rel", "stylesheet");
+                e.setAttribute("href", f);
+                e.setAttribute("class", l);
+                document.body.appendChild(e)
+            }
+
+            function h() {
+                var e = document.getElementsByClassName(l);
+                for (var t = 0; t < e.length; t++) {
+                    document.body.removeChild(e[t])
+                }
+            }
+
+            function p() {
+                var e = document.createElement("div");
+                e.setAttribute("class", a);
+                document.body.appendChild(e);
+                setTimeout(function() {
+                    document.body.removeChild(e)
+                }, 100)
+            }
+
+            function d(e) {
+                return {
+                    height : e.offsetHeight,
+                    width : e.offsetWidth
+                }
+            }
+
+            function v(i) {
+                var s = d(i);
+                return s.height > e &amp;&amp; s.height < n &amp;&amp; s.width > t &amp;&amp; s.width < r
+            }
+
+            function m(e) {
+                var t = e;
+                var n = 0;
+                while (!!t) {
+                    n += t.offsetTop;
+                    t = t.offsetParent
+                }
+                return n
+            }
+
+            function g() {
+                var e = document.documentElement;
+                if (!!window.innerWidth) {
+                    return window.innerHeight
+                } else if (e &amp;&amp; !isNaN(e.clientHeight)) {
+                    return e.clientHeight
+                }
+                return 0
+            }
+
+            function y() {
+                if (window.pageYOffset) {
+                    return window.pageYOffset
+                }
+                return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+            }
+
+            function E(e) {
+                var t = m(e);
+                return t >= w &amp;&amp; t <= b + w
+            }
+
+            function S() {
+                var e = document.createElement("audio");
+                e.setAttribute("class", l);
+                e.src = i;
+                e.loop = false;
+                e.addEventListener("canplay", function() {
+                    setTimeout(function() {
+                        x(k)
+                    }, 500);
+                    setTimeout(function() {
+                        N();
+                        p();
+                        for (var e = 0; e < O.length; e++) {
+                            T(O[e])
+                        }
+                    }, 15500)
+                }, true);
+                e.addEventListener("ended", function() {
+                    N();
+                    h()
+                }, true);
+                e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+                document.body.appendChild(e);
+                e.play()
+            }
+
+            function x(e) {
+                e.className += " " + s + " " + o
+            }
+
+            function T(e) {
+                e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+            }
+
+            function N() {
+                var e = document.getElementsByClassName(s);
+                var t = new RegExp("\\b" + s + "\\b");
+                for (var n = 0; n < e.length; ) {
+                    e[n].className = e[n].className.replace(t, "")
+                }
+            }
+
+            var e = 30;
+            var t = 30;
+            var n = 350;
+            var r = 350;
+            var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+            var s = "mw-harlem_shake_me";
+            var o = "im_first";
+            var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+            var a = "mw-strobe_light";
+            var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+            var l = "mw_added_css";
+            var b = g();
+            var w = y();
+            var C = document.getElementsByTagName("*");
+            var k = null;
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    if (E(A)) {
+                        k = A;
+                        break
+                    }
+                }
+            }
+            if (A === null) {
+                console.warn("Could not find a node of the right size. Please try a different page.");
+                return
+            }
+            c();
+            S();
+            var O = [];
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    O.push(A)
+                }
+            }
+        })()'>High一下</a>
+        </li>
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Git Use
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-09T11:30:39+08:00" content="2015-10-09">
+            2015-10-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Git/" itemprop="url" rel="index">
+                  <span itemprop="name">Git</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/09/2015/10/09/Git-Use/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/09/2015/10/09/Git-Use/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Git-Start"><a href="#Git-Start" class="headerlink" title="Git Start"></a><span style="color:#408140">Git Start</span></h1><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
+<h2 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支:"></a>查看本地分支:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure>
+<h2 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支:"></a>查看远程分支:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -r</div></pre></td></tr></table></figure>
+<h2 id="新建branch："><a href="#新建branch：" class="headerlink" title="新建branch："></a>新建branch：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b abc_branch</div></pre></td></tr></table></figure>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d abc_branch</div></pre></td></tr></table></figure>
+<p><span style="color:#408140;">强制删除使用 -D</span></p>
+<h2 id="切换branch"><a href="#切换branch" class="headerlink" title="切换branch"></a>切换branch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout abc_branch</div></pre></td></tr></table></figure>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge abc_branch</div></pre></td></tr></table></figure>
+<h2 id="查看记录"><a href="#查看记录" class="headerlink" title="查看记录"></a>查看记录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git blame filename 查看该文件目前的每一行最后改动的是什么时候提交的</div><div class="line">git log -p filename 查看这个文件所有的详细提交</div></pre></td></tr></table></figure>
+<p>查看某一个文件的所有提交记录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git log --pretty=oneline 文件路径`</div><div class="line">git log --pretty=oneline views.py</div><div class="line">&gt;&gt;f850a9ef393584e49d46391897db614ed56a2903 third commit</div><div class="line">&gt;&gt;0d08b578371afb8f45748a0491faa2a7820d7928 second commit</div><div class="line">&gt;&gt;3fcc3973deee5c33695c0b40b18a11f83c986b2d first commit</div></pre></td></tr></table></figure></p>
+<h2 id="查看某一个记录的修改内容："><a href="#查看某一个记录的修改内容：" class="headerlink" title="查看某一个记录的修改内容："></a>查看某一个记录的修改内容：</h2><p>*<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show 3fcc3973deee5c33695c0b40b18a11f83c986b2d</div></pre></td></tr></table></figure></p>
+<pre><code>例子里面打印出来的就是针对文件views.py的所有的改动历史，每一行最前面的那一长串数字就是每次提交形成的哈希值，接下来使用git show即可显示具体的某次的改动的修改
+</code></pre><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash</div></pre></td></tr></table></figure>
+<blockquote>
+<p>用来暂存当前正在进行的工作， 比如突然你想pull 最新代码， 又不想加新commit， 或者为了fix 一个紧急的bug, 先stash, 使返回到自己上一个commit, 改完bug之后再stash pop, 继续原来的工作。</p>
+</blockquote>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash 做一些操作后</div><div class="line">git stash list 查看stash 列表</div><div class="line">git pop 将最近的一个取出，并且删除</div></pre></td></tr></table></figure>
+</li>
+<li><blockquote>
+<p>if你的stash里面有好多个，这个时候可以使用git stash list 将Git栈信息打印出来，然后git stash apply stash@{0},取出对应的，注意这个时候并没有清除，如果需要清除，git stash clear，清空</p>
+<p>stash 多了，会发现list中你不知道哪一个对应的修改是什么？解决方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git stash save &quot;I DO SOMETHING&quot;</div><div class="line">git stash list</div><div class="line">&gt;&gt;stash@&#123;0&#125;: On develop: I DO SOMETHING</div><div class="line">git stash pop stash@&#123;0&#125; or git stash apply stash@&#123;0&#125;</div><div class="line"> 两者区别在于pop会删除stash，apply不会删除最后apply结束后，git stash clear</div></pre></td></tr></table></figure>
+<p><strong>详细可以使用 git stash -help</strong></p>
+</li>
+</ul>
+<h2 id="git-pull-–rebase"><a href="#git-pull-–rebase" class="headerlink" title="git pull –rebase"></a>git pull –rebase</h2><blockquote>
+<p>当本地commit一个提交和远端服务器中的代码有冲突(别人也改了相同的文件)时可以在pull 中加 –rebase。</p>
+<p>加上rebase的意思是：<br>把本地 repo. 从上次 pull 之后的变更暂存起來<br>恢复到上次 pull 时的状态<br>合并远端的变更到本地<br>最后再合并刚刚暂存下來的本地变更</p>
+</blockquote>
+<h2 id="修改commit-内容"><a href="#修改commit-内容" class="headerlink" title="修改commit 内容"></a>修改commit 内容</h2><ol>
+<li><p>// 查看修改</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend 可以修改最后一次 commit</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git rebase -i master~1 //最后一次</div><div class="line">git rebase -i master~5 //最后五次</div></pre></td></tr></table></figure>
+</li>
+<li><p>// 显示结果如下，修改 pick 为 edit ，并 :wq 保存退出</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pick 92b495b 2009-08-08: ×××××××</div><div class="line">Rebase 9ef2b1f..92b495b onto 9ef2b1f</div><div class="line">Commands:</div><div class="line">pick = use commit</div><div class="line">edit = use commit, but stop for amending //改上面的 pick 为 edit</div><div class="line">squash = use commit, but meld into previous commit</div><div class="line">If you remove a line here THAT COMMIT WILL BE LOST.</div><div class="line"> However, if you remove everything, the rebase will be aborted.</div></pre></td></tr></table></figure>
+</li>
+<li><p>命令行显示：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Rebasing (1/1)</div><div class="line">You can amend the commit now, with</div><div class="line">git commit --amend</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>git commit --amend</code> 进行修改，完成后 :wq 退出</p>
+</li>
+<li>使用 <code>git rebase --continue</code> 完成操作</li>
+</ol>
+<h2 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a>恢复文件</h2><ul>
+<li><p>git 恢复        </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout</div></pre></td></tr></table></figure>
+</li>
+<li><p>git 返回到某个节点的文件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout 1bbbb91aaf96f1274750c6fd21d77c5e7142d424 文件路径</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="git-有用的小贴士"><a href="#git-有用的小贴士" class="headerlink" title="git 有用的小贴士"></a>git 有用的小贴士</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 内建的git输出 gitk</div><div class="line">&gt; 彩色的git输出 git config color.ui true</div><div class="line">&gt; git config format.pretty oneline</div></pre></td></tr></table></figure>
+</code></pre><h1 id="Git-使用时候遇到的错误"><a href="#Git-使用时候遇到的错误" class="headerlink" title="Git 使用时候遇到的错误"></a><span style="color:red;">Git 使用时候遇到的错误</span></h1><ol>
+<li>GIT CLONE ERROR<br>错误fatal: The remote end hung up unexpectedly<br>解决方案： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.postBuffer 24288000</div><div class="line">git config --list</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="GIT-一般使用："><a href="#GIT-一般使用：" class="headerlink" title="GIT 一般使用："></a><span style="color:blue;">GIT 一般使用：</span></h1><h2 id="从一般开发者的角度来看，git有以下功能："><a href="#从一般开发者的角度来看，git有以下功能：" class="headerlink" title="从一般开发者的角度来看，git有以下功能："></a>从一般开发者的角度来看，git有以下功能：</h2><ol>
+<li>从服务器上克隆数据库（包括代码和版本信息）到单机上。</li>
+<li>在自己的机器上创建分支，修改代码。</li>
+<li>在单机上自己创建的分支上提交代码。</li>
+<li>在单机上合并分支。</li>
+<li>新建一个分支，把服务器上最新版的代码fetch下来，然后跟自己的主分支合并。</li>
+<li>生成补丁（patch），把补丁发送给主开发者。</li>
+<li>看主开发者的反馈，如果主开发者发现两个一般开发者之间有冲突（他们之间可以合作解决的冲突），就会要求他们先解决冲突，然后再由其中一个人提交。如果主开发者可以自己解决，或者没有冲突，就通过。</li>
+<li>一般开发者之间解决冲突的方法，开发者之间可以使用pull 命令解决冲突，解决完冲突之后再向主开发者提交补丁。</li>
+</ol>
+<h2 id="从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："><a href="#从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：" class="headerlink" title="从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："></a>从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</h2><ol>
+<li>查看邮件或者通过其它方式查看一般开发者的提交状态。</li>
+<li>打上补丁，解决冲突（可以自己解决，也可以要求开发者之间解决以后再重新提交，如果是开源项目，还要决定哪些补丁有用，哪些不用）。</li>
+<li>向公共服务器提交结果，然后通知所有开发人员。</li>
+</ol>
+<p>git diff 082721fa41f6a351b4385ec02d94d8464f9ebb52 24a821ab059c12f9ec501bb93dc87439a1a4fd4f | wc -l</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag">#Git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/09/2015/10/09/Django-Notes/" rel="prev">Django Notes</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/10/09/2015/10/09/Git-Use/"
+                   data-title="Git Use" data-url="http://cyan-blue.github.io/2015/10/09/2015/10/09/Git-Use/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Yann" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Yann</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Keep Learning</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cyan-blue/" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/dale_dede" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5443185/yann" target="_blank">StackOverFlow</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-Start"><span class="nav-number">1.</span> <span class="nav-text">Git Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看本地分支"><span class="nav-number">1.1.</span> <span class="nav-text">查看本地分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程分支"><span class="nav-number">1.2.</span> <span class="nav-text">查看远程分支:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建branch："><span class="nav-number">1.3.</span> <span class="nav-text">新建branch：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除分支"><span class="nav-number">1.4.</span> <span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换branch"><span class="nav-number">1.5.</span> <span class="nav-text">切换branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">1.6.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看记录"><span class="nav-number">1.7.</span> <span class="nav-text">查看记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看某一个记录的修改内容："><span class="nav-number">1.8.</span> <span class="nav-text">查看某一个记录的修改内容：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储"><span class="nav-number">1.9.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull-–rebase"><span class="nav-number">1.10.</span> <span class="nav-text">git pull –rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改commit-内容"><span class="nav-number">1.11.</span> <span class="nav-text">修改commit 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恢复文件"><span class="nav-number">1.12.</span> <span class="nav-text">恢复文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-有用的小贴士"><span class="nav-number">1.13.</span> <span class="nav-text">git 有用的小贴士</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-使用时候遇到的错误"><span class="nav-number">2.</span> <span class="nav-text">Git 使用时候遇到的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT-一般使用："><span class="nav-number">3.</span> <span class="nav-text">GIT 一般使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从一般开发者的角度来看，git有以下功能："><span class="nav-number">3.1.</span> <span class="nav-text">从一般开发者的角度来看，git有以下功能：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能："><span class="nav-number">3.2.</span> <span class="nav-text">从主开发者的角度（假设主开发者不用开发代码）看，git有以下功能：</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yun-yan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

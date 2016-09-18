@@ -1,0 +1,959 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Keep Learning" />
+
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="转载地址
+提供了三种最为通用的数据库关系模型
+
+mang-to- many(对对多关系)
+many-to- one(多对一关系)
+one-to-one(一对一关系)
+
+一、多对一关系：用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为位置参数。在这里我用django book中的一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django之related_name(转载)">
+<meta property="og:url" content="http://cyan-blue.github.io/2015/11/06/2015/11/06/django之related-name/index.html">
+<meta property="og:site_name" content="Yann's Blog">
+<meta property="og:description" content="转载地址
+提供了三种最为通用的数据库关系模型
+
+mang-to- many(对对多关系)
+many-to- one(多对一关系)
+one-to-one(一对一关系)
+
+一、多对一关系：用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为位置参数。在这里我用django book中的一个">
+<meta property="og:updated_time" content="2016-09-16T14:44:49.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django之related_name(转载)">
+<meta name="twitter:description" content="转载地址
+提供了三种最为通用的数据库关系模型
+
+mang-to- many(对对多关系)
+many-to- one(多对一关系)
+one-to-one(一对一关系)
+
+一、多对一关系：用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为位置参数。在这里我用django book中的一个">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+<style>
+    icode {
+        font-size: 0.92857em;
+        background-color: #f6f6f6;
+    }
+    icode {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 3px;
+    }
+    icode, kbd, pre, samp {
+        font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    }
+    icode, kbd, pre, samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+</style>
+  <title> django之related_name(转载) | Yann's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bc84aa88f6fa1f006b5cb3fe1d8af37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Yann's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+  <span class="site-title" style="font-size:13px;color:#B18C8C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Walk steps step by step</span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        <li class="menu-item">
+            <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+            function c() {
+                var e = document.createElement("link");
+                e.setAttribute("type", "text/css");
+                e.setAttribute("rel", "stylesheet");
+                e.setAttribute("href", f);
+                e.setAttribute("class", l);
+                document.body.appendChild(e)
+            }
+
+            function h() {
+                var e = document.getElementsByClassName(l);
+                for (var t = 0; t < e.length; t++) {
+                    document.body.removeChild(e[t])
+                }
+            }
+
+            function p() {
+                var e = document.createElement("div");
+                e.setAttribute("class", a);
+                document.body.appendChild(e);
+                setTimeout(function() {
+                    document.body.removeChild(e)
+                }, 100)
+            }
+
+            function d(e) {
+                return {
+                    height : e.offsetHeight,
+                    width : e.offsetWidth
+                }
+            }
+
+            function v(i) {
+                var s = d(i);
+                return s.height > e &amp;&amp; s.height < n &amp;&amp; s.width > t &amp;&amp; s.width < r
+            }
+
+            function m(e) {
+                var t = e;
+                var n = 0;
+                while (!!t) {
+                    n += t.offsetTop;
+                    t = t.offsetParent
+                }
+                return n
+            }
+
+            function g() {
+                var e = document.documentElement;
+                if (!!window.innerWidth) {
+                    return window.innerHeight
+                } else if (e &amp;&amp; !isNaN(e.clientHeight)) {
+                    return e.clientHeight
+                }
+                return 0
+            }
+
+            function y() {
+                if (window.pageYOffset) {
+                    return window.pageYOffset
+                }
+                return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+            }
+
+            function E(e) {
+                var t = m(e);
+                return t >= w &amp;&amp; t <= b + w
+            }
+
+            function S() {
+                var e = document.createElement("audio");
+                e.setAttribute("class", l);
+                e.src = i;
+                e.loop = false;
+                e.addEventListener("canplay", function() {
+                    setTimeout(function() {
+                        x(k)
+                    }, 500);
+                    setTimeout(function() {
+                        N();
+                        p();
+                        for (var e = 0; e < O.length; e++) {
+                            T(O[e])
+                        }
+                    }, 15500)
+                }, true);
+                e.addEventListener("ended", function() {
+                    N();
+                    h()
+                }, true);
+                e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+                document.body.appendChild(e);
+                e.play()
+            }
+
+            function x(e) {
+                e.className += " " + s + " " + o
+            }
+
+            function T(e) {
+                e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+            }
+
+            function N() {
+                var e = document.getElementsByClassName(s);
+                var t = new RegExp("\\b" + s + "\\b");
+                for (var n = 0; n < e.length; ) {
+                    e[n].className = e[n].className.replace(t, "")
+                }
+            }
+
+            var e = 30;
+            var t = 30;
+            var n = 350;
+            var r = 350;
+            var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+            var s = "mw-harlem_shake_me";
+            var o = "im_first";
+            var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+            var a = "mw-strobe_light";
+            var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+            var l = "mw_added_css";
+            var b = g();
+            var w = y();
+            var C = document.getElementsByTagName("*");
+            var k = null;
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    if (E(A)) {
+                        k = A;
+                        break
+                    }
+                }
+            }
+            if (A === null) {
+                console.warn("Could not find a node of the right size. Please try a different page.");
+                return
+            }
+            c();
+            S();
+            var O = [];
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    O.push(A)
+                }
+            }
+        })()'>High一下</a>
+        </li>
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              django之related_name(转载)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-06T17:54:18+08:00" content="2015-11-06">
+            2015-11-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Django/" itemprop="url" rel="index">
+                  <span itemprop="name">Django</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Django/转载/" itemprop="url" rel="index">
+                  <span itemprop="name">转载</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/06/2015/11/06/django之related-name/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/2015/11/06/django之related-name/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="http://www.tuicool.com/articles/IZruEfQ" target="_blank" rel="external">转载地址</a></p>
+<p>提供了三种最为通用的数据库关系模型</p>
+<ol>
+<li>mang-to- many(对对多关系)</li>
+<li>many-to- one(多对一关系)</li>
+<li>one-to-one(一对一关系)</li>
+</ol>
+<h1 id="一、多对一关系："><a href="#一、多对一关系：" class="headerlink" title="一、多对一关系："></a>一、多对一关系：</h1><p>用 ForeignKey 来定义多对一的关系。用法和其他的 Field 是一样的,把它放到模型中类的属性定义中就行了。ForeignKey 需要一个与之相关联的类作为<br>位置参数。在这里我用django book中的一个比较经典的实例来和大家一起分享一下：首先，定义了三个模型分别为：Publisher(出版商),Author(作者)和Book(书)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">class Publisher(models.Model):</div><div class="line">    name = models.CharField(max_length=30)</div><div class="line">    address = models.CharField(max_length=50)</div><div class="line">    city = models.CharField(max_length=60)</div><div class="line">    state_province = models.CharField(max_length=30)</div><div class="line">    country = models.CharField(max_length=50)</div><div class="line">    website = models.URLField()</div><div class="line"></div><div class="line">    def __unicode__(self):</div><div class="line">        return self.name</div><div class="line"></div><div class="line"></div><div class="line">class Meta:</div><div class="line">    ordering = [&apos;name&apos;]</div><div class="line"></div><div class="line"></div><div class="line">class Author(models.Model):</div><div class="line">    first_name = models.CharField(max_length=30)</div><div class="line">    last_name = models.CharField(max_length=40)</div><div class="line">    email = models.EmailField(blank=True)</div><div class="line"></div><div class="line">    def __unicode__(self):</div><div class="line">        return u&apos;%s %s&apos; % (self.first_name, self.last_name)</div><div class="line"></div><div class="line"></div><div class="line">class Book(models.Model):</div><div class="line">    title = models.CharField(max_length=100)</div><div class="line">    authors = models.ManyToManyField(Author)</div><div class="line">    publisher = models.ForeignKey(Publisher, related_name=&quot;publisher_set&quot;)</div><div class="line">    publication_date = models.DateField(blank=True, verbose_name=&apos;e-mail&apos;)</div><div class="line">    num_pages = models.IntegerField(blank=True, null=True)</div><div class="line">    # objects = BookManager()</div><div class="line">    objects = models.Manager()  # The default manager.</div><div class="line">    dahl_objects = DahlBookManager()  # The Dahl-specific manager</div><div class="line"></div><div class="line">    # .</div><div class="line">    def __unicode__(self):</div><div class="line">        return self.title</div></pre></td></tr></table></figure></p>
+<p>要建立一个递归的关系，即一个对象和自身的多对一关系，你可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">models.ForeignKey(&apos;self&apos;) :</div><div class="line"></div><div class="line">1 class Employee(models.Model): 2 manager = models.ForeignKey( &apos; self &apos; )</div></pre></td></tr></table></figure></p>
+<p>如果你创建关系时,所需的模型还没有被定义,你可以不使用模型对象本身,而是使用那个模型的名字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Car(models.Model):</div><div class="line">    manufacturer = models.ForeignKey(&apos;Manufacturer&apos;)</div><div class="line">    ...</div><div class="line"></div><div class="line">class Manufacturer(models.Model):</div></pre></td></tr></table></figure>
+<p>但是,你要记住,只能对在同一个 models.py 文件中的模型使用字符串引用,对于其他应用程序中的模型或者从其他地方导入</p>
+<p>的模型是不能使用名字对其做引用的。</p>
+<p>Django在数据库中使用的列名称是对应的字段的名称后追加 _id 得到的字符串。再前面的那个例子中, Car 模型对应的数据库</p>
+<p>表中会有一个名字是 manufacturer_id 的列,(你可以通过指定 db_column 来显式改变这个名字,参见前面</p>
+<p>的db_column一节)但是,如果你不需要写定制的SQL语句的话,你永远不要去处理数据库列名,只需要处理你的模型对象中的</p>
+<p>字段名称。</p>
+<p>在这里有几个概念要讲清楚，当初我就是载在这上面的，希望有同感的朋友可以看到， ForeignKey选项</p>
+<ol>
+<li><p>edit_inline：</p>
+<p> 如果不设为 False 的话,它对应的对象就可以在页面上内联编辑,就是说这个对象有自 己独立的</p>
+<p> 管理界面。如果设为 models.TABULAR 或者 models.STACKED 的话,这个内 联编辑对象分别显</p>
+<p> 示成一个表格或者一些字段的集合。</p>
+</li>
+<li><p>limit_choices_to：</p>
+<p> 可以限定对象的值的范围的一个参数和值的字典。结合Python的 datetime 模块的</p>
+<p> 函数可以根据日期来限定对象。例如,下面的代码:<br> limit_choices_to = {‘pub_date__lte’: datetime.now}<br> 把可选对象限定到 pub_date 早于当前时间的对象中。<br> 除字典外,这里也可以是一个可以执行更复杂的查询的 Q 对象<br> 这个选项和 edit_inline 是不兼容的。</p>
+</li>
+<li><p>max_num_in_admin<br> 于内联编辑对象,这个是要在管理界面里显示的相关对象的最多个数。所以,如果披萨最多 只会</p>
+<p> 有10种配料, max_num_in_admin=10 会保证用户最多输入10种配料。</p>
+<p> 记住,本项并不保证不会创建10种以上的配料,他只是控制管理界面,而不是在Python的API 层和</p>
+<p> 数据库层做什么限制。</p>
+</li>
+<li><p>min_num_in_admin</p>
+<p> 在管理界面中要显示的相关的对象的最少个数。通常,在创建的时候,显示的内联对象的个数 为</p>
+<p> num_in_admin 个,在编辑的时候,在当前的基础上又会多显示 num_extra_on_change 个空对</p>
+<p> 象,但是显示的对象个数不会少于 min_num_in_admin 个。</p>
+</li>
+<li><p>num_extra_on_change</p>
+<p> 修改对象时要额外显示的对象数目。</p>
+</li>
+<li><p>num_in_admin</p>
+<p> 添加对象时要显示的内联对象的默认个数。</p>
+</li>
+<li><p>raw_id_admin</p>
+<p> 为要键入的整数显示一个文本框,而不是一个下拉列表。在关联对象有很多行时,这个比显示 一个</p>
+<p> 列表选择框更实用。</p>
+<p> 使用 edit_inline 时,本项无效。</p>
+</li>
+<li><p>related_name</p>
+<p> 关联对象反向引用描述符。</p>
+</li>
+<li><p>to_field</p>
+<p> 关联对象的用于关联的字段,Django默认使用关联对象的主键。</p>
+<p> 要学习ForeignKey并了解深刻的话，可以先对以上ForeignKey的这些选项有一定的了解。这样可以加深你对ForeignKey的印象。</p>
+<p> 万事俱备，现在，假如你想通过Book这张表去访问Publisher和Author都是可以直接访问的，因为Book这张表中有外键和这两张</p>
+<p> 表关联，因此可以直接通过语句去访问Book和Publisher表。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def get_info(request, id):</div><div class="line">    books = Book.objects.filter(publisher__id=id).all()</div><div class="line">    return render_to_response(&quot;showdb_info.html&quot;, &#123;</div><div class="line">        &quot;books&quot;: books&#125;, context_instance=RequestContext(request))</div></pre></td></tr></table></figure>
+<p> 这一步相信大家都是知道的，即使不知道，等你看了笔者的这篇博客之后肯定也会一目了然的。但是，假如反过来该怎么去查询呢？</p>
+<p> （通过Publisher或者Author表查询Book表中的内容）在这里就要用到一个相当重要的 ForeignKey 选项，通过该选项你可以随便访问Books</p>
+<p> 中的任意字段。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def get_book_info(request, id):</div><div class="line">    publisher = Publisher.objects.filter(publisher_set__id = id)</div><div class="line">    return render_to_response(&quot;showdb_info.html&quot;,&#123;</div><div class="line">        &quot;publisher&quot;: publisher,</div><div class="line">    &#125;,</div><div class="line">     context_instance=RequestContext(request))</div></pre></td></tr></table></figure></li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag">#Django</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/07/2015/11/07/django之温故知新1/" rel="prev">django之温故知新1</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/06/2015/11/06/linux之缓存/" rel="next">Linux下释放内存的方法(转载)</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/06/2015/11/06/django之related-name/"
+                   data-title="django之related_name(转载)" data-url="http://cyan-blue.github.io/2015/11/06/2015/11/06/django之related-name/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Yann" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Yann</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Keep Learning</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cyan-blue/" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/dale_dede" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5443185/yann" target="_blank">StackOverFlow</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、多对一关系："><span class="nav-number">1.</span> <span class="nav-text">一、多对一关系：</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yun-yan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

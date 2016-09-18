@@ -1,0 +1,930 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Keep Learning" />
+
+
+
+  <meta name="keywords" content="Yann,git,github,git工作流,python,jstorm,django,mysql,代码" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="test.pydef application(env, start_response):    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])    return ‘Welcome to MuxiStudio!’然后，Run uWSGI:
+uwsgi –http :8000 –wsgi-file test.py
+抵不住朋友的诱惑，今">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uwsiguse">
+<meta property="og:url" content="http://cyan-blue.github.io/2016/01/07/2016/01/07/uwsiguse/index.html">
+<meta property="og:site_name" content="Yann's Blog">
+<meta property="og:description" content="test.pydef application(env, start_response):    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])    return ‘Welcome to MuxiStudio!’然后，Run uWSGI:
+uwsgi –http :8000 –wsgi-file test.py
+抵不住朋友的诱惑，今">
+<meta property="og:updated_time" content="2016-09-16T14:44:49.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uwsiguse">
+<meta name="twitter:description" content="test.pydef application(env, start_response):    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])    return ‘Welcome to MuxiStudio!’然后，Run uWSGI:
+uwsgi –http :8000 –wsgi-file test.py
+抵不住朋友的诱惑，今">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+<style>
+    icode {
+        font-size: 0.92857em;
+        background-color: #f6f6f6;
+    }
+    icode {
+        padding: 2px 4px;
+        font-size: 90%;
+        color: #c7254e;
+        background-color: #f9f2f4;
+        border-radius: 3px;
+    }
+    icode, kbd, pre, samp {
+        font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    }
+    icode, kbd, pre, samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+</style>
+  <title> uwsiguse | Yann's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8bc84aa88f6fa1f006b5cb3fe1d8af37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Yann's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+  <span class="site-title" style="font-size:13px;color:#B18C8C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Walk steps step by step</span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        <li class="menu-item">
+            <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+            function c() {
+                var e = document.createElement("link");
+                e.setAttribute("type", "text/css");
+                e.setAttribute("rel", "stylesheet");
+                e.setAttribute("href", f);
+                e.setAttribute("class", l);
+                document.body.appendChild(e)
+            }
+
+            function h() {
+                var e = document.getElementsByClassName(l);
+                for (var t = 0; t < e.length; t++) {
+                    document.body.removeChild(e[t])
+                }
+            }
+
+            function p() {
+                var e = document.createElement("div");
+                e.setAttribute("class", a);
+                document.body.appendChild(e);
+                setTimeout(function() {
+                    document.body.removeChild(e)
+                }, 100)
+            }
+
+            function d(e) {
+                return {
+                    height : e.offsetHeight,
+                    width : e.offsetWidth
+                }
+            }
+
+            function v(i) {
+                var s = d(i);
+                return s.height > e &amp;&amp; s.height < n &amp;&amp; s.width > t &amp;&amp; s.width < r
+            }
+
+            function m(e) {
+                var t = e;
+                var n = 0;
+                while (!!t) {
+                    n += t.offsetTop;
+                    t = t.offsetParent
+                }
+                return n
+            }
+
+            function g() {
+                var e = document.documentElement;
+                if (!!window.innerWidth) {
+                    return window.innerHeight
+                } else if (e &amp;&amp; !isNaN(e.clientHeight)) {
+                    return e.clientHeight
+                }
+                return 0
+            }
+
+            function y() {
+                if (window.pageYOffset) {
+                    return window.pageYOffset
+                }
+                return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+            }
+
+            function E(e) {
+                var t = m(e);
+                return t >= w &amp;&amp; t <= b + w
+            }
+
+            function S() {
+                var e = document.createElement("audio");
+                e.setAttribute("class", l);
+                e.src = i;
+                e.loop = false;
+                e.addEventListener("canplay", function() {
+                    setTimeout(function() {
+                        x(k)
+                    }, 500);
+                    setTimeout(function() {
+                        N();
+                        p();
+                        for (var e = 0; e < O.length; e++) {
+                            T(O[e])
+                        }
+                    }, 15500)
+                }, true);
+                e.addEventListener("ended", function() {
+                    N();
+                    h()
+                }, true);
+                e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+                document.body.appendChild(e);
+                e.play()
+            }
+
+            function x(e) {
+                e.className += " " + s + " " + o
+            }
+
+            function T(e) {
+                e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+            }
+
+            function N() {
+                var e = document.getElementsByClassName(s);
+                var t = new RegExp("\\b" + s + "\\b");
+                for (var n = 0; n < e.length; ) {
+                    e[n].className = e[n].className.replace(t, "")
+                }
+            }
+
+            var e = 30;
+            var t = 30;
+            var n = 350;
+            var r = 350;
+            var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+            var s = "mw-harlem_shake_me";
+            var o = "im_first";
+            var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+            var a = "mw-strobe_light";
+            var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+            var l = "mw_added_css";
+            var b = g();
+            var w = y();
+            var C = document.getElementsByTagName("*");
+            var k = null;
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    if (E(A)) {
+                        k = A;
+                        break
+                    }
+                }
+            }
+            if (A === null) {
+                console.warn("Could not find a node of the right size. Please try a different page.");
+                return
+            }
+            c();
+            S();
+            var O = [];
+            for (var L = 0; L < C.length; L++) {
+                var A = C[L];
+                if (v(A)) {
+                    O.push(A)
+                }
+            }
+        })()'>High一下</a>
+        </li>
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              uwsiguse
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-07T14:25:49+08:00" content="2016-01-07">
+            2016-01-07
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/07/2016/01/07/uwsiguse/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/07/2016/01/07/uwsiguse/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="test-py"><a href="#test-py" class="headerlink" title="test.py"></a>test.py</h1><p>def application(env, start_response):<br>    start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])<br>    return ‘Welcome to MuxiStudio!’<br>然后，Run uWSGI:</p>
+<p>uwsgi –http :8000 –wsgi-file test.py</p>
+<p>抵不住朋友的诱惑，今天终于入手了一台阿里云服务器，是Ubuntu 1.4 32位版本，最初考虑是用来尝尝鲜只是买了个最低配的，价格算起来与在国外买个空间的价格相当吧（可能一年才贵100多），但用起来感觉就很不错，速度那是一个字：快。</p>
+<p>自从倒戈向Linux世界后，对于一切大而全的开发框架与软件都有一种不讨喜的感觉，个人更喜欢于使用那些小而精，高性能高产生力的软件和开发框架，So 我现在的第一语言是Python和Coffee，开发框架就当然是 AngularJS (前端) + Flask (后端) ，关于 AngularJS 与 Flask 不在本文的叙述范围之内，本文解决的是 Flask 最后一公里的问题：Linux 部署。</p>
+<p>我采用的部署方案是：</p>
+<p>Web 服务器采用 uwsgi host Flask<br>用 Supervisor 引用 uwsgi 作常规启动服务<br>基于 Nginx 作反向代理<br>首先, 阿里云服务器可以通过 SSH 指令在本机的终端进行远程连接</p>
+<p>ssh root@云服务器地址<br>输入密码进入后所有的操作与本地终端完全一至。</p>
+<p>安装 Python 环境<br>接下来是python , Ubuntu 的默认环境已经预装 python 2.7 所以只需要安装 python 的 pip 安装工具即可。pip 用于安装一些基于python 应用的软件工具，在下文中将会频繁使用。</p>
+<p>PIP<br>如果用python 而不懂 [pip|<a href="http://pypi.python.org/" target="_blank" rel="external">http://pypi.python.org/</a>] 那最好就快点脑补吧, 指令如下：</p>
+<p>sudo apt-get install pip<br>VirtualEnv<br>不同的项目可能会引用各种不同的依赖包，为了避免版本与和应用之间的冲突而造成的“依赖地狱”<br>[Virtualenv | <a href="https://virtualenv.readthedocs.org/en/latest/" target="_blank" rel="external">https://virtualenv.readthedocs.org/en/latest/</a>] 就是我们python 项目的必须品了。VirtualEnv 可以为每个Python应用创建独立的开发环境，使他们互不影响，Virtualenv 能够做到：</p>
+<p>在没有权限的情况下安装新套件<br>不同应用可以使用不同的套件版本<br>套件升级不影响其他应用<br>安装：</p>
+<p>sudo pip install virtualenv<br>安装VirtualEnv 后只需要在项目目录内运行 virtualenv 目录名 就可以建立一个虚拟环境文件夹，然后启用 activate 指令即可启用该python虚拟环境，具体操作如下：</p>
+<p>假定我的项目目录叫 /home/www/my_flask，首先安装虚拟环境 (我习惯使用的虚拟环境目录叫 venv )</p>
+<p>my_flask root$ virtualenv venv</p>
+<blockquote>
+<blockquote>
+<p>New python executable in venv/bin/python<br>Installing setuptools, pip…done.<br>在项目目录下就会建立一个新的 venv 目录，里面就是运行python 的基本环境的工具与指令，和包。 然后启用该环境，使用当前命令行状态进入虚拟环境，进入虚拟环境后，一切安装python的操作都会将包和引用装在虚拟环境内，而不会影响到全局的python 环境。</p>
+</blockquote>
+</blockquote>
+<p>my_flask root$ source venv/bin/activate </p>
+<p>(venv)my_flask root$<br>调用 activate 指令后命令符前就会出现 (venv) 字样。 可通过 deactivate 退出虚拟环境。</p>
+<p>安装 uWSGI<br>Flask 的实际生产运行环境选择并不多，比较成熟的是 [Gunicorn|<a href="http://gunicorn.org/" target="_blank" rel="external">http://gunicorn.org/</a>] 和 [uWSGI|<a href="https://github.com/unbit/uwsgi" target="_blank" rel="external">https://github.com/unbit/uwsgi</a>] ，听说Gunicorn 的配置很简单，但可惜我一直没有配置成功过，我现采用的是 uWSGI。接下来就安装uWSGI吧。</p>
+<p>(venv)my_flask root$ pip install uwsgi<br>在虚拟环境下不需要使用 sudo ，因为virtualenv 是没有权限要求的。</p>
+<p>这个安装很迅速，基本是秒成。安装完成后我们可以先放下 uWSGI 不表，在后面再回过来配置他，因为我们首先要将关键的 Flask环境和我们的项目文件传到服务器目录内。</p>
+<p>安装 Flask<br>我是用清单文件一次性安装Flask和他的相关依赖的，这样会更快。我的引用清单是这样的：<br>requirements.txt</p>
+<p>Flask==0.10.1<br>Flask-Login==0.2.11<br>Flask-Mail==0.9.1<br>Flask-Moment==0.4.0<br>Flask-PageDown==0.1.5<br>Flask-SQLAlchemy==2.0<br>Flask-Script==2.0.5<br>Flask-WTF==0.10.2<br>Flask-Cache==0.13.1<br>Flask-Restless==0.15.0<br>Flask-Uploads==0.1.3<br>Jinja2==2.7.3<br>Mako==1.0.0<br>Markdown==2.5.1<br>MarkupSafe==0.23<br>SQLAlchemy==0.9.8<br>WTForms==2.0.1<br>Werkzeug==0.9.6<br>html5lib==1.0b3<br>itsdangerous==0.24<br>six==1.8.0<br>awesome-slugify==1.6<br>可以想像，如果一个一个装非疯了不可。<br>安装清单文件：</p>
+<p>(venv)my_flask root$ pip install -r requirements.txt<br>在此还是重重地提一下：一定要注意在运行这个安装之前启用了python 虚拟环境，否则会直接安装到全局去的！</p>
+<p>项目文件<br>接下来就是上传 Flask的项目文件，之前我在各大的“转载专业户”里找了好多的资料，在这一步中大多只是在上面加个标准的Flask运行文件，虽说做个范例可以但说实在的这很让人迷惑，为什么？先看看代码吧：</p>
+<p>from flask import Flask</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p>@app.route(“/“)<br>def hello():<br>    return “Hello World!”<br>生产环境内，谁会用这样的代码呢，这只是Flask 的最简入门范，我的Flask项目中 app 是被做在包内的，相信很多人都是这样做的，在包外我们采用 Flask Script 写一个 manage.py 文件 作为启动文件，这更方便于支持各种的项目，包括可以安装到 window下的 FastCGI 中。</p>
+<p>那么我的 这个 manage.py 是这个样子的：</p>
+<p>#!/usr/bin/env python<br>import os</p>
+<p>if os.path.exists(‘.env’):<br>    print(‘Importing environment from .env…’)<br>    for line in open(‘.env’):<br>        var = line.strip().split(‘=’)<br>        if len(var) == 2:<br>            os.environ[var[0]] = var[1]</p>
+<p>from app import create_app<br>from flask.ext.script import Manager, Shell</p>
+<h1 id="通过配置创建-app"><a href="#通过配置创建-app" class="headerlink" title="通过配置创建 app"></a>通过配置创建 app</h1><p>app = create_app(os.getenv(‘FLASK_CONFIG’) or ‘default’)<br>manager = Manager(app)</p>
+<p>def make_shell_context():<br>    return dict(app=app)</p>
+<p>manager.add_command(“shell”, Shell(make_context=make_shell_context))</p>
+<p>@manager.command<br>def deploy():<br>    “””Run deployment tasks.”””<br>    pass</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    manager.run()<br>这样做我地开发环境可以这样运行 Flask:</p>
+<p>python manage.py runserver<br>更详细的做法请参考 [Flask Script|<a href="http://flask-script.readthedocs.org/en/latest/" target="_blank" rel="external">http://flask-script.readthedocs.org/en/latest/</a>] 扩展</p>
+<p>好吧，我们可以用 支持SSH的FTP工具将Flask项目文件上传到服务器上，下面是整个项目文件结构：</p>
+<p>www/<br>└── my_flask<br>│   ├── logs<br>│   └── venv  //虚拟目录<br>│   │   ├── bin<br>│   │   │         ├── activate<br>│   │   │         ├── easy_install<br>│   │   │         ├── gunicorn<br>│   │   │         ├── pip<br>│   │   │         └── python<br>│   │   ├── include<br>│   │   │          └── python2.7 -&gt; /usr/include/python2.7<br>│   │   ├── lib<br>│   │   │         └── python2.7<br>│   │   ├── local<br>│   │   │         ├── bin -&gt; /home/shenye/shenyefuli/bin<br>│   │   │         ├── include -&gt; /home/shenye/shenyefuli/include<br>│   │   │         └── lib -&gt; /home/shenye/shenyefuli/lib<br>│   └── app  //Flask 程序目录<br>│   │           └──  <strong>init</strong>.py //这是程序包文件。这个目录下还有其它的文件此处略过<br>│   ├── manage.py<br>│   ├── requirements.txt<br>配置 uwsgi<br>好了，项目的准备工作已经做完了，是时候回过头去配置 uwsgi 了，它的具体指令可以去看它的官方文档，我们在这里采用其中的一种指令方式：配置起动。我采用 .ini文件作为配置，在项目目录下创建一个 confg.ini （具体见下文）写好后可以这样执行</p>
+<p>(venv)my_flask root$ uwsgi config.ini<br>我认为是最简单的方式，也容易更改。好了重要部分来了，config.ini 是这样写的：</p>
+<p>[uwsgi]</p>
+<h1 id="uwsgi-启动时所使用的地址与端口"><a href="#uwsgi-启动时所使用的地址与端口" class="headerlink" title="uwsgi 启动时所使用的地址与端口"></a>uwsgi 启动时所使用的地址与端口</h1><p>socket = 127.0.0.1:8001 </p>
+<h1 id="指向网站目录"><a href="#指向网站目录" class="headerlink" title="指向网站目录"></a>指向网站目录</h1><p>chdir = /home/www/my_flask</p>
+<h1 id="python-启动程序文件"><a href="#python-启动程序文件" class="headerlink" title="python 启动程序文件"></a>python 启动程序文件</h1><p>wsgi-file = manage.py </p>
+<h1 id="python-程序内用以启动的-application-变量名"><a href="#python-程序内用以启动的-application-变量名" class="headerlink" title="python 程序内用以启动的 application 变量名"></a>python 程序内用以启动的 application 变量名</h1><p>callable = app </p>
+<h1 id="处理器数"><a href="#处理器数" class="headerlink" title="处理器数"></a>处理器数</h1><p>processes = 4</p>
+<h1 id="线程数"><a href="#线程数" class="headerlink" title="线程数"></a>线程数</h1><p>threads = 2</p>
+<p>#状态检测地址<br>stats = 127.0.0.1:9191<br>注意 ： callable=app 这个 app 是 manage.py 程序文件内的一个变量，这个变量的类型是 Flask的 application 类 。</p>
+<p>运行 uwsgi</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(venv)my_flask root$ uwsgi config.ini</div><div class="line"></div><div class="line">[uWSGI] getting INI configuration from config.ini</div><div class="line"></div><div class="line">*** Starting uWSGI 2.0.8 (64bit) on [Fri Dec 19 14:34:11 2014] </div><div class="line">// 此处略去那些无用的启动信息</div><div class="line">Stats server enabled on 127.0.0.1:9191 fd: 15 ***</div></pre></td></tr></table></figure>
+<p>OK， 此时已经正常启动 uwsgi 并将 Flask 项目载入其中了，ctrl+c 关闭程序。但这只是命令启动形式，要使其随同服务器启动并作为后台服务运行才是运营环境的实际所需要。因此接下来我们需要安装另一个工具来引导 uwsgi 。</p>
+<p>安装 Supervisor<br>[Supervisor|<a href="http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。" target="_blank" rel="external">http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。</a></p>
+<p>sudo apt-get install supervisor<br>Supervisor 的全局的配置文件位置在：</p>
+<p>/etc/supervisor/supervisor.conf<br>正常情况下我们并不需要去对其作出任何的改动，只需要添加一个新的 *.conf 文件放在</p>
+<p>/etc/supervisor/conf.d/<br>下就可以，那么我们就新建立一个用于启动 my_flask 项目的 uwsgi 的 supervisor 配置 (命名为：my_flask_supervisor.conf)：</p>
+<p>[program:my_flask]</p>
+<h1 id="启动命令入口"><a href="#启动命令入口" class="headerlink" title="启动命令入口"></a>启动命令入口</h1><p>command=/home/www/my_flask/venv/bin/uwsgi /home/www/my_flask/config.ini</p>
+<h1 id="命令程序所在目录"><a href="#命令程序所在目录" class="headerlink" title="命令程序所在目录"></a>命令程序所在目录</h1><p>directory=/home/www/my_flask</p>
+<p>#运行命令的用户名<br>user=root</p>
+<p>autostart=true<br>autorestart=true</p>
+<p>#日志地址<br>stdout_logfile=/home/www/my_flask/logs/uwsgi_supervisor.log<br>启动服务<br>sudo service supervisor start<br>终止服务<br>sudo service supervisor stop<br>安装 Nginx<br>[Nginx|<a href="http://nginx.com/]是轻量级、性能强、占用资源少，能很好的处理高并发的反向代理软件。" target="_blank" rel="external">http://nginx.com/]是轻量级、性能强、占用资源少，能很好的处理高并发的反向代理软件。</a></p>
+<p>sudo apt-get install nginx<br>配置 Nginx<br>Ubuntu 上配置 Nginx 也是很简单，不要去改动默认的 nginx.conf 只需要将</p>
+<p>/ext/nginx/sites-available/default<br>文件替换掉就可以了。</p>
+<p>新建一个 default 文件:</p>
+<pre><code>server {
+  listen  80;
+  server_name XXX.XXX.XXX; #公网地址
+
+  location / {
+    include      uwsgi_params;
+    uwsgi_pass   127.0.0.1:8001;  # 指向uwsgi 所应用的内部地址,所有请求将转发给uwsgi 处理
+    uwsgi_param UWSGI_PYHOME /home/www/my_flask/venv; # 指向虚拟环境目录
+    uwsgi_param UWSGI_CHDIR  /home/www/my_flask; # 指向网站根目录
+    uwsgi_param UWSGI_SCRIPT manage:app; # 指定启动程序
+  }
+}
+</code></pre><p>将default配置文件替换掉就大功告成了！<br>还有，更改配置还需要记得重启一下nginx:</p>
+<p>sudo service nginx restart<br>总结<br>阿里云的服务器运行速度很不错，加上Flask+uWSGI+nginx 这种高性能结构，整个网站响应速度极为之快，每页响应速度不到0.1s , 与之相比我之前使用 C# 部署在Avarix 上的网站（同一个程序，不同语言实现）每页响应速度至少2s 这简直是 200:1的性能，当然我还没有闲到去专们用软件去测这两者之间的差值，写本文的目的也是对此作一记录，以便以后回顾。config</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/08/2016/01/08/mysql-command/" rel="prev">mysql_command</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/09/2015/12/09/git设置不需要设置密码/" rel="next">git设置不需要设置密码</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/01/07/2016/01/07/uwsiguse/"
+                   data-title="uwsiguse" data-url="http://cyan-blue.github.io/2016/01/07/2016/01/07/uwsiguse/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Yann" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Yann</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Keep Learning</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cyan-blue/" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/dale_dede" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5443185/yann" target="_blank">StackOverFlow</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#test-py"><span class="nav-number">1.</span> <span class="nav-text">test.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过配置创建-app"><span class="nav-number">2.</span> <span class="nav-text">通过配置创建 app</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uwsgi-启动时所使用的地址与端口"><span class="nav-number">3.</span> <span class="nav-text">uwsgi 启动时所使用的地址与端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指向网站目录"><span class="nav-number">4.</span> <span class="nav-text">指向网站目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-启动程序文件"><span class="nav-number">5.</span> <span class="nav-text">python 启动程序文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-程序内用以启动的-application-变量名"><span class="nav-number">6.</span> <span class="nav-text">python 程序内用以启动的 application 变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理器数"><span class="nav-number">7.</span> <span class="nav-text">处理器数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程数"><span class="nav-number">8.</span> <span class="nav-text">线程数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动命令入口"><span class="nav-number">9.</span> <span class="nav-text">启动命令入口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令程序所在目录"><span class="nav-number">10.</span> <span class="nav-text">命令程序所在目录</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yun-yan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
